@@ -1,0 +1,1648 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="sk" xml:lang="sk">
+	<head>
+	
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="Content-Language" content="sk" />
+		<meta name="language" content="sk" />
+		<meta name="keywords" content="" />
+		<meta name="description" content="" />
+		<meta name="author" content="" />
+    		
+		<link href="css/common.css" rel="stylesheet" type="text/css" />
+		
+		<style>
+		body {font-family: Tahoma; color: #272725; font-size: 12px; background: #272725;}
+		table {width: 580px; margin: 5px auto; background: #dbdbd2; border-collapse:collapse; }
+		td {padding: 3px;}
+		tr.title td {font-size: 20px; background: ;}
+		tr.description td {font-style: italic; background: ;}
+		tr.labels td {font-size: 14px; font-weight: bold; background: ;}
+        td.name {width: 200px;}
+		td.type {width: 100px;}
+		td.description {width: 280px;}
+		tr:nth-child(2n) td {background: #F9F9F6;}
+		</style>
+		
+        <title>Models</title>
+		
+	</head>
+    <body>
+    
+        <!-- User -->
+        <table>
+            <tr class="title">
+                <td colspan="3">User</td>
+            </tr>
+            <tr class="description">
+                <td colspan="3">Reprezentacia uzivatela systemu. Obsahuje zakladne informacie pre prihlasovanie a kontakt.</td>        
+            </tr>
+            <tr class="labels">
+                <td class="name">Názov</td>
+                <td class="type">Typ</td>
+                <td class="description">Popis</td>
+            </tr>
+            <tr>
+                <td class="name">id</td>
+                <td class="type">int</td>
+                <td class="description">primárny kľúč</td>
+            </tr>
+            <tr>
+                <td class="name">username</td>
+                <td class="type">varchar</td>
+                <td class="description">užívateľské meno</td>
+            </tr>
+            <tr>
+                <td class="name">password</td>
+                <td class="type">varchar</td>
+                <td class="description">užívateľské heslo</td>
+            </tr>
+            <tr>
+                <td class="name">email</td>
+                <td class="type">varchar</td>
+                <td class="description">užívateľský email</td>
+            </tr>
+            <tr>
+                <td class="name">name</td>
+                <td class="type">varchar</td>
+                <td class="description">meno</td>
+            </tr>
+            <tr>
+                <td class="name">surname</td>
+                <td class="type">varchar</td>
+                <td class="description">priezvisko</td>
+            </tr>
+            <tr>
+                <td class="name">phone</td>
+                <td class="type">varchar</td>
+                <td class="description">telefónne číslo</td>
+            </tr>
+            <tr>
+                <td class="name">active</td>
+                <td class="type">bool</td>
+                <td class="description">je užívateľské konto aktívne?</td>
+            </tr>
+            <tr>
+                <td class="name">disabled</td>
+                <td class="type">bool</td>
+                <td class="description">je uživatelské konto zablokované?</td>
+            </tr>
+            <tr>
+                <td class="name">deleted</td>
+                <td class="type">bool</td>
+                <td class="description">je uživatelské konto zmazané?<sup>1</sup></td>
+            </tr>
+            <tr>
+                <td class="name">registration_code</td>
+                <td class="type">varchar</td>
+                <td class="description">kód použitý na overenie záznamu</td>
+            </tr>
+            <tr>
+                <td class="name">created</td>
+                <td class="type">datetime</td>
+                <td class="description">čas vytvorenia záznamu</td>
+            </tr>
+            <tr>
+                <td class="name">modified</td>
+                <td class="type">datetime</td>
+                <td class="description">čas poslednej zmeny záznamu</td>
+            </tr>
+        </table>
+        
+        <!-- Group -->
+        <table>
+            <tr class="title">
+                <td colspan="3">Group</td>
+            </tr>
+            <tr class="description">
+                <td colspan="3">Reprezentacia uzivatelskych skupin, ktore budu mat v systeme rozne roly. Za zakladne skupiny mozme povazovat zakaznika a administratota. </td>        
+            </tr>
+            <tr class="labels">
+                <td class="name">Názov</td>
+                <td class="type">Typ</td>
+                <td class="description">Popis</td>
+            </tr>
+            <tr>
+                <td class="name">id</td>
+                <td class="type">int</td>
+                <td class="description">Primárny kľúč</td>
+            </tr>
+            <tr>
+                <td class="name">name</td>
+                <td class="type">varchar</td>
+                <td class="description">názov užívateľskej skupiny</td>
+            </tr>
+            <tr>
+                <td class="name">created</td>
+                <td class="type">datetime</td>
+                <td class="description">čas vytvorenia záznamu</td>
+            </tr>
+            <tr>
+                <td class="name">modified</td>
+                <td class="type">datetime</td>
+                <td class="description">čas poslednej zmeny záznamu</td>
+            </tr>
+        </table>
+        
+        <!-- GroupUser -->
+        <table>
+            <tr class="title">
+                <td colspan="3">GroupUser</td>
+            </tr>
+            <tr class="description">
+                <td colspan="3">Spojovacia tabulka pre tabulky User a Group</td>        
+            </tr>
+            <tr class="labels">
+                <td class="name">Názov</td>
+                <td class="type">Typ</td>
+                <td class="description">Popis</td>
+            </tr>
+            <tr>
+                <td class="name">id</td>
+                <td class="type">int</td>
+                <td class="description">primárny kľúč</td>
+            </tr>
+            <tr>
+                <td class="name">group_id</td>
+                <td class="type">int</td>
+                <td class="description">klúč na model Group</td>
+            </tr>
+            <tr>
+                <td class="name">user_id</td>
+                <td class="type">int</td>
+                <td class="description">klúč na model User</td>
+            </tr>
+        </table>
+        
+        <!-- Company -->
+        <table>
+            <tr class="title">
+                <td colspan="3">Company</td>
+            </tr>
+            <tr class="description">
+                <td colspan="3">Reprezentuje firmu, v mene ktorej robí nakupy konkrétny užívateľ. Každá firma môže mať viac užívateľov (tak isto aj jeden užívateľ môže mať viac firiem)</td>        
+            </tr>
+            <tr class="labels">
+                <td class="name">Názov</td>
+                <td class="type">Typ</td>
+                <td class="description">Popis</td>
+            </tr>
+            <tr>
+                <td class="name">id</td>
+                <td class="type">int</td>
+                <td class="description">primárny kľúč</td>
+            </tr>
+            <tr>
+                <td class="name">name</td>
+                <td class="type">varchar</td>
+                <td class="description">názov firmy</td>
+            </tr>
+            <tr>
+                <td class="name">address_id</td>
+                <td class="type">int</td>
+                <td class="description">Kľúč na Address</td>
+            </tr>
+            <tr>
+                <td class="name">id_number</td>
+                <td class="type">varchar</td>
+                <td class="description">IČO</td>
+            </tr>
+            <tr>
+                <td class="name">tax_id_number</td>
+                <td class="type">varchar</td>
+                <td class="description">IČ DPH</td>
+            </tr>
+            <tr>
+                <td class="name">vat_number</td>
+                <td class="type">varchar</td>
+                <td class="description">DIČ</td>
+            </tr>
+            <tr>
+                <td class="name">created</td>
+                <td class="type">datetime</td>
+                <td class="description">čas vytvorenia záznamu</td>
+            </tr>
+            <tr>
+                <td class="name">modified</td>
+                <td class="type">datetime</td>
+                <td class="description">čas poslednej zmeny záznamu</td>
+            </tr>
+        </table>
+        
+        <!-- CompanyUser -->
+        <table>
+            <tr class="title">
+                <td colspan="3">CompanyUser</td>
+            </tr>
+            <tr class="description">
+                <td colspan="3">Spojovacia tabulka pre tabulky User a Company</td>        
+            </tr>
+            <tr class="labels">
+                <td class="name">Názov</td>
+                <td class="type">Typ</td>
+                <td class="description">Popis</td>
+            </tr>
+            <tr>
+                <td class="name">id</td>
+                <td class="type">int</td>
+                <td class="description">primárny kľúč</td>
+            </tr>
+            <tr>
+                <td class="name">company_id</td>
+                <td class="type">int</td>
+                <td class="description">klúč na model Company</td>
+            </tr>
+            <tr>
+                <td class="name">user_id</td>
+                <td class="type">int</td>
+                <td class="description">klúč na model User</td>
+            </tr>
+        </table>
+        
+        <!-- Address -->
+        <table>
+            <tr class="title">
+                <td colspan="3">Address</td>
+            </tr>
+            <tr class="description">
+                <td colspan="3">Záznam adresy.</td>        
+            </tr>
+            <tr class="labels">
+                <td class="name">Názov</td>
+                <td class="type">Typ</td>
+                <td class="description">Popis</td>
+            </tr>
+            <tr>
+                <td class="name">id</td>
+                <td class="type">int</td>
+                <td class="description">primárny kľúč</td>
+            </tr>
+            <tr>
+                <td class="name">address_type_id</td>
+                <td class="type">int</td>
+                <td class="description">klúč na model AddressType</td>
+            </tr>
+            <tr>
+                <td class="name">user_id</td>
+                <td class="type">int</td>
+                <td class="description">klúč na model User</td>
+            </tr>
+            <tr>
+                <td class="name">company_id</td>
+                <td class="type">int</td>
+                <td class="description">klúč na model Company</td>
+            </tr>
+            <tr>
+                <td class="name">street</td>
+                <td class="type">varchar</td>
+                <td class="description">Ulica</td>
+            </tr>
+            <tr>
+                <td class="name">zip</td>
+                <td class="type">varchar</td>
+                <td class="description">PSČ</td>
+            </tr>
+            <tr>
+                <td class="name">city</td>
+                <td class="type">varchar</td>
+                <td class="description">Mesto</td>
+            </tr>
+            <tr>
+                <td class="name">country_id</td>
+                <td class="type">int</td>
+                <td class="description">klúč na model Country</td>
+            </tr>
+            <tr>
+                <td class="name">created</td>
+                <td class="type">datetime</td>
+                <td class="description">čas vytvorenia záznamu</td>
+            </tr>
+            <tr>
+                <td class="name">modified</td>
+                <td class="type">datetime</td>
+                <td class="description">čas poslednej zmeny záznamu</td>
+            </tr>
+        </table>
+        
+        <!-- AddressType -->
+        <table>
+            <tr class="title">
+                <td colspan="3">AddressType</td>
+            </tr>
+            <tr class="description">
+                <td colspan="3">Typ adresy (fakturačná, dodacia...)</td>        
+            </tr>
+            <tr class="labels">
+                <td class="name">Názov</td>
+                <td class="type">Typ</td>
+                <td class="description">Popis</td>
+            </tr>
+            <tr>
+                <td class="name">id</td>
+                <td class="type">int</td>
+                <td class="description">primárny kľúč</td>
+            </tr>
+            <tr>
+                <td class="name">name_id</td>
+                <td class="type">int</td>
+                <td class="description">Kľúč na text, ktorý obsahuje názov typu adresy</td>
+            </tr>
+        </table>
+        
+        <!-- Product -->
+        <table>
+            <tr class="title">
+                <td colspan="3">Product</td>
+            </tr>
+            <tr class="description">
+                <td colspan="3">Reprezentácia produktu, ktorý je základnym predmetom eshopu. Obsahuje len základne informácie o produkte.</td>        
+            </tr>
+            <tr class="labels">
+                <td class="name">Názov</td>
+                <td class="type">Typ</td>
+                <td class="description">Popis</td>
+            </tr>
+            <tr>
+                <td class="name">id</td>
+                <td class="type">int</td>
+                <td class="description">primárny kľúč</td>
+            </tr>
+            <tr>
+                <td class="name">product_type_id</td>
+                <td class="type">int</td>
+                <td class="description">kľúč na typ produktu</td>
+            </tr> 
+            <tr>
+                <td class="name">sku</td>
+                <td class="type">varchar</td>
+                <td class="description">kód produktu</td>
+            </tr>
+            <tr>
+                <td class="name">name_id</td>
+                <td class="type">int</td>
+                <td class="description">Kľúč na Text, ktorý obsahuje názov produktu</td>
+            </tr>
+            <tr>
+                <td class="name">alias</td>
+                <td class="type">varchar</td>
+                <td class="description">alias produktu, využije sa v URL</td>
+            </tr>
+            <tr>
+                <td class="name">short_description_id</td>
+                <td class="type">int</td>
+                <td class="description">Kľúč na Text, ktorý obsahuje krátky popis</td>
+            </tr>
+            <tr>
+                <td class="name">description_id</td>
+                <td class="type">int</td>
+                <td class="description">Kľúč na Text, ktorý obsahuje dlhší popis produktu</td>
+            </tr>
+            <tr>
+                <td class="name">amount</td>
+                <td class="type">int</td>
+                <td class="description">množstvo produktu</td>
+            </tr>
+            <tr>
+                <td class="name">price_id</td>
+                <td class="type">int</td>
+                <td class="description">Kľúč na Price</td>
+            </tr>
+            <tr>
+                <td class="name">product_state_id</td>
+                <td class="type">int</td>
+                <td class="description">kľúč na stav produktu</td>
+            </tr>
+            <tr>
+                <td class="name">hidden</td>
+                <td class="type">bool</td>
+                <td class="description">je produkt skrytý</td>
+            </tr>
+            <tr>
+                <td class="name">deleted</td>
+                <td class="type">bool</td>
+                <td class="description">je produkt zmazaný?</td>
+            </tr>
+            <tr>
+                <td class="name">created</td>
+                <td class="type">datetime</td>
+                <td class="description">čas vytvorenia záznamu</td>
+            </tr>
+            <tr>
+                <td class="name">modified</td>
+                <td class="type">datetime</td>
+                <td class="description">čas poslednej zmeny záznamu</td>
+            </tr>
+        </table>
+        
+        <!-- ProductType -->
+        <table>
+            <tr class="title">
+                <td colspan="3">ProductType</td>
+            </tr>
+            <tr class="description">
+                <td colspan="3">Typ produktu. Každý typ má naviazané vlastnosti.</td>        
+            </tr>
+            <tr class="labels">
+                <td class="name">Názov</td>
+                <td class="type">Typ</td>
+                <td class="description">Popis</td>
+            </tr>
+            <tr>
+                <td class="name">id</td>
+                <td class="type">int</td>
+                <td class="description">primárny kľúč</td>
+            </tr> 
+            <tr>
+                <td class="name">name_id</td>
+                <td class="type">int</td>
+                <td class="description">Kľúč na text, ktorý obsahuje názov typu produktu</td>
+            </tr>
+            <tr class="maybe">
+                <td class="name">parent_id</td>
+                <td class="type">int</td>
+                <td class="description">kľúč na ProductType</td>
+            </tr>
+            <tr>
+                <td class="name">created</td>
+                <td class="type">datetime</td>
+                <td class="description">čas vytvorenia záznamu</td>
+            </tr>
+            <tr>
+                <td class="name">modified</td>
+                <td class="type">datetime</td>
+                <td class="description">čas poslednej zmeny záznamu</td>
+            </tr>
+        </table>
+        
+        <!-- Related -->
+        <table>
+            <tr class="title">
+                <td colspan="3">Related</td>
+            </tr>
+            <tr class="description">
+                <td colspan="3">Ukazuje, ktorý produkt je v relácií s ktorým produktom</td>        
+            </tr>
+            <tr class="labels">
+                <td class="name">Názov</td>
+                <td class="type">Typ</td>
+                <td class="description">Popis</td>
+            </tr>
+            <tr>
+                <td class="name">id</td>
+                <td class="type">int</td>
+                <td class="description">primárny kľúč</td>
+            </tr>
+            <tr>
+                <td class="name">product_id</td>
+                <td class="type">int</td>
+                <td class="description">kľúč na Product</td>
+            </tr>
+            <tr>
+                <td class="name">relation_to_id</td>
+                <td class="type">int</td>
+                <td class="description">kľúč na Product</td>
+            </tr>
+            <tr>
+                <td class="name">relation_type_id</td>
+                <td class="type">int</td>
+                <td class="description">kľúč na RelationType</td>
+            </tr>
+            <tr>
+                <td class="name">created</td>
+                <td class="type">datetime</td>
+                <td class="description">čas vytvorenia záznamu</td>
+            </tr>
+            <tr>
+                <td class="name">modified</td>
+                <td class="type">datetime</td>
+                <td class="description">čas poslednej zmeny záznamu</td>
+            </tr>
+        </table>
+        
+        <!-- RelationType -->
+        <table>
+            <tr class="title">
+                <td colspan="3">RelationType</td>
+            </tr>
+            <tr class="description">
+                <td colspan="3">Typ relácie</td>        
+            </tr>
+            <tr class="labels">
+                <td class="name">Názov</td>
+                <td class="type">Typ</td>
+                <td class="description">Popis</td>
+            </tr>
+            <tr>
+                <td class="name">id</td>
+                <td class="type">int</td>
+                <td class="description">primárny kľúč</td>
+            </tr>
+            <tr>
+                <td class="name">name_id</td>
+                <td class="type">int</td>
+                <td class="description">Kľúč na text, ktorý obsahuje názov typu relácie</td>
+            </tr>
+        </table>
+        
+        <!-- Category -->
+        <table>
+            <tr class="title">
+                <td colspan="3">Category</td>
+            </tr>
+            <tr class="description">
+                <td colspan="3"></td>        
+            </tr>
+            <tr class="labels">
+                <td class="name">Názov</td>
+                <td class="type">Typ</td>
+                <td class="description">Popis</td>
+            </tr>
+            <tr>
+                <td class="name">id</td>
+                <td class="type">int</td>
+                <td class="description">primárny kľúč</td>
+            </tr>
+            <tr>
+                <td class="name">parent_id</td>
+                <td class="type">int</td>
+                <td class="description">kľúč na Category</td>
+            </tr>
+            <tr>
+                <td class="name">product_type_id</td>
+                <td class="type">int</td>
+                <td class="description">kľúč na ProductType</td>
+            </tr>
+            <tr>
+                <td class="name">name_id</td>
+                <td class="type">int</td>
+                <td class="description">Kľúč na Text, ktorý obsahuje názov kategórie</td>
+            </tr>
+            <tr>
+                <td class="name">alias</td>
+                <td class="type">varchar</td>
+                <td class="description">Alias kategórie</td>
+            </tr>
+            <tr>
+                <td class="name">created</td>
+                <td class="type">datetime</td>
+                <td class="description">čas vytvorenia záznamu</td>
+            </tr>
+            <tr>
+                <td class="name">modified</td>
+                <td class="type">datetime</td>
+                <td class="description">čas poslednej zmeny záznamu</td>
+            </tr>
+        </table>
+        
+        <!-- ProductCategory -->
+        <table>
+            <tr class="title">
+                <td colspan="3">ProductCategory</td>
+            </tr>
+            <tr class="description">
+                <td colspan="3">Spojovacia tabulka pre Product a Category.</td>        
+            </tr>
+            <tr class="labels">
+                <td class="name">Názov</td>
+                <td class="type">Typ</td>
+                <td class="description">Popis</td>
+            </tr>
+            <tr>
+                <td class="name">id</td>
+                <td class="type">int</td>
+                <td class="description">primárny kľúč</td>
+            </tr>
+            <tr>
+                <td class="name">category_id</td>
+                <td class="type">int</td>
+                <td class="description">kľúč na Category</td>
+            </tr>
+            <tr>
+                <td class="name">product_id</td>
+                <td class="type">int</td>
+                <td class="description">kľúč na Product</td>
+            </tr>
+        </table>
+        
+        <!-- Tag -->
+        <table>
+            <tr class="title">
+                <td colspan="3">Tag</td>
+            </tr>
+            <tr class="description">
+                <td colspan="3">Špeciálne označenie produktu.</td>        
+            </tr>
+            <tr class="labels">
+                <td class="name">Názov</td>
+                <td class="type">Typ</td>
+                <td class="description">Popis</td>
+            </tr>
+            <tr>
+                <td class="name">id</td>
+                <td class="type">int</td>
+                <td class="description">primárny kľúč</td>
+            </tr>
+            <tr>
+                <td class="name">name_id</td>
+                <td class="type">int</td>
+                <td class="description">Kľúč na Text, ktorý obsahuje názov tagu</td>
+            </tr>
+            <tr>
+                <td class="name">created</td>
+                <td class="type">datetime</td>
+                <td class="description">čas vytvorenia záznamu</td>
+            </tr>
+            <tr>
+                <td class="name">modified</td>
+                <td class="type">datetime</td>
+                <td class="description">čas poslednej zmeny záznamu</td>
+            </tr>
+        </table>
+        
+        <!-- ProductTags -->
+        <table>
+            <tr class="title">
+                <td colspan="3">ProductTags</td>
+            </tr>
+            <tr class="description">
+                <td colspan="3">Spojovacia tabulka pre Product a Tag</td>        
+            </tr>
+            <tr class="labels">
+                <td class="name">Názov</td>
+                <td class="type">Typ</td>
+                <td class="description">Popis</td>
+            </tr>
+            <tr>
+                <td class="name">id</td>
+                <td class="type">int</td>
+                <td class="description">primárny kľúč</td>
+            </tr>
+            <tr>
+                <td class="name">product_id</td>
+                <td class="type">int</td>
+                <td class="description">kľúč na Product</td>
+            </tr>
+            <tr>
+                <td class="name">tag_id</td>
+                <td class="type">int</td>
+                <td class="description">kľúč na Tag</td>
+            </tr>
+        </table>
+        
+        <!-- Attribute -->
+        <table>
+            <tr class="title">
+                <td colspan="3">Attribute</td>
+            </tr>
+            <tr class="description">
+                <td colspan="3"></td>        
+            </tr>
+            <tr class="labels">
+                <td class="name">Názov</td>
+                <td class="type">Typ</td>
+                <td class="description">Popis</td>
+            </tr>
+            <tr>
+                <td class="name">id</td>
+                <td class="type">int</td>
+                <td class="description">primárny kľúč</td>
+            </tr>
+            <tr>
+                <td class="name">name_id</td>
+                <td class="type">int</td>
+                <td class="description">Kľúč na Text, ktorý obsahuje názov atribútu</td>
+            </tr>
+            <tr>
+                <td class="name">units</td>
+                <td class="type">varchar</td>
+                <td class="description">Jednotky, v ktorých sa vyjadruje atribút</td>
+            </tr>
+            <tr>
+                <td class="name">created</td>
+                <td class="type">datetime</td>
+                <td class="description">čas vytvorenia záznamu</td>
+            </tr>
+            <tr>
+                <td class="name">modified</td>
+                <td class="type">datetime</td>
+                <td class="description">čas poslednej zmeny záznamu</td>
+            </tr>
+        </table>
+        
+        <!-- AttributeProduct -->
+        <table>
+            <tr class="title">
+                <td colspan="3">AttributeProduct</td>
+            </tr>
+            <tr class="description">
+                <td colspan="3">Spojovacia tabulka pre Attribute a Product</td>        
+            </tr>
+            <tr class="labels">
+                <td class="name">Názov</td>
+                <td class="type">Typ</td>
+                <td class="description">Popis</td>
+            </tr>
+            <tr>
+                <td class="name">id</td>
+                <td class="type">int</td>
+                <td class="description">primárny kľúč</td>
+            </tr>
+            <tr>
+                <td class="name">attribute_id</td>
+                <td class="type">int</td>
+                <td class="description">kľúč na Attribute</td>
+            </tr>
+            <tr>
+                <td class="name">product_id</td>
+                <td class="type">int</td>
+                <td class="description">kľúč na Product</td>
+            </tr>
+            <tr>
+                <td class="name">value</td>
+                <td class="type">varchar</td>
+                <td class="description">hodnota atribútu</td>
+            </tr>
+        </table>
+        
+        <!-- AttributeProductType -->
+        <table>
+            <tr class="title">
+                <td colspan="3">AttributeProductType</td>
+            </tr>
+            <tr class="description">
+                <td colspan="3">Spojovacia tabulka pre Attribute a ProductType</td>        
+            </tr>
+            <tr class="labels">
+                <td class="name">Názov</td>
+                <td class="type">Typ</td>
+                <td class="description">Popis</td>
+            </tr>
+            <tr>
+                <td class="name">id</td>
+                <td class="type">int</td>
+                <td class="description">primárny kľúč</td>
+            </tr>
+            <tr>
+                <td class="name">attribute_id</td>
+                <td class="type">int</td>
+                <td class="description">kľúč na Attribute</td>
+            </tr>
+            <tr>
+                <td class="name">product_type_id</td>
+                <td class="type">int</td>
+                <td class="description">kľúč na Product</td>
+            </tr>
+        </table>
+        
+        <!-- Order -->
+        <table>
+            <tr class="title">
+                <td colspan="3">Order</td>
+            </tr>
+            <tr class="description">
+                <td colspan="3">Reprezentácia konkrétnej objednávky.</td>        
+            </tr>
+            <tr class="labels">
+                <td class="name">Názov</td>
+                <td class="type">Typ</td>
+                <td class="description">Popis</td>
+            </tr>
+            <tr>
+                <td class="name">id</td>
+                <td class="type">int</td>
+                <td class="description">primárny kľúč</td>
+            </tr>
+            <tr>
+                <td class="name">number</td>
+                <td class="type">varchar</td>
+                <td class="description">číslo objednávky</td>
+            </tr>
+            <tr>
+                <td class="name">invoice_id</td>
+                <td class="type">int</td>
+                <td class="description">kľúč na Invoice</td>
+            </tr>
+            <tr>
+                <td class="name">user_id</td>
+                <td class="type">int</td>
+                <td class="description">kľúč na User</td>
+            </tr>
+            <tr>
+                <td class="name">company_id</td>
+                <td class="type">int</td>
+                <td class="description">kľúč na Company</td>
+            </tr>
+            <tr>
+                <td class="name">order_state_id</td>
+                <td class="type">int</td>
+                <td class="description">kľúč na OrderState</td>
+            </tr>
+            <tr>
+                <td class="name">billing_address_id</td>
+                <td class="type">int</td>
+                <td class="description">kľúč na BillingAddress</td>
+            </tr>
+            <tr>
+                <td class="name">shipping_address_id</td>
+                <td class="type">int</td>
+                <td class="description">kľúč na ShippingAddress</td>
+            </tr>
+            <tr>
+                <td class="name">billing_method_id</td>
+                <td class="type">int</td>
+                <td class="description">kľúč na BillingMethod</td>
+            </tr>
+            <tr>
+                <td class="name">shipping_method_id</td>
+                <td class="type">int</td>
+                <td class="description">kľúč na ShippingMethod</td>
+            </tr>
+            <tr>
+                <td class="name">currency_id</td>
+                <td class="type">int</td>
+                <td class="description">kľúč na currency</td>
+            </tr>
+            <tr>
+                <td class="name">created</td>
+                <td class="type">datetime</td>
+                <td class="description">čas vytvorenia záznamu</td>
+            </tr>
+            <tr>
+                <td class="name">modified</td>
+                <td class="type">datetime</td>
+                <td class="description">čas poslednej zmeny záznamu</td>
+            </tr>
+        </table>
+        
+        <!-- OrderItem -->
+        <table>
+            <tr class="title">
+                <td colspan="3">OrderItem</td>
+            </tr>
+            <tr class="description">
+                <td colspan="3">Položka objednávky</td>        
+            </tr>
+            <tr class="labels">
+                <td class="name">Názov</td>
+                <td class="type">Typ</td>
+                <td class="description">Popis</td>
+            </tr>
+            <tr>
+                <td class="name">id</td>
+                <td class="type">int</td>
+                <td class="description">primárny kľúč</td>
+            </tr>
+            <tr>
+                <td class="name">order_id</td>
+                <td class="type">int</td>
+                <td class="description">kľúč na Order</td>
+            </tr>
+            <tr>
+                <td class="name">product_id</td>
+                <td class="type">int</td>
+                <td class="description">kľúč na Product</td>
+            </tr>
+            <tr>
+                <td class="name">amount</td>
+                <td class="type">int</td>
+                <td class="description">množstvo produktov</td>
+            </tr>
+            <tr>
+                <td class="name">price_per_item</td>
+                <td class="type">float</td>
+                <td class="description">aktuálna cena za jednotku produktu</td>
+            </tr>
+            <tr>
+                <td class="name">created</td>
+                <td class="type">datetime</td>
+                <td class="description">čas vytvorenia záznamu</td>
+            </tr>
+            <tr>
+                <td class="name">modified</td>
+                <td class="type">datetime</td>
+                <td class="description">čas poslednej zmeny záznamu</td>
+            </tr>
+        </table>
+        
+        <!-- OrderState -->
+        <table>
+            <tr class="title">
+                <td colspan="3">OrderState</td>
+            </tr>
+            <tr class="description">
+                <td colspan="3">Stav objendávky.</td>        
+            </tr>
+            <tr class="labels">
+                <td class="name">Názov</td>
+                <td class="type">Typ</td>
+                <td class="description">Popis</td>
+            </tr>
+            <tr>
+                <td class="name">id</td>
+                <td class="type">int</td>
+                <td class="description">primárny kľúč</td>
+            </tr>
+            <tr>
+                <td class="name">name</td>
+                <td class="type">varchar</td>
+                <td class="description">názov stavu objednávky</td>
+            </tr>
+        </table>
+        
+        <!-- BillingMethod -->
+        <table>
+            <tr class="title">
+                <td colspan="3">BillingMethod</td>
+            </tr>
+            <tr class="description">
+                <td colspan="3">Metóda dodania</td>        
+            </tr>
+            <tr class="labels">
+                <td class="name">Názov</td>
+                <td class="type">Typ</td>
+                <td class="description">Popis</td>
+            </tr>
+            <tr>
+                <td class="name">id</td>
+                <td class="type">int</td>
+                <td class="description">primárny kľúč</td>
+            </tr>
+            <tr>
+                <td class="name">name_id</td>
+                <td class="type">int</td>
+                <td class="description">Kľúč na text, ktorý obsahuje názov metódy</td>
+            </tr>
+            <tr>
+                <td class="name">active</td>
+                <td class="type">bool</td>
+                <td class="description">Je aktívna</td>
+            </tr>
+        </table>
+        
+        <!-- ShippingMethod -->
+        <table>
+            <tr class="title">
+                <td colspan="3">ShippingMethod</td>
+            </tr>
+            <tr class="description">
+                <td colspan="3">Metóda platby</td>        
+            </tr>
+            <tr class="labels">
+                <td class="name">Názov</td>
+                <td class="type">Typ</td>
+                <td class="description">Popis</td>
+            </tr>
+            <tr>
+                <td class="name">id</td>
+                <td class="type">int</td>
+                <td class="description">primárny kľúč</td>
+            </tr>
+            <tr>
+                <td class="name">name_id</td>
+                <td class="type">varchar</td>
+                <td class="description">Kľúč na text, ktorý obsahuje názov metódy</td>
+            </tr>
+            <tr>
+                <td class="name">active</td>
+                <td class="type">bool</td>
+                <td class="description">Je aktívna</td>
+            </tr>
+        </table>
+        
+        <!-- Invoice -->
+        <table>
+            <tr class="title">
+                <td colspan="3">Invoice</td>
+            </tr>
+            <tr class="description">
+                <td colspan="3">Faktúra k objednávke. Obsahuje všetky náležitosti daňového dokladu.</td>        
+            </tr>
+            <tr class="labels">
+                <td class="name">Názov</td>
+                <td class="type">Typ</td>
+                <td class="description">Popis</td>
+            </tr>
+            <tr>
+                <td class="name">id</td>
+                <td class="type">int</td>
+                <td class="description">primárny kľúč</td>
+            </tr>
+            <tr>
+                <td class="name">invoice_number</td>
+                <td class="type">varchar</td>
+                <td class="description">Číslo faktúry</td>
+            </tr>
+            <tr>
+                <td class="name">issue_date</td>
+                <td class="type">datetime</td>
+                <td class="description">Dátum vystavenia</td>
+            </tr>
+            <tr>
+                <td class="name">due_date</td>
+                <td class="type">datetime</td>
+                <td class="description">Dátum splatnosti</td>
+            </tr>
+            <tr>
+                <td class="name">provider_name</td>
+                <td class="type">varchar</td>
+                <td class="description">Meno poskytovateľa</td>
+            </tr>
+            <tr>
+                <td class="name">provider_address_id</td>
+                <td class="type">int</td>
+                <td class="description">Kľúč na Address poskytovateľa</td>
+            </tr>
+            <tr>
+                <td class="name">provider_id_number</td>
+                <td class="type">varchar</td>
+                <td class="description">IČO poskytovateľa</td>
+            </tr>
+            <tr>
+                <td class="name">provider_tax_id_number</td>
+                <td class="type">varchar</td>
+                <td class="description">IČ DPH poskytovateľa</td>
+            </tr>
+            <tr>
+                <td class="name">provider_vat_number</td>
+                <td class="type">varchar</td>
+                <td class="description">DIČ poskytovateľa</td>
+            </tr>
+            <tr>
+                <td class="name">provider_account</td>
+                <td class="type">varchar</td>
+                <td class="description">Číslo účtu poskytovateľa</td>
+            </tr>
+            <tr>
+                <td class="name">customer_name</td>
+                <td class="type">varchar</td>
+                <td class="description">Meno zákaníka</td>
+            </tr>
+            <tr>
+                <td class="name">customer_address_id</td>
+                <td class="type">int</td>
+                <td class="description">kľúč na Address zákazníka</td>
+            </tr>
+            <tr>
+                <td class="name">customer_id_number</td>
+                <td class="type">varchar</td>
+                <td class="description">IČO zákazníka</td>
+            </tr> 
+            <tr>
+                <td class="name">customer_tax_id_number</td>
+                <td class="type">varchar</td>
+                <td class="description">IČ DPH zákazníka</td>
+            </tr>
+            <tr>
+                <td class="name">customer_vat_number</td>
+                <td class="type">varchar</td>
+                <td class="description">DIČ zákazníka</td>
+            </tr>
+            <tr>
+                <td class="name">customer_account</td>
+                <td class="type">varchar</td>
+                <td class="description">Číslo účtu zákazníka</td>
+            </tr>
+            <tr>
+                <td class="name">created</td>
+                <td class="type">datetime</td>
+                <td class="description">čas vytvorenia záznamu</td>
+            </tr>
+            <tr>
+                <td class="name">modified</td>
+                <td class="type">datetime</td>
+                <td class="description">čas poslednej zmeny záznamu</td>
+            </tr>
+        </table>
+        
+        <!-- InvoiceItem -->
+        <table>
+            <tr class="title">
+                <td colspan="3">InvoiceItem</td>
+            </tr>
+            <tr class="description">
+                <td colspan="3">Položka faktúry</td>        
+            </tr>
+            <tr class="labels">
+                <td class="name">Názov</td>
+                <td class="type">Typ</td>
+                <td class="description">Popis</td>
+            </tr>
+            <tr>
+                <td class="name">id</td>
+                <td class="type">int</td>
+                <td class="description">primárny kľúč</td>
+            </tr>
+            <tr>
+                <td class="name">invoice_id</td>
+                <td class="type">int</td>
+                <td class="description">Kľúč na faktúru</td>
+            </tr>
+            <tr>
+                <td class="name">name</td>
+                <td class="type">varchar</td>
+                <td class="description">Názov položky</td>
+            </tr>
+            <tr>
+                <td class="name">amount</td>
+                <td class="type">int</td>
+                <td class="description">Množstvo tovaru</td>
+            </tr>
+            <tr>
+                <td class="name">price_per_unit</td>
+                <td class="type">float</td>
+                <td class="description">Cena za kus</td>
+            </tr>
+            <tr>
+                <td class="name">price_total</td>
+                <td class="type">float</td>
+                <td class="description">Cena total</td>
+            </tr>
+            <tr>
+                <td class="name">currency</td>
+                <td class="type">varchar</td>
+                <td class="description">Mena</td>
+            </tr>
+            <tr>
+                <td class="name">created</td>
+                <td class="type">datetime</td>
+                <td class="description">čas vytvorenia záznamu</td>
+            </tr>
+            <tr>
+                <td class="name">modified</td>
+                <td class="type">datetime</td>
+                <td class="description">čas poslednej zmeny záznamu</td>
+            </tr>
+        </table>
+        
+        <!-- Settings -->
+        <table>
+            <tr class="title">
+                <td colspan="3">Settings</td>
+            </tr>
+            <tr class="description">
+                <td colspan="3">Systémové nastavenia.</td>        
+            </tr>
+            <tr class="labels">
+                <td class="name">Názov</td>
+                <td class="type">Typ</td>
+                <td class="description">Popis</td>
+            </tr>
+            <tr>
+                <td class="name">id</td>
+                <td class="type">int</td>
+                <td class="description">primárny kľúč</td>
+            </tr>
+            <tr>
+                <td class="name">settings_type_id</td>
+                <td class="type">int</td>
+                <td class="description">Kľúč na SettingsType</td>
+            </tr>
+            <tr>
+                <td class="name">name_id</td>
+                <td class="type">int</td>
+                <td class="description">Kľúč na text, ktorý obsahuje názov nastavenia</td>
+            </tr>
+            <tr>
+                <td class="name">value</td>
+                <td class="type">varchar</td>
+                <td class="description">Hodnota nastavenia</td>
+            </tr>
+            <tr>
+                <td class="name">user_id</td>
+                <td class="type">int</td>
+                <td class="description">Kľúč na Usera, ktorý naposledy upravil nastavenie</td>
+            </tr>
+            <tr>
+                <td class="name">created</td>
+                <td class="type">datetime</td>
+                <td class="description">čas vytvorenia záznamu</td>
+            </tr>
+            <tr>
+                <td class="name">modified</td>
+                <td class="type">datetime</td>
+                <td class="description">čas poslednej zmeny záznamu</td>
+            </tr>
+        </table>
+        
+        <!-- SettingsType -->
+        <table>
+            <tr class="title">
+                <td colspan="3">SettingsType</td>
+            </tr>
+            <tr class="description">
+                <td colspan="3">Typ nastavenia</td>        
+            </tr>
+            <tr class="labels">
+                <td class="name">Názov</td>
+                <td class="type">Typ</td>
+                <td class="description">Popis</td>
+            </tr>
+            <tr>
+                <td class="name">id</td>
+                <td class="type">int</td>
+                <td class="description">primárny kľúč</td>
+            </tr>
+            <tr>
+                <td class="name">názov</td>
+                <td class="type">varchar</td>
+                <td class="description">Názov typu nastavenia</td>
+            </tr>
+            <tr>
+                <td class="name">created</td>
+                <td class="type">datetime</td>
+                <td class="description">čas vytvorenia záznamu</td>
+            </tr>
+            <tr>
+                <td class="name">modified</td>
+                <td class="type">datetime</td>
+                <td class="description">čas poslednej zmeny záznamu</td>
+            </tr>
+        </table>
+        
+        <!-- Report -->
+        <table>
+            <tr class="title">
+                <td colspan="3">Report</td>
+            </tr>
+            <tr class="description">
+                <td colspan="3">Systémové hlásenia.</td>        
+            </tr>
+            <tr class="labels">
+                <td class="name">Názov</td>
+                <td class="type">Typ</td>
+                <td class="description">Popis</td>
+            </tr>
+            <tr>
+                <td class="name">id</td>
+                <td class="type">int</td>
+                <td class="description">primárny kľúč</td>
+            </tr>
+            <tr>
+                <td class="name">report_type_id</td>
+                <td class="type">int</td>
+                <td class="description">Kľúč na typ hlásenia</td>
+            </tr>
+            <tr>
+                <td class="name">message</td>
+                <td class="type">varchar</td>
+                <td class="description">Obsah hlásenia</td>
+            </tr>
+            <tr>
+                <td class="name">date</td>
+                <td class="type">datetime</td>
+                <td class="description">Dátum vzniku hlásenia</td>
+            </tr>
+            <tr>
+                <td class="name">read</td>
+                <td class="type">bool</td>
+                <td class="description">Je hlásenie prečítané</td>
+            </tr>
+            <tr>
+                <td class="name">created</td>
+                <td class="type">datetime</td>
+                <td class="description">čas vytvorenia záznamu</td>
+            </tr>
+            <tr>
+                <td class="name">modified</td>
+                <td class="type">datetime</td>
+                <td class="description">čas poslednej zmeny záznamu</td>
+            </tr>
+        </table>
+        
+        <!-- ReportType -->
+        <table>
+            <tr class="title">
+                <td colspan="3">ReportType</td>
+            </tr>
+            <tr class="description">
+                <td colspan="3">Typ hlásenia</td>        
+            </tr>
+            <tr class="labels">
+                <td class="name">Názov</td>
+                <td class="type">Typ</td>
+                <td class="description">Popis</td>
+            </tr>
+            <tr>
+                <td class="name">id</td>
+                <td class="type">int</td>
+                <td class="description">primárny kľúč</td>
+            </tr>
+            <tr>
+                <td class="name">name</td>
+                <td class="type">varchar</td>
+                <td class="description">Názov typu hlásenia</td>
+            </tr>
+            <tr>
+                <td class="name">priority</td>
+                <td class="type">int</td>
+                <td class="description">Priorita hlásenia</td>
+            </tr>
+            <tr>
+                <td class="name">created</td>
+                <td class="type">datetime</td>
+                <td class="description">čas vytvorenia záznamu</td>
+            </tr>
+            <tr>
+                <td class="name">modified</td>
+                <td class="type">datetime</td>
+                <td class="description">čas poslednej zmeny záznamu</td>
+            </tr>
+        </table>
+        
+        <!-- Text -->
+        <table>
+            <tr class="title">
+                <td colspan="3">Text</td>
+            </tr>
+            <tr class="description">
+                <td colspan="3">Záznam textu, na ktorý sa viažu konkrétne textové reťazce v rôznych jazykoch.</td>        
+            </tr>
+            <tr class="labels">
+                <td class="name">Názov</td>
+                <td class="type">Typ</td>
+                <td class="description">Popis</td>
+            </tr>
+            <tr>
+                <td class="name">id</td>
+                <td class="type">int</td>
+                <td class="description">primárny kľúč</td>
+            </tr>
+            <tr>
+                <td class="name">deafult_id</td>
+                <td class="type">int</td>
+                <td class="description">Kľúč na TextRecord, kde je defaultná hodnota</td>
+            </tr>
+            <tr>
+                <td class="name">created</td>
+                <td class="type">datetime</td>
+                <td class="description">čas vytvorenia záznamu</td>
+            </tr>
+            <tr>
+                <td class="name">modified</td>
+                <td class="type">datetime</td>
+                <td class="description">čas poslednej zmeny záznamu</td>
+            </tr>
+        </table>
+        
+        <!-- TextRecord -->
+        <table>
+            <tr class="title">
+                <td colspan="3">TextRecord</td>
+            </tr>
+            <tr class="description">
+                <td colspan="3">Konkrétny textový záznam</td>        
+            </tr>
+            <tr class="labels">
+                <td class="name">Názov</td>
+                <td class="type">Typ</td>
+                <td class="description">Popis</td>
+            </tr>
+            <tr>
+                <td class="name">id</td>
+                <td class="type">int</td>
+                <td class="description">primárny kľúč</td>
+            </tr>
+            <tr>
+                <td class="name">value</td>
+                <td class="type">varchar</td>
+                <td class="description">Hodnota záznamu</td>
+            </tr>
+            <tr>
+                <td class="name">text_id</td>
+                <td class="type">int</td>
+                <td class="description">Kľúč na Text</td>
+            </tr>
+            <tr>
+                <td class="name">language_id</td>
+                <td class="type">int</td>
+                <td class="description">Kľúč na Language</td>
+            </tr>
+            <tr>
+                <td class="name">created</td>
+                <td class="type">datetime</td>
+                <td class="description">čas vytvorenia záznamu</td>
+            </tr>
+            <tr>
+                <td class="name">modified</td>
+                <td class="type">datetime</td>
+                <td class="description">čas poslednej zmeny záznamu</td>
+            </tr>
+        </table>
+        
+        <!-- Language -->
+        <table>
+            <tr class="title">
+                <td colspan="3">Language</td>
+            </tr>
+            <tr class="description">
+                <td colspan="3">Jazyk používaný v systéme</td>        
+            </tr>
+            <tr class="labels">
+                <td class="name">Názov</td>
+                <td class="type">Typ</td>
+                <td class="description">Popis</td>
+            </tr>
+            <tr>
+                <td class="name">id</td>
+                <td class="type">int</td>
+                <td class="description">primárny kľúč</td>
+            </tr>
+            <tr>
+                <td class="name">name</td>
+                <td class="type">varchar</td>
+                <td class="description">Názov jazyka</td>
+            </tr>
+            <tr>
+                <td class="name">active</td>
+                <td class="type">bool</td>
+                <td class="description">Je jazyk aktívny?</td>
+            </tr>
+            <tr>
+                <td class="name">on_page</td>
+                <td class="type">bool</td>
+                <td class="description">Má sa jazyk zobrazovať?</td>
+            </tr>
+            <tr>
+                <td class="name">created</td>
+                <td class="type">datetime</td>
+                <td class="description">čas vytvorenia záznamu</td>
+            </tr>
+            <tr>
+                <td class="name">modified</td>
+                <td class="type">datetime</td>
+                <td class="description">čas poslednej zmeny záznamu</td>
+            </tr>
+        </table>
+        
+        <!-- Price -->
+        <table>
+            <tr class="title">
+                <td colspan="3">Price</td>
+            </tr>
+            <tr class="description">
+                <td colspan="3">Cena produktu</td>        
+            </tr>
+            <tr class="labels">
+                <td class="name">Názov</td>
+                <td class="type">Typ</td>
+                <td class="description">Popis</td>
+            </tr>
+            <tr>
+                <td class="name">id</td>
+                <td class="type">int</td>
+                <td class="description">primárny kľúč</td>
+            </tr>
+            <tr>
+                <td class="name">default_id</td>
+                <td class="type">float</td>
+                <td class="description">Kľúč na PriceValue, kde je základná cena</td>
+            </tr>
+            <tr>
+                <td class="name">created</td>
+                <td class="type">datetime</td>
+                <td class="description">čas vytvorenia záznamu</td>
+            </tr>
+            <tr>
+                <td class="name">modified</td>
+                <td class="type">datetime</td>
+                <td class="description">čas poslednej zmeny záznamu</td>
+            </tr>
+        </table>
+        
+        <!-- PriceValue -->
+        <table>
+            <tr class="title">
+                <td colspan="3">PriceValue</td>
+            </tr>
+            <tr class="description">
+                <td colspan="3">Konkrétna cena v danej mene.</td>        
+            </tr>
+            <tr class="labels">
+                <td class="name">Názov</td>
+                <td class="type">Typ</td>
+                <td class="description">Popis</td>
+            </tr>
+            <tr>
+                <td class="name">id</td>
+                <td class="type">int</td>
+                <td class="description">primárny kľúč</td>
+            </tr>
+            <tr>
+                <td class="name">price</td>
+                <td class="type">float</td>
+                <td class="description">Cena</td>
+            </tr>
+            <tr>
+                <td class="name">currency_id</td>
+                <td class="type">int</td>
+                <td class="description">Kľúč na Currency</td>
+            </tr>
+            <tr>
+                <td class="name">created</td>
+                <td class="type">datetime</td>
+                <td class="description">čas vytvorenia záznamu</td>
+            </tr>
+            <tr>
+                <td class="name">modified</td>
+                <td class="type">datetime</td>
+                <td class="description">čas poslednej zmeny záznamu</td>
+            </tr>
+        </table>
+        
+        <!-- Currency -->
+        <table>
+            <tr class="title">
+                <td colspan="3">Currency</td>
+            </tr>
+            <tr class="description">
+                <td colspan="3">Mena používaná v systéme</td>        
+            </tr>
+            <tr class="labels">
+                <td class="name">Názov</td>
+                <td class="type">Typ</td>
+                <td class="description">Popis</td>
+            </tr>
+            <tr>
+                <td class="name">id</td>
+                <td class="type">int</td>
+                <td class="description">primárny kľúč</td>
+            </tr>
+            <tr>
+                <td class="name">name</td>
+                <td class="type">varchar</td>
+                <td class="description">Názov meny</td>
+            </tr>
+            <tr>
+                <td class="name">abbreviation</td>
+                <td class="type">varchar</td>
+                <td class="description">Skratka meny</td>
+            </tr>
+            <tr>
+                <td class="name">symbol</td>
+                <td class="type">varchar</td>
+                <td class="description">Symbol meny</td>
+            </tr>
+            <tr>
+                <td class="name">exchange_rate</td>
+                <td class="type">decimal</td>
+                <td class="description">Výmenný kurz voči defaultnej mene</td>
+            </tr>
+            <tr>
+                <td class="name">active</td>
+                <td class="type">bool</td>
+                <td class="description">Je mena aktívna?</td>
+            </tr>
+            <tr>
+                <td class="name">default</td>
+                <td class="type">bool</td>
+                <td class="description">Je mena defaultnou pre systém?</td>
+            </tr>
+            <tr>
+                <td class="name">created</td>
+                <td class="type">datetime</td>
+                <td class="description">čas vytvorenia záznamu</td>
+            </tr>
+            <tr>
+                <td class="name">modified</td>
+                <td class="type">datetime</td>
+                <td class="description">čas poslednej zmeny záznamu</td>
+            </tr>
+        </table>
+        
+        <!-- model name -->
+        <!--table>
+            <tr class="title">
+                <td colspan="3"></td>
+            </tr>
+            <tr class="description">
+                <td colspan="3"></td>        
+            </tr>
+            <tr class="labels">
+                <td class="name">Názov</td>
+                <td class="type">Typ</td>
+                <td class="description">Popis</td>
+            </tr>
+            <tr>
+                <td class="name">id</td>
+                <td class="type">int</td>
+                <td class="description">primárny kľúč</td>
+            </tr>
+            <tr>
+                <td class="name"></td>
+                <td class="type"></td>
+                <td class="description"></td>
+            </tr>
+            <tr>
+                <td class="name">created</td>
+                <td class="type">datetime</td>
+                <td class="description">čas vytvorenia záznamu</td>
+            </tr>
+            <tr>
+                <td class="name">modified</td>
+                <td class="type">datetime</td>
+                <td class="description">čas poslednej zmeny záznamu</td>
+            </tr>
+        </table-->
+    
+    </body>
+</html>
