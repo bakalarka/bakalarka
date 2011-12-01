@@ -1,20 +1,21 @@
 <?php
-class OrderItem extends AppModel {
-	var $name = 'OrderItem';
+class AttributeProduct extends AppModel {
+	var $name = 'AttributeProduct';
 	var $primaryKey = 'id';
 	
 	//TODO - validation rules
 	var $validation = array();
 	
 	var $belongsTo = array(
-		'Order' => array(
-			'className'		=> 'Order',
-			'foreignKey'	=> 'order_id'
+		'Attribute' => array(
+			'className'		=> 'Attribute',
+			'foreignKey'	=> 'attribute_id'
 		),
 		'Product' => array(
 			'className'		=> 'Product',
 			'foreignKey'	=> 'product_id'
 		)
 	);
+	
 }
 ?>
