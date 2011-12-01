@@ -1,0 +1,5 @@
+1) obsah priecinku app z gitu umiestit do htdocs (www) foldra
+2) vytvorit DB (utf8/utf8_general_ci) a spustit na nu skripty z foldra docs/db
+3) zo suboru app/app/Config/database.php.defalt vytvorit database.php a nastavit v nom pristup k DB
+4) spravit priecinok app/app/tmp a jeho subfodlre zapisovatelne
+5) adresa aplikacie je www_root/app/app
