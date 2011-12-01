@@ -34,7 +34,7 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
    	var $components = array('Acl', 'Session', 'Auth', 'Email');
-   	var $helpers = array('Html', 'Session', 'Form', 'Menu');
+   	var $helpers = array('Html', 'Session', 'Form');
    	
    	function beforeFilter() {
    		// Configure AuthComponent
