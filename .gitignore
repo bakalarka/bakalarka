@@ -1,0 +1,11 @@
+
+/app/lib
+/app/plugins
+/app/vendors
+/app/.htaccess
+/app/index.php
+/app/README
+/app/app/Config/database.php
+/app/.settings
+/app/.buildpath
+/app/.project

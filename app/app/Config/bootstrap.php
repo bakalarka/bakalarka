@@ -45,6 +45,38 @@ Cache::config('default', array('engine' => 'File'));
  *
  */
 
+App::build(array(
+    'Plugin' => array('/full/path/to/plugins/', '/next/full/path/to/plugins/'),
+    'Model' =>  array(APP.'Model'.DS, APP.'Bc'.DS.'App'.DS.'Model'.DS),
+    'View' => array(APP.'View'.DS, APP.'Bc'.DS.'App'.DS.'View'.DS),
+    'Controller' => array(APP.'Controller'.DS, APP.'Bc'.DS.'App'.DS.'Controller'.DS),
+    'Model/Datasource' => array(APP.'Model'.DS.'Datasource'.DS, APP.'Bc'.DS.'App'.DS.'Model'.DS.'Datasource'.DS),
+    'Model/Behavior' => array(APP.'Model'.DS.'Behavior'.DS, APP.'Bc'.DS.'App'.DS.'Model'.DS.'Behavior'.DS),
+    'Controller/Component' => array(APP.'Controller'.DS.'Component'.DS, APP.'Bc'.DS.'App'.DS.'Controller'.DS.'Component'.DS),
+    'View/Helper' => array(APP.'View'.DS.'Helper'.DS, APP.'Bc'.DS.'App'.DS.'View'.DS.'Helper'.DS),
+//    'Vendor' => array('/full/path/to/vendors/', '/next/full/path/to/vendors/'),
+//    'Console/Command' => array('/full/path/to/shells/', '/next/full/path/to/shells/'),
+//    'locales' => array('/full/path/to/locale/', '/next/full/path/to/locale/')
+    ),
+    App::PREPEND
+);
+
+App::build(array(
+    //'Plugin' => array('/full/path/to/plugins/', '/next/full/path/to/plugins/'),
+    'Bc/Model' =>  array(APP.'Bc'.DS.'Lib'.DS.'Model'.DS),
+    'Bc/View' => array(APP.'Bc'.DS.'Lib'.DS.'View'.DS),
+    'Bc/Controller' => array(APP.'Bc'.DS.'Lib'.DS.'Controller'.DS),
+    'Bc/Model/Datasource' => array(APP.'Bc'.DS.'Lib'.DS.'Model'.DS.'Datasource'.DS),
+    'Bc/Model/Behavior' => array(APP.'Bc'.DS.'Lib'.DS.'Model'.DS.'Behavior'.DS),
+    'Bc/Controller/Component' => array(APP.'Bc'.DS.'Lib'.DS.'Controller'.DS.'Component'),
+    'Bc/View/Helper' => array(APP.'Bc'.DS.'Lib'.DS.'View'.DS.'Helper'.DS),
+    ),
+    App::REGISTER
+);
+
+//debug(App::paths());
+
+
 /**
  * Custom Inflector rules, can be set to correctly pluralize or singularize table, model, controller names or whatever other
  * string is passed to the inflection functions
