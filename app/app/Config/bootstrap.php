@@ -45,8 +45,27 @@ Cache::config('default', array('engine' => 'File'));
  *
  */
 
+/**
+ * Register Bc packages
+ */
 App::build(array(
-    'Plugin' => array('/full/path/to/plugins/', '/next/full/path/to/plugins/'),
+    //'Plugin' => array('/full/path/to/plugins/', '/next/full/path/to/plugins/'),
+    'Bc/Model' =>  array(APP.'Bc'.DS.'Lib'.DS.'Model'.DS),
+    'Bc/View' => array(APP.'Bc'.DS.'Lib'.DS.'View'.DS),
+    'Bc/Controller' => array(APP.'Bc'.DS.'Lib'.DS.'Controller'.DS),
+    'Bc/Model/Datasource' => array(APP.'Bc'.DS.'Lib'.DS.'Model'.DS.'Datasource'.DS),
+    'Bc/Model/Behavior' => array(APP.'Bc'.DS.'Lib'.DS.'Model'.DS.'Behavior'.DS),
+    'Bc/Controller/Component' => array(APP.'Bc'.DS.'Lib'.DS.'Controller'.DS.'Component'),
+    'Bc/View/Helper' => array(APP.'Bc'.DS.'Lib'.DS.'View'.DS.'Helper'.DS),
+    ),
+    App::REGISTER
+);
+
+/**
+ * Add new 'backup' paths for most packages
+ */
+App::build(array(
+    //'Plugin' => array('/full/path/to/plugins/', '/next/full/path/to/plugins/'),
     'Model' =>  array(APP.'Model'.DS, APP.'Bc'.DS.'App'.DS.'Model'.DS),
     'View' => array(APP.'View'.DS, APP.'Bc'.DS.'App'.DS.'View'.DS),
     'Controller' => array(APP.'Controller'.DS, APP.'Bc'.DS.'App'.DS.'Controller'.DS),
@@ -59,19 +78,6 @@ App::build(array(
 //    'locales' => array('/full/path/to/locale/', '/next/full/path/to/locale/')
     ),
     App::PREPEND
-);
-
-App::build(array(
-    //'Plugin' => array('/full/path/to/plugins/', '/next/full/path/to/plugins/'),
-    'Bc/Model' =>  array(APP.'Bc'.DS.'Lib'.DS.'Model'.DS),
-    'Bc/View' => array(APP.'Bc'.DS.'Lib'.DS.'View'.DS),
-    'Bc/Controller' => array(APP.'Bc'.DS.'Lib'.DS.'Controller'.DS),
-    'Bc/Model/Datasource' => array(APP.'Bc'.DS.'Lib'.DS.'Model'.DS.'Datasource'.DS),
-    'Bc/Model/Behavior' => array(APP.'Bc'.DS.'Lib'.DS.'Model'.DS.'Behavior'.DS),
-    'Bc/Controller/Component' => array(APP.'Bc'.DS.'Lib'.DS.'Controller'.DS.'Component'),
-    'Bc/View/Helper' => array(APP.'Bc'.DS.'Lib'.DS.'View'.DS.'Helper'.DS),
-    ),
-    App::REGISTER
 );
 
 //debug(App::paths());
