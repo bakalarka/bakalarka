@@ -4,7 +4,21 @@ class BcProduct extends AppModel {
 	var $primaryKey = 'id';
 	
 	//TODO - validation rules
-	var $validation = array();
+	var $validation = array(
+    	'sku' => array(
+    		'skuRule-1' => array (
+    			'rule'    => 'notEmpty', //TODO - format?
+        	    'message' => '',
+    		)
+    	),
+    	'alias' => array(
+    		'aliasRule-1' => array (
+    			'rule'    => 'alphaNumericDashUnderscore', 
+        	    'message' => '',
+    		)
+    	)
+    	//amount?
+	);
 	
 	var $belongsTo = array(
 		'ProductType' => array(

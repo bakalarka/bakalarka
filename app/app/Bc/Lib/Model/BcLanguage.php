@@ -4,6 +4,10 @@ class BcLanguage extends AppModel {
 	var $primaryKey = 'id';
 	
 	//TODO - validation rules
-	var $validation = array();
+	var $validation = array(
+		//TODO - name should be Text record
+	);
+	
+	//TODO - no associations?
 }
 ?>

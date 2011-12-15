@@ -4,7 +4,14 @@ class BcCategory extends AppModel {
 	var $primaryKey = 'id';
 	
 	//TODO - validation rules
-	var $validation = array();
+	var $validation = array(
+    	'alias' => array(
+    		'nameRule-1' => array (
+    			'rule'    => 'alphaNumericDashUnderscore',
+        	    'message' => '',
+    		),
+    	)
+	);
 	
 	var $belongsTo = array(
 		'Parent' => array(

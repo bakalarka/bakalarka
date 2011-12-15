@@ -4,7 +4,9 @@ class BcOrderState extends AppModel {
 	var $primaryKey = 'id';
 	
 	//TODO - validation rules
-	var $validation = array();
+	var $validation = array(
+		//TODO - name should be Text record
+	);
 	
 	var $hasMany = array(
 		'Order' => array(

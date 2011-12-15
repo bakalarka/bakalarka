@@ -3,7 +3,7 @@ class BcInvoiceItem extends AppModel {
 	var $name = 'BcInvoiceItem';
 	var $primaryKey = 'id';
 	
-	//TODO - validation rules
+	//TODO - validation rules, validate system generated values?
 	var $validation = array();
 	
 	var $belongsTo = array(

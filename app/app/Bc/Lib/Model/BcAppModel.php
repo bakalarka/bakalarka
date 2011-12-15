@@ -32,4 +32,50 @@ App::uses('Model', 'Model');
  * @package       Cake.Model
  */
 class BcAppModel extends Model {
+	
+	//TODO - comment
+	function alphaNumericDashUnderscore($check) {
+        
+		$value = array_values($check);
+        $value = $value[0];
+
+        return preg_match('|^[0-9a-zA-Z_-]*$|', $value);
+    }
+    
+    //TODO - commnet, implement, name?
+	function lettersNonLatin($check) {
+        
+		$value = array_values($check);
+        $value = $value[0];
+
+        return preg_match('|^[a-zA-Z_-]*$|', $value);
+    }
+    
+	//TODO - commnet, implement
+	function idNumber($check) {
+        
+		$value = array_values($check);
+        $value = $value[0];
+
+        return (bool) $value;
+    }
+    
+	//TODO - commnet, implement
+	function taxIdNumber($check) {
+        
+		$value = array_values($check);
+        $value = $value[0];
+
+        return (bool) $value;
+    }
+    
+	//TODO - commnet, implement
+	function vatNumber($check) {
+        
+		$value = array_values($check);
+        $value = $value[0];
+
+        return (bool) $value;
+    }
+	
 }

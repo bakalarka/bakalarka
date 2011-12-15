@@ -4,7 +4,14 @@ class BcOrder extends AppModel {
 	var $primaryKey = 'id';
 	
 	//TODO - validation rules
-	var $validation = array();
+	var $validation = array(
+    	'number' => array(
+    		'numberRule-1' => array (
+    			'rule'    => 'lettersNonLatin',
+        	    'message' => '',
+    		)
+    	)
+    );
 	
 	var $belongsTo = array(
 		'Invoice' => array(

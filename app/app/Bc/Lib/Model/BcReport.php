@@ -3,7 +3,7 @@ class BcReport extends AppModel {
 	var $name = 'BcReport';
 	var $primaryKey = 'id';
 	
-	//TODO - validation rules
+	//TODO - validation rules, validate system generated values?
 	var $validation = array();
 	
 	var $belongsTo = array(

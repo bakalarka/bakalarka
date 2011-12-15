@@ -4,7 +4,9 @@ class BcOrderItem extends AppModel {
 	var $primaryKey = 'id';
 	
 	//TODO - validation rules
-	var $validation = array();
+	var $validation = array(
+		//amount
+	);
 	
 	var $belongsTo = array(
 		'Order' => array(

@@ -4,7 +4,14 @@ class BcAttribute extends AppModel {
 	var $primaryKey = 'id';
 	
 	//TODO - validation rules
-	var $validation = array();
+	var $validation = array(
+    	'units' => array(
+    		'unitsRule-1' => array (
+    			'rule'    => 'alphaNumeric', //TODO - format?
+        	    'message' => '',
+    		),
+    	)
+    );
 	
 	var $belongsTo = array(
 		'Name' => array(

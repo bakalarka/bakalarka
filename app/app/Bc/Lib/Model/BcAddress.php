@@ -4,7 +4,26 @@ class BcAddress extends AppModel {
 	var $primaryKey = 'id';
 	
 	//TODO - validation rules
-	var $validation = array();
+	var $validation = array(
+    	'street' => array(
+    		'streetRule-1' => array (
+    			'rule'    => 'notEmpty', //TODO - allowed format?
+        	    'message' => '',
+    		),
+    	),
+    	'zip' => array(
+    		'zipRule-1' => array (
+    			'rule'    => 'postal', //TODO - not cahnges needed?
+        	    'message' => '',
+    		),
+    	),
+    	'city' => array(
+    		'cityRule-1' => array (
+    			'rule'    => 'notEmpty', //TODO - allowed format?
+        	    'message' => '',
+    		),
+    	)
+	);
 	
 	var $belongsTo = array(
 		'AddressType' => array(

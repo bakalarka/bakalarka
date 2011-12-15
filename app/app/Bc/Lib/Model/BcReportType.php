@@ -4,7 +4,9 @@ class BcReportType extends AppModel {
 	var $primaryKey = 'id';
 	
 	//TODO - validation rules
-	var $validation = array();
+	var $validation = array(
+		//TODO - name shoud be Text record
+	);
 	
 	var $hasMany = array(
 		'Report' => array(
