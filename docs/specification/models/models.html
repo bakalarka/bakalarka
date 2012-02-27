@@ -197,11 +197,11 @@
                 <td class="type">varchar</td>
                 <td class="description">názov firmy</td>
             </tr>
-            <!--tr>
+            <tr>
                 <td class="name">address_id</td>
                 <td class="type">int</td>
                 <td class="description">Kľúč na Address</td>
-            </tr-->
+            </tr>
             <tr>
                 <td class="name">id_number</td>
                 <td class="type">varchar</td>
@@ -368,10 +368,65 @@
                 <td class="description">primárny kľúč</td>
             </tr>
             <tr>
+                <td class="name">product_record_id</td>
+                <td class="type">int</td>
+                <td class="description">kľúč na aktualny zaznam produktu</td>
+            </tr>   
+            <tr>
+                <td class="name">slug_id</td>
+                <td class="type">int</td>
+                <td class="description">kľúč na slug zaznam</td>
+            </tr>
+            <tr>
+                <td class="name">hidden</td>
+                <td class="type">bool</td>
+                <td class="description">je produkt skrytý</td>
+            </tr>
+            <tr>
+                <td class="name">deleted</td>
+                <td class="type">bool</td>
+                <td class="description">je produkt zmazaný?</td>
+            </tr> 
+            <tr>
+                <td class="name">created</td>
+                <td class="type">datetime</td>
+                <td class="description">čas vytvorenia záznamu</td>
+            </tr>
+            <tr>
+                <td class="name">modified</td>
+                <td class="type">datetime</td>
+                <td class="description">čas poslednej zmeny záznamu</td>
+            </tr>
+        </table>
+        
+        <!-- ProductRecord -->
+        <table>
+            <tr class="title">
+                <td colspan="3">Product</td>
+            </tr>
+            <tr class="description">
+                <td colspan="3">Konkretny zaznam produktu.</td>        
+            </tr>
+            <tr class="labels">
+                <td class="name">Názov</td>
+                <td class="type">Typ</td>
+                <td class="description">Popis</td>
+            </tr>
+            <tr>
+                <td class="name">id</td>
+                <td class="type">int</td>
+                <td class="description">primárny kľúč</td>
+            </tr>
+            <tr>
+                <td class="name">product_id</td>
+                <td class="type">int</td>
+                <td class="description">kľúč na handler produkt</td>
+            </tr>
+            <tr>
                 <td class="name">product_type_id</td>
                 <td class="type">int</td>
                 <td class="description">kľúč na typ produktu</td>
-            </tr> 
+            </tr>  
             <tr>
                 <td class="name">sku</td>
                 <td class="type">varchar</td>
@@ -383,10 +438,10 @@
                 <td class="description">Kľúč na Text, ktorý obsahuje názov produktu</td>
             </tr>
             <tr>
-                <td class="name">alias</td>
-                <td class="type">varchar</td>
-                <td class="description">alias produktu, využije sa v URL</td>
-            </tr>
+                <td class="name">slug_id</td>
+                <td class="type">int</td>
+                <td class="description">kľúč na slug zaznam</td>
+            </tr> 
             <tr>
                 <td class="name">short_description_id</td>
                 <td class="type">int</td>
@@ -396,6 +451,11 @@
                 <td class="name">description_id</td>
                 <td class="type">int</td>
                 <td class="description">Kľúč na Text, ktorý obsahuje dlhší popis produktu</td>
+            </tr>
+            <tr>
+                <td class="name">image_gallery_id</td>
+                <td class="type">int</td>
+                <td class="description">Kľúč na ImageGallery</td>
             </tr>
             <tr>
                 <td class="name">amount</td>
@@ -411,16 +471,6 @@
                 <td class="name">product_state_id</td>
                 <td class="type">int</td>
                 <td class="description">kľúč na stav produktu</td>
-            </tr>
-            <tr>
-                <td class="name">hidden</td>
-                <td class="type">bool</td>
-                <td class="description">je produkt skrytý</td>
-            </tr>
-            <tr>
-                <td class="name">deleted</td>
-                <td class="type">bool</td>
-                <td class="description">je produkt zmazaný?</td>
             </tr>
             <tr>
                 <td class="name">created</td>
@@ -498,7 +548,7 @@
                 <td class="description">kľúč na Product</td>
             </tr>
             <tr>
-                <td class="name">related_to_id</td>
+                <td class="name">relation_to_id</td>
                 <td class="type">int</td>
                 <td class="description">kľúč na Product</td>
             </tr>
@@ -544,6 +594,177 @@
             </tr>
         </table>
         
+        
+        <!-- ImageGallery -->
+        <table>
+            <tr class="title">
+                <td colspan="3">ImageGallery</td>
+            </tr>
+            <tr class="description">
+                <td colspan="3">Obrazkova galeria.</td>        
+            </tr>
+            <tr class="labels">
+                <td class="name">Názov</td>
+                <td class="type">Typ</td>
+                <td class="description">Popis</td>
+            </tr>
+            <tr>
+                <td class="name">id</td>
+                <td class="type">int</td>
+                <td class="description">primárny kľúč</td>
+            </tr>
+            <tr>
+                <td class="name">default_id</td>
+                <td class="type">int</td>
+                <td class="description">kľúč na defaultny obrazok</td>
+            </tr> 
+            <tr>
+                <td class="name">created</td>
+                <td class="type">datetime</td>
+                <td class="description">čas vytvorenia záznamu</td>
+            </tr>
+            <tr>
+                <td class="name">modified</td>
+                <td class="type">datetime</td>
+                <td class="description">čas poslednej zmeny záznamu</td>
+            </tr>
+        </table>
+        
+        <!-- Slug -->
+        <table>
+            <tr class="title">
+                <td colspan="3">Slug</td>
+            </tr>
+            <tr class="description">
+                <td colspan="3">Slug pre produkt.</td>        
+            </tr>
+            <tr class="labels">
+                <td class="name">Názov</td>
+                <td class="type">Typ</td>
+                <td class="description">Popis</td>
+            </tr>
+            <tr>
+                <td class="name">id</td>
+                <td class="type">int</td>
+                <td class="description">primárny kľúč</td>
+            </tr>
+            <tr>
+                <td class="name">default_id</td>
+                <td class="type">int</td>
+                <td class="description">kľúč na defaultny slug</td>
+            </tr> 
+            <tr>
+                <td class="name">created</td>
+                <td class="type">datetime</td>
+                <td class="description">čas vytvorenia záznamu</td>
+            </tr>
+            <tr>
+                <td class="name">modified</td>
+                <td class="type">datetime</td>
+                <td class="description">čas poslednej zmeny záznamu</td>
+            </tr>
+        </table>
+        
+        <!-- SlugRecord -->
+        <table>
+            <tr class="title">
+                <td colspan="3">SlugRecord</td>
+            </tr>
+            <tr class="description">
+                <td colspan="3">Konkretny Slug pre dany jazyk.</td>        
+            </tr>
+            <tr class="labels">
+                <td class="name">Názov</td>
+                <td class="type">Typ</td>
+                <td class="description">Popis</td>
+            </tr>
+            <tr>
+                <td class="name">id</td>
+                <td class="type">int</td>
+                <td class="description">primárny kľúč</td>
+            </tr>
+            <tr>
+                <td class="name">slug_id</td>
+                <td class="type">int</td>
+                <td class="description">kľúč na slug handler</td>
+            </tr>                                           
+            <tr>
+                <td class="name">language_id</td>
+                <td class="type">int</td>
+                <td class="description">kľúč na language</td>
+            </tr>                               
+            <tr>
+                <td class="name">value</td>
+                <td class="type">varchar</td>
+                <td class="description">hotnota slugu</td>
+            </tr> 
+            <tr>
+                <td class="name">created</td>
+                <td class="type">datetime</td>
+                <td class="description">čas vytvorenia záznamu</td>
+            </tr>
+            <tr>
+                <td class="name">modified</td>
+                <td class="type">datetime</td>
+                <td class="description">čas poslednej zmeny záznamu</td>
+            </tr>
+        </table>
+        
+        <!-- Image -->
+        <table>
+            <tr class="title">
+                <td colspan="3">Image</td>
+            </tr>
+            <tr class="description">
+                <td colspan="3">Zaznam obrazku obsahujuci cestu k nahladu, strednej, velkej a originalnej velkosti.</td>        
+            </tr>
+            <tr class="labels">
+                <td class="name">Názov</td>
+                <td class="type">Typ</td>
+                <td class="description">Popis</td>
+            </tr>
+            <tr>
+                <td class="name">id</td>
+                <td class="type">int</td>
+                <td class="description">primárny kľúč</td>
+            </tr>
+            <tr>
+                <td class="name">image_gallery_id</td>
+                <td class="type">int</td>
+                <td class="description">kľúč na ImageGallery</td>
+            </tr>                             
+            <tr>
+                <td class="name">small</td>
+                <td class="type">varchar</td>
+                <td class="description">cesta k malemu obrazku</td>
+            </tr>                                             
+            <tr>
+                <td class="name">normal</td>
+                <td class="type">varchar</td>
+                <td class="description">cesta k stredne velkemu obrazku</td>
+            </tr> 
+            <tr>
+                <td class="name">large</td>
+                <td class="type">varchar</td>
+                <td class="description">cesta k velkemu obrazku</td>
+            </tr> 
+            <tr>
+                <td class="name">original</td>
+                <td class="type">varchar</td>
+                <td class="description">cesta k obrazku v originalnej velkosti</td>
+            </tr> 
+            <tr>
+                <td class="name">created</td>
+                <td class="type">datetime</td>
+                <td class="description">čas vytvorenia záznamu</td>
+            </tr>
+            <tr>
+                <td class="name">modified</td>
+                <td class="type">datetime</td>
+                <td class="description">čas poslednej zmeny záznamu</td>
+            </tr>
+        </table>
+        
         <!-- Category -->
         <table>
             <tr class="title">
@@ -578,9 +799,9 @@
                 <td class="description">Kľúč na Text, ktorý obsahuje názov kategórie</td>
             </tr>
             <tr>
-                <td class="name">alias</td>
-                <td class="type">varchar</td>
-                <td class="description">Alias kategórie</td>
+                <td class="name">slug_id</td>
+                <td class="type">int</td>
+                <td class="description">Kľúč na slug</td>
             </tr>
             <tr>
                 <td class="name">created</td>
@@ -1529,18 +1750,53 @@
             </tr>
             <tr>
                 <td class="name">price</td>
-                <td class="type">int</td>
-                <td class="description">kľúč na Price</td>
-            </tr>
-            <tr>
-                <td class="name">value</td>
                 <td class="type">decimal</td>
-                <td class="description">Cena</td>
+                <td class="description">Cena (vratane dane)</td>
             </tr>
             <tr>
                 <td class="name">currency_id</td>
                 <td class="type">int</td>
                 <td class="description">Kľúč na Currency</td>
+            </tr>
+            <tr>
+                <td class="name">created</td>
+                <td class="type">datetime</td>
+                <td class="description">čas vytvorenia záznamu</td>
+            </tr>
+            <tr>
+                <td class="name">modified</td>
+                <td class="type">datetime</td>
+                <td class="description">čas poslednej zmeny záznamu</td>
+            </tr>
+        </table>
+        
+        <!-- Tax -->
+        <table>
+            <tr class="title">
+                <td colspan="3">Tax</td>
+            </tr>
+            <tr class="description">
+                <td colspan="3">Dan</td>        
+            </tr>
+            <tr class="labels">
+                <td class="name">Názov</td>
+                <td class="type">Typ</td>
+                <td class="description">Popis</td>
+            </tr>
+            <tr>
+                <td class="name">id</td>
+                <td class="type">int</td>
+                <td class="description">primárny kľúč</td>
+            </tr>
+            <tr>
+                <td class="name">name_id</td>
+                <td class="type">int</td>
+                <td class="description">Kľúč na zaznam text, nazov dane</td>
+            </tr>                                                      
+            <tr>
+                <td class="name">value</td>
+                <td class="type">decimal</td>
+                <td class="description">Vyska dane v percentach</td>
             </tr>
             <tr>
                 <td class="name">created</td>
