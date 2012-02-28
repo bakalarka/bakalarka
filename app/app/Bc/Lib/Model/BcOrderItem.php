@@ -3,9 +3,13 @@ class BcOrderItem extends AppModel {
 	var $name = 'BcOrderItem';
 	var $primaryKey = 'id';
 	
-	//TODO - validation rules
 	var $validation = array(
-		//amount
+		'amount' => array(
+			'amountRule-1' => array(
+				'rule' => 'positiveInteger',
+				'message' => 'Amount must be positive whole number.'
+			)
+		)
 	);
 	
 	var $belongsTo = array(
@@ -14,8 +18,8 @@ class BcOrderItem extends AppModel {
 			'foreignKey'	=> 'order_id'
 		),
 		'Product' => array(
-			'className'		=> 'Product',
-			'foreignKey'	=> 'product_id'
+			'className'		=> 'ProductRecord',
+			'foreignKey'	=> 'product_record_id'
 		)
 	);
 }

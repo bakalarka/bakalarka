@@ -1,16 +1,16 @@
 <?php
 class BcCategory extends AppModel {
 	var $name = 'BcCategory';
-	var $primaryKey = 'id';
+	var $table = 'categories';
 	
-	//TODO - validation rules
 	var $validation = array(
-    	'alias' => array(
-    		'nameRule-1' => array (
-    			'rule'    => 'alphaNumericDashUnderscore',
-        	    'message' => '',
+    	'parent_id' => array(
+			'parentIdRule-1' => array (
+    			'rule'    => 'parentExists', 
+        	    'message' => 'Parent category does not exist.',
     		),
-    	)
+    		'allowEmpty' => true
+		)
 	);
 	
 	var $belongsTo = array(
@@ -25,11 +25,20 @@ class BcCategory extends AppModel {
 		'Name' => array(
 			'className'		=> 'Text',
 			'foreignKey'	=> 'name_id'
+		),
+		'Slug'=> array(
+			'className'		=> 'Slug',
+			'foreignKey'	=> 'slug_id'
 		)
 	);
 	
 	var $hasAndBelongsToMany = array(
 		'Product'
 	);
+	
+	//comment
+	function parentExists($check) {
+		
+	}
 }
 ?>

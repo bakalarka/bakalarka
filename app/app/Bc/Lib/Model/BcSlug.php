@@ -1,9 +1,7 @@
 <?php
 class BcSlug extends AppModel {
 	var $name = 'BcSlug';
-	
-	//TODO - validation rules
-	var $validation = array();
+	var $table = 'slugs';
 	
 	var $belongsTo = array(
 		'Default' => array(

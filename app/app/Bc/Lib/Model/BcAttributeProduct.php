@@ -1,10 +1,13 @@
 <?php
 class BcAttributeProduct extends AppModel {
 	var $name = 'BcAttributeProduct';
-	var $primaryKey = 'id';
+	var $table = 'attribute_products';
 	
-	//TODO - validation rules
-	var $validation = array();
+	var $validation = array(
+		'value' => array(
+			'allowEmpty' => true
+		)
+	);
 	
 	var $belongsTo = array(
 		'Attribute' => array(

@@ -1,14 +1,13 @@
 <?php
 class BcAttribute extends AppModel {
 	var $name = 'BcAttribute';
-	var $primaryKey = 'id';
+	var $table = 'attributes';
 	
-	//TODO - validation rules
 	var $validation = array(
     	'units' => array(
     		'unitsRule-1' => array (
-    			'rule'    => 'alphaNumeric', //TODO - format?
-        	    'message' => '',
+    			'rule'    => 'lettersNonLatinSpaceDotSlash', 
+        	    'message' => 'Use only letters, spaces, dots and slashes.',
     		),
     	)
     );

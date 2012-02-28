@@ -1,9 +1,8 @@
 <?php
 class BcUser extends AppModel {
 	var $name = 'BcUser';
-	var $primaryKey = 'id';
+	var $table = 'users';
 	
-	//TODO - error messages
 	var $validate = array(
 		'id' => array(
 	        'rule' => 'blank',
@@ -12,15 +11,15 @@ class BcUser extends AppModel {
     	'username' => array(
     		'usernameRule-1' => array (
     			'rule'    => 'alphaNumeric',
-        	    'message' => '',
+        	    'message' => 'Only latin letters and digits.',
     		),
     		'usernameRule-2' => array (
     			'rule'    => array('minLength', 2),
-        	    'message' => '',
+        	    'message' => 'Minimal length is 2 characters.',
     		),
     		'usernameRule-3' => array (
     			'rule'    => array('maxLength', 20),
-        	    'message' => '',
+        	    'message' => 'Maximal length is 20 characters.',
     		),
     	),
    		'password' => array(
@@ -38,20 +37,20 @@ class BcUser extends AppModel {
     	),
     	'name' => array(
     		'nameRule-1' => array (
-    			'rule'    => 'lettersNonLatin',
-        	    'message' => '',
+    			'rule'    => 'lettersNonLatinSpaceDot',
+        	    'message' => 'Only letters, spaces and dots.',
     		),
     	),
     	'surname' => array(
     		'surnameRule-1' => array (
-    			'rule'    => 'lettersNonLatin',
-        	    'message' => '',
+    			'rule'    => 'lettersNonLatinSpaceDot',
+        	    'message' => 'Only letters, spaces and dots.',
     		),
     	),
     	'phone' => array(
     		'phoneRule-1' => array (
     			'rule'    => 'phone', //TODO - check if it needs improve
-        	    'message' => '',
+        	    'message' => 'Ivalid phone number',
     		),
     	),
     	'registration_code' => array(
@@ -67,6 +66,10 @@ class BcUser extends AppModel {
 		'Address' => array(
             'className'		=> 'Address',
 			'foreignKey'	=> 'Address.user_id'
+        ),
+        'Order' => array(
+        	'className'		=> 'Order',
+			'foreignKey'	=> 'Order.user_id'
         )
 	);
 	

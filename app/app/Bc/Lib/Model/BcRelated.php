@@ -1,10 +1,7 @@
 <?php
 class BcRelated extends AppModel {
 	var $name = 'BcRelated';
-	var $primaryKey = 'id';
-	
-	//TODO - validation rules
-	var $validation = array();
+	var $table = 'related';
 	
 	var $belognsTo = array(
 		'Product' => array(

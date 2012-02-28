@@ -1,9 +1,8 @@
 <?php
 class BcAddress extends AppModel {
 	var $name = 'BcAddress';
-	var $primaryKey = 'id';
+	var $table = 'addresses';
 	
-	//TODO - validation rules
 	var $validation = array(
     	'street' => array(
     		'streetRule-1' => array (
@@ -14,13 +13,17 @@ class BcAddress extends AppModel {
     	'zip' => array(
     		'zipRule-1' => array (
     			'rule'    => 'postal', //TODO - not cahnges needed?
-        	    'message' => '',
+        	    'message' => 'ZIP code is not valid.',
     		),
     	),
     	'city' => array(
     		'cityRule-1' => array (
-    			'rule'    => 'notEmpty', //TODO - allowed format?
-        	    'message' => '',
+    			'rule'    => 'notEmpty', 
+        	    'message' => 'City can\'t be empty.',
+    		),
+    		'cityRule-2' => array (
+    			'rule'    => 'lettersNonLatinSpaceDot', 
+        	    'message' => 'City can contains letters, spaces and dots.',
     		),
     	)
 	);
@@ -30,37 +33,11 @@ class BcAddress extends AppModel {
 			'className' => 'AddressType',
 			'foreignKey' => 'address_type_id'
 		),
-		'User' => array(
-			'className' => 'User',
-			'foreignKey' => 'user_id'
-		),
-		'Company' => array(
-			'className' => 'Company',
-			'foreignKey' => 'company_id'
-		),
 		'Country' => array(
 			'className' => 'Country',
 			'foreignKey' => 'country_id'
 		),
 	);
 	
-	var $hasMany = array(
-		'BillingOrder' => array(
-			'className' => 'Order',
-			'foreignKey' => 'Order.billing_address_id'
-		),
-		'ShippingOrder' => array(
-			'className' => 'Order',
-			'foreignKey' => 'Order.shipping_address_id'
-		),
-		'ProviderInvoice' => array(
-			'className' => 'Invoice',
-			'foreignKey' => 'Invoice.provider_address_id'
-		),
-		'CustomerInvoice' => array(
-			'className' => 'Invoice',
-			'foreignKey' => 'Invoice.customer_address_id'
-		),
-	);
 }
 ?>

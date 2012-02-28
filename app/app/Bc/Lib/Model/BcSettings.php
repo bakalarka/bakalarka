@@ -1,15 +1,15 @@
 <?php
 class BcSettings extends AppModel {
 	var $name = 'BcSettings';
-	var $primaryKey = 'id';
+	var $table = 'settings';
 	
-	//TODO - validation rules
 	var $validation = array(
     	'value' => array(
     		'valueRule-1' => array (
-    			'rule'    => 'notEmpty', //TODO - what should be accepted?
-        	    'message' => '',
-    		)
+    			'rule'    => 'notEmpty', 
+        	    'message' => 'Set some value.',
+    		),
+    		'required' => true
     	)
 	);
 	
@@ -23,9 +23,10 @@ class BcSettings extends AppModel {
 			'foreignKey'	=> 'name_id'
 		),
 		'EditedBy' => array(
-			'className'		=> 'user',
-			'foreignKey'	=> 'user_id' //edited_by_id?
-		)
+			'className'		=> 'User',
+			'foreignKey'	=> 'edited_by_id'
+		),
+		
 	);
 }
 ?>

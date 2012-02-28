@@ -1,17 +1,7 @@
 <?php
 class BcOrder extends AppModel {
 	var $name = 'BcOrder';
-	var $primaryKey = 'id';
-	
-	//TODO - validation rules
-	var $validation = array(
-    	'number' => array(
-    		'numberRule-1' => array (
-    			'rule'    => 'lettersNonLatin',
-        	    'message' => '',
-    		)
-    	)
-    );
+	var $table = 'orders';
 	
 	var $belongsTo = array(
 		'Invoice' => array(

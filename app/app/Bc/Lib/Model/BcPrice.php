@@ -1,10 +1,7 @@
 <?php
 class BcPrice extends AppModel {
 	var $name = 'BcPrice';
-	var $primaryKey = 'id';
-	
-	//TODO - validation rules
-	var $validation = array();
+	var $tables = 'prices';
 	
 	var $belongsTo = array(
 		'Default' => array(
@@ -18,7 +15,6 @@ class BcPrice extends AppModel {
 			'className'		=> 'PriceValue',
 			'foreignKey'	=> 'PriceValue.price_id'
 		)
-		//used globaly, much more "hasMany"s
 	);
 }
 ?>

@@ -1,14 +1,13 @@
 <?php
 class BcTextRecord extends AppModel {
 	var $name = 'BcTextRecord';
-	var $primaryKey = 'id';
+	var $table = 'text_records';
 	
-	//TODO - validation rules
 	var $validation = array(
     	'value' => array(
     		'valueRule-1' => array (
-    			'rule'    => 'lettersNonLatin',
-        	    'message' => '',
+    			'rule'    => 'notEmpty',
+        	    'message' => 'Can not left blank.',
     		),
     	)
 	);

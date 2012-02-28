@@ -1,10 +1,17 @@
 <?php
 class BcPriceValue extends AppModel {
 	var $name = 'BcPriceValue';
-	var $primaryKey = 'id';
+	var $table = 'price_values';
 	
-	//TODO - validation rules
-	var $validation = array();
+	var $validation = array(
+		'price' => array(
+			'priceRule-1' => array(
+				'rule' => array('decimal', 2),
+				'message' => 'Price must be a decimal number.'
+			),
+			'required' => true
+		)
+	);
 	
 	var $belongsTo = array(
 		'Price' => array(

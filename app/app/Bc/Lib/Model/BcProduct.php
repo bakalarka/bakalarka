@@ -1,50 +1,32 @@
 <?php
 class BcProduct extends AppModel {
 	var $name = 'BcProduct';
-	var $primaryKey = 'id';
+	var $table = 'products';
 	
-	//TODO - validation rules
 	var $validation = array(
-    	'sku' => array(
-    		'skuRule-1' => array (
-    			'rule'    => 'notEmpty', //TODO - format?
-        	    'message' => '',
-    		)
-    	),
-    	'alias' => array(
-    		'aliasRule-1' => array (
-    			'rule'    => 'alphaNumericDashUnderscore', 
-        	    'message' => '',
-    		)
-    	)
-    	//amount?
+    	'hidden' => array(
+			'hiddenRule-1' => array(
+				'rule' => 'boolean',
+				'message' => 'Invalid checkbox value.'
+			)
+		),
+		'deleted' => array(
+			'deletedRule-1' => array(
+				'rule' => 'boolean',
+				'message' => 'Invalid checkbox value.'
+			)
+		)
 	);
 	
 	var $belongsTo = array(
-		'ProductType' => array(
-			'className'		=> 'ProductType',
-			'foreignKey'	=> 'product_type_id'
+		'Slug' => array(
+			'className'		=> 'Slug',
+			'foreignKey'	=> 'slug_id'
 		),
-		'Name' => array(
-			'className'		=> 'Text',
-			'foreignKey'	=> 'name_id'
-		),
-		'ShortDescription' => array(
-			'className'		=> 'Text',
-			'foreignKey'	=> 'short_description_id'
-		),
-		'Description' => array(
-			'className'		=> 'Text',
-			'foreignKey'	=> 'description_id'
-		),
-		'Price' => array(
-			'className'		=> 'Price',
-			'foreignKey'	=> 'price_id'
-		),
-		'ProductState' => array(
-			'className'		=> 'ProductState',
-			'foreignKey'	=> 'product_state_id'
-		),
+		'Record' => array(
+			'className'		=> 'ProductRecord',
+			'foreignKey'	=> 'product_record_id'
+		)
 	);
 	
 	var $hasMeny = array(
@@ -55,15 +37,7 @@ class BcProduct extends AppModel {
 		'RelatedTo' => array(
 			'className'		=> 'Related',
 			'foreignKey'	=> 'Related.related_to_id'
-		),
-		'AttributeProduct' => array(
-			'className'		=> 'AttributeProduct',
-			'foreignKey'	=> 'AttributeProduct.product_id'
-		),
-		'OrderItem' => array(
-			'className'		=> 'OrderItem',
-			'foreignKey'	=> 'OrderItem.product_id'
-		),
+		)
 	);
 	
 	var $hasAndBelongsToMany = array(

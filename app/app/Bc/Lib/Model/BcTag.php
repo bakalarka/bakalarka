@@ -1,10 +1,7 @@
 <?php
 class BcTag extends AppModel {
 	var $name = 'BcTag';
-	var $primaryKey = 'id';
-	
-	//TODO - validation rules
-	var $validation = array();
+	var $table = 'tags';
 	
 	var $belongsTo = array(
 		'ProductType' => array(
@@ -14,7 +11,12 @@ class BcTag extends AppModel {
 	);
 	
 	var $hasAndBelongsToMany = array(
-		'Product'
+		'Product' => array(
+			'conditions' => array(
+				'Product.hidden' => 0,
+				'Product.deleted' => 0
+			)
+		)
 	);
 }
 ?>

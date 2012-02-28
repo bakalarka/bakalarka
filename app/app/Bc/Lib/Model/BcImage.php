@@ -1,18 +1,21 @@
 <?php
 class BcImage extends AppModel {
 	var $name = 'BcImage';
-	
-	//TODO - validation rules, validate system generated values?
-	var $validation = array(
-    	
-    );
+	var $table = 'images';
 	
 	var $belongsTo = array(
-		
-	);
-	
-	var $hasMany = array(
-		
+		'ImageGallery' => array(
+			'model' => 'ImageGallery',
+			'foreignKey' => 'image_gallery_id'
+		),
+		'Name' => array(
+			'model' => 'Text',
+			'foreignKey' => 'name_id'
+		),
+		'Description' => array(
+			'model' => 'Text',
+			'foreignKey' => 'description_id'
+		)
 	);
 }
 ?>

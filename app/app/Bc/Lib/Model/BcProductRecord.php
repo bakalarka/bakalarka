@@ -1,19 +1,28 @@
 <?php
 class BcProductRecord extends AppModel {
 	var $name = 'BcProductRecord';
+	var $table = 'product_records';
 	
-	//TODO - validation rules
 	var $validation = array(
     	'sku' => array(
     		'skuRule-1' => array (
-    			'rule'    => 'notEmpty', //TODO - format?
-        	    'message' => '',
+    			'rule'    => 'alphaNumericDash', 
+        	    'message' => 'Only letters, numbers or dashes.',
     		)
-    	)
-    	//amount?
+    	),
+    	'amount' => array(
+			'amountRule-1' => array(
+				'rule' => 'notNegativeInteger',
+				'message' => 'Amount must be positive whole number or 0.'
+			)
+		)
 	);
 	
 	var $belongsTo = array(
+		'Product' => array(
+			'className'		=> 'Product',
+			'foreignKey'	=> 'product_id'
+		),
 		'ProductType' => array(
 			'className'		=> 'ProductType',
 			'foreignKey'	=> 'product_type_id'
@@ -44,7 +53,7 @@ class BcProductRecord extends AppModel {
 		),
 	);
 	
-	var $hasMeny = array(
+	var $hasMany = array(
 		'Related' => array(
 			'className'		=> 'Related',
 			'foreignKey'	=> 'Related.product_id'
@@ -56,16 +65,7 @@ class BcProductRecord extends AppModel {
 		'AttributeProduct' => array(
 			'className'		=> 'AttributeProduct',
 			'foreignKey'	=> 'AttributeProduct.product_id'
-		),
-		'OrderItem' => array(
-			'className'		=> 'OrderItem',
-			'foreignKey'	=> 'OrderItem.product_id'
-		),
-	);
-	
-	var $hasAndBelongsToMany = array(
-		'Category',
-		'Tag'
+		)
 	);
 }
 ?>

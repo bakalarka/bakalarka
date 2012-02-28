@@ -1,12 +1,9 @@
 <?php
 class BcProductType extends AppModel {
 	var $name = 'BcProductType';
-	var $primaryKey = 'id';
+	var $table = 'product_types';
 	
-	//TODO - validation rules
-	var $validation = array();
-	
-	var $hasMeny = array(
+	var $hasMany = array(
 		'Product' => array(
 			'className'		=> 'Product',
 			'foreignKey'	=> 'Product.product_type_id'
@@ -18,7 +15,7 @@ class BcProductType extends AppModel {
 	);
 	
 	var $hasAndBelongsToMany = array(
-		'ProductType'
+		'Attribute'
 	);
 }
 ?>

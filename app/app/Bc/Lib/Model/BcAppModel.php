@@ -51,6 +51,34 @@ class BcAppModel extends Model {
         return preg_match('|^[a-zA-Z_-]*$|', $value);
     }
     
+	//TODO - commnet, implement, name?
+	function lettersNonLatinSpaceDot($check) {
+        
+		$value = array_values($check);
+        $value = $value[0];
+
+        return preg_match('|^[a-zA-Z_-]*$|', $value);
+    }
+    
+	//TODO - commnet, implement, name?
+	function lettersNonLatinSpaceDotSlash($check) {
+        
+		$value = array_values($check);
+        $value = $value[0];
+
+        return preg_match('|^[a-zA-Z_-]*$|', $value);
+    }
+    
+	//TODO - commnet, implement, name?
+	function positiveInteger($check) {
+        return is_int($check) && $check > 0;
+    }
+    
+	//TODO - commnet, implement, name?
+	function notNegativeInteger($check) {
+        return is_int($check) && $check > -1;
+    }
+    
 	//TODO - commnet, implement
 	function idNumber($check) {
         

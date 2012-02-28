@@ -1,45 +1,46 @@
 <?php
 class BcCompany extends AppModel {
 	var $name = 'BcCompany';
-	var $primaryKey = 'id';
+	var $table = 'companies';
 	
-	//TODO - validation rules
 	var $validation = array(
     	'name' => array(
     		'nameRule-1' => array (
-    			'rule'    => 'notEmpty', //TODO - allowed chars?
-        	    'message' => '',
+    			'rule'    => 'notEmpty', 
+        	    'message' => 'Company name can not be empty.',
     		),
-    		'nameRule-2' => array (
-    			'rule'    => 'notempty',
-        	    'message' => '',
-    		)
+    		'required' => true
     	),
     	'id_number' => array(
     		'id_number-1' => array (
     			'rule'    => 'idNumber', 
-        	    'message' => '',
-    		)
+        	    'message' => 'Ivalid ID number format.',
+    		),
+    		'required' => true
     	),
-    	'taxt_id_number' => array(
-    		'taxt_id_number-1' => array (
+    	'tax_id_number' => array(
+    		'tax_id_number-1' => array (
     			'rule'    => 'taxIdNumber', 
-        	    'message' => '',
-    		)
+        	    'message' => 'Ivalid Tax ID number format.',
+    		),
+    		'required' => true
     	),
     	'vat_number' => array(
     		'vat_number-1' => array (
     			'rule'    => 'vatNumber', 
-        	    'message' => '',
+        	    'message' => 'Ivalid VAT number format.',
     		)
-    	),
+    	)
 	);
 	
-	var $hasMany = array(
+	var $belongsTo = array(
 		'Address' => array(
             'className'		=> 'Address',
-			'foreignKey'	=> 'Address.company_id'
-        ),
+			'foreignKey'	=> 'address_id'
+        )
+    );
+	
+	var $hasMany = array(
         'Order' => array(
             'className'		=> 'Order',
 			'foreignKey'	=> 'Order.company_id'

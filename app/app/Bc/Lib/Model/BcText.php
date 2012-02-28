@@ -1,11 +1,8 @@
 <?php
 class BcText extends AppModel {
 	var $name = 'BcText';
-	var $primaryKey = 'id';
-	
-	//TODO - validation rules
-	var $validation = array();
-	
+	var $table = 'texts';
+
 	var $belongsTo = array(
 		'Default' => array(
 			'className'		=> 'TextRecord',
@@ -18,7 +15,6 @@ class BcText extends AppModel {
 			'className'		=> 'TextRecord',
 			'foreignKey'	=> 'TextRecord.text_id'
 		)
-		//used globaly, much more "hasMany"s
 	);
 }
 ?>

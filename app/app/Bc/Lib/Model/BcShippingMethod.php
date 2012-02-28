@@ -1,15 +1,14 @@
 <?php
 class BcShippingMethod extends AppModel {
 	var $name = 'BcShippingMethod';
-	var $primaryKey = 'id';
+	var $table = 'shipping_methods';
 	
-	//TODO - validation rules
-	var $validation = array();
-	
-	var $hasMany = array(
-		'Order' => array(
-			'className'		=> 'Order',
-			'foreignKey'	=> 'Order.shipping_method_id'
+	var $validation = array(
+		'active' => array(
+			'activeRule-1' => array(
+				'rule' => 'boolean',
+				'message' => 'Invalid checkbox value.'
+			)
 		)
 	);
 }
