@@ -9,21 +9,8 @@
 
     <!-- Le styles -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
-    <style type="text/css">
-      body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-      }
-      footer {
-        text-align: center;
-      }
-      .show-grid1 {
-          background-color: #EEEEEE;
-          border-radius: 3px 3px 3px 3px;
-          /*min-height: 30px;*/
-      }
-    </style>
     <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="assets/css/custom.css" rel="stylesheet">
    
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -47,12 +34,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">Bachelor thesis <span style="font-size: 50%;">by Marek Drnzik</span></a>
-          <!--div class="nav-collapse">
+          <a class="brand" href="#">Bachelor thesis <span style="font-size: 50%;">by Marek Drnzik</span></a>             
+          <div class="nav-collapse">
             <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li class="active"><a href="index.html">Home</a></li>
+              <li><a href="diary.html">Diary</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -103,13 +89,61 @@
         <div class="span3">
           <h2>News</h2>
            <dl>
+              <dt>Todo list (<em>2012-03-02</em>)</dt>
+              <dd>Added a todo list.</dd>
               <dt>Hello world (<em>2012-03-01</em>)</dt>
               <dd>The website is online now.</dd>
           </dl>
         </div>
         <div class="span3">
           <h2>Todos</h2>
-          <p><em>comming soon</em></p>
+          <table class="zebra-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Deadline</th>
+                    <th>Task</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>2012-03-04</td>
+                    <td>Add "Shipment" model.</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>2012-03-04</td>
+                    <td>Create Diary from all sessions.</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>2012-03-07</td>
+                    <td>Create temporary layouts.</td>
+                </tr>                       
+                <tr>
+                    <td>4</td>
+                    <td>2012-03-07</td>
+                    <td>Create temporary views.</td>
+                </tr>                       
+                <tr>
+                    <td>5</td>
+                    <td>2012-03-07</td>
+                    <td>Finish UML diagrams.</td>
+                </tr>                       
+                <tr>
+                    <td>6</td>
+                    <td>2012-03-07</td>
+                    <td>User management functionality.</td>
+                </tr>                                
+                <tr>
+                    <td>7</td>
+                    <td>2012-03-10</td>
+                    <td>Product management functionality.</td>
+                </tr>
+            </tbody>
+        </table>
+          <!--p><em>comming soon</em></p-->
         </div>
         <div class="span3">
           <h2>Diary</h2>
