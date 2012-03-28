@@ -1,0 +1,24 @@
+2012-03-07 18:37:31 Error: [MissingActionException] Action AppController::index() could not be found.
+#0 C:\wamp\www\bc\bakalarka\app\lib\Cake\Routing\Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#1 C:\wamp\www\bc\bakalarka\app\lib\Cake\Routing\Dispatcher.php(86): Dispatcher->_invoke(Object(AppController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\wamp\www\bc\bakalarka\app\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 C:\wamp\www\bc\bakalarka\app\index.php(40): require('C:\wamp\www\bc\...')
+#4 {main}
+2012-04-11 21:18:24 Error: [MissingConnectionException] Database connection "SQLSTATE[28000] [1045] Access denied for user 'user'@'localhost' (using password: YES)" is missing, or could not be created.
+#0 C:\wamp\www\bc\bakalarka\app\lib\Cake\Model\Datasource\DboSource.php(245): Mysql->connect()
+#1 C:\wamp\www\bc\bakalarka\app\lib\Cake\Model\ConnectionManager.php(101): DboSource->__construct(Array)
+#2 C:\wamp\www\bc\bakalarka\app\lib\Cake\Model\Model.php(3372): ConnectionManager::getDataSource('default')
+#3 C:\wamp\www\bc\bakalarka\app\lib\Cake\Model\Model.php(1083): Model->setDataSource('default')
+#4 C:\wamp\www\bc\bakalarka\app\lib\Cake\Model\Model.php(3398): Model->setSource('users')
+#5 C:\wamp\www\bc\bakalarka\app\lib\Cake\Model\Model.php(1276): Model->getDataSource()
+#6 C:\wamp\www\bc\bakalarka\app\lib\Cake\View\Helper\FormHelper.php(191): Model->schema()
+#7 C:\wamp\www\bc\bakalarka\app\lib\Cake\View\Helper\FormHelper.php(444): FormHelper->_introspectModel('User', 'fields')
+#8 C:\wamp\www\bc\bakalarka\app\app\Bc\App\View\Users\index.ctp(7): FormHelper->create('User', Array)
+#9 C:\wamp\www\bc\bakalarka\app\lib\Cake\View\View.php(908): include('C:\wamp\www\bc\...')
+#10 C:\wamp\www\bc\bakalarka\app\lib\Cake\View\View.php(872): View->_evaluate('C:\wamp\www\bc\...', Array)
+#11 C:\wamp\www\bc\bakalarka\app\lib\Cake\View\View.php(463): View->_render('C:\wamp\www\bc\...')
+#12 C:\wamp\www\bc\bakalarka\app\lib\Cake\Controller\Controller.php(959): View->render(NULL, NULL)
+#13 C:\wamp\www\bc\bakalarka\app\lib\Cake\Routing\Dispatcher.php(110): Controller->render()
+#14 C:\wamp\www\bc\bakalarka\app\lib\Cake\Routing\Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#15 C:\wamp\www\bc\bakalarka\app\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
