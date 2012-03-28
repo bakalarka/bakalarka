@@ -65,6 +65,10 @@ class BcProductRecord extends AppModel {
 		'AttributeProduct' => array(
 			'className'		=> 'AttributeProduct',
 			'foreignKey'	=> 'AttributeProduct.product_id'
+		),
+		'ProductShippingMethod' => array(
+			'className'		=> 'ProductShippingMethod',
+			'foreignKey'	=> 'ProductShippingMethod.product_id'
 		)
 	);
 }

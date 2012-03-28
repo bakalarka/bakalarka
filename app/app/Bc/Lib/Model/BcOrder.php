@@ -46,6 +46,10 @@ class BcOrder extends AppModel {
 		'OrderItem' => array(
 			'className'		=> 'OrderItem',
 			'foreignKey'	=> 'OrderItem.order_id'
+		),
+		'Shipment' => array(
+			'className'		=> 'Shipment',
+			'foreignKey'	=> 'Shipment.order_id'
 		)
 	);
 }

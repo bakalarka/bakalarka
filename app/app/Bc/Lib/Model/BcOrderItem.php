@@ -20,6 +20,10 @@ class BcOrderItem extends AppModel {
 		'Product' => array(
 			'className'		=> 'ProductRecord',
 			'foreignKey'	=> 'product_record_id'
+		),
+		'Shipment' => array(
+			'className'		=> 'Shipment',
+			'foreignKey'	=> 'shipment_id'
 		)
 	);
 }
