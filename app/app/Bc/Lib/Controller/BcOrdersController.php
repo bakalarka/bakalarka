@@ -5,6 +5,11 @@ class BcOrdersController extends AppController {
 	var $uses 		= array(
 		'Order'
 	);
+	
+	function beforeFilter() {
+	    parent::beforeFilter();
+	    $this->Auth->allow('*');
+	}
 		
 }
 ?>
