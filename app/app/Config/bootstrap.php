@@ -55,7 +55,7 @@ App::build(array(
     'Bc/Controller' => array(APP.'Bc'.DS.'Lib'.DS.'Controller'.DS),
     'Bc/Model/Datasource' => array(APP.'Bc'.DS.'Lib'.DS.'Model'.DS.'Datasource'.DS),
     'Bc/Model/Behavior' => array(APP.'Bc'.DS.'Lib'.DS.'Model'.DS.'Behavior'.DS),
-    'Bc/Controller/Component' => array(APP.'Bc'.DS.'Lib'.DS.'Controller'.DS.'Component'),
+    'Bc/Controller/Component' => array(APP.'Bc'.DS.'Lib'.DS.'Controller'.DS.'Component'.DS),
     'Bc/View/Helper' => array(APP.'Bc'.DS.'Lib'.DS.'View'.DS.'Helper'.DS),
     ),
     App::REGISTER
