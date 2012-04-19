@@ -11,23 +11,37 @@ class BcTagsController extends AppController {
 	    $this->Auth->allow('*');
 	}
 	
-	//Tags listing
-	function index() {
+	/** backend **/
+	
+	/**
+	 * admin_index
+	 * Tags listing
+	 */
+	function admin_index() {
 		//
 	}
 	
-	//Add new tag
-	function add() {
+	/**
+	 * admin_add
+	 * Add new tag
+	 */
+	function admin_add() {
 		//
 	}
 	
-	//Edit tag
-	function edit() {
+	/**
+	 * admin_edit
+	 * Edit tag
+	 */
+	function admin_edit() {
 		//
 	}
 	
-	//Remove tag
-	function remove() {
+	/**
+	 * admin_remove
+	 * Remove tag
+	 */
+	function admin_remove() {
 		//
 	}
 }

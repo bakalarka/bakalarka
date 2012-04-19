@@ -11,23 +11,43 @@ class BcCategoriesController extends AppController {
 	    $this->Auth->allow('*');
 	}
 	
-	//Category listing
+	/** frontend **/
+	//disable
 	function index() {
 		//
 	}
 	
-	//Add new category
-	function add() {
+	/** backend **/
+	
+	/**
+	 * admin_index
+	 * Category listing
+	 */
+	function admin_index() {
 		//
 	}
 	
-	//Edit category
-	function edit() {
+	/**
+	 * admin_add
+	 * Add category
+	 */
+	function admin_add() {
 		//
 	}
 	
-	//Remove category
-	function remove() {
+	/**
+	 * admin_edit
+	 * Edit category
+	 */
+	function admin_edit() {
+		//
+	}
+	
+	/**
+	 * admin_remove
+	 * Remove category
+	 */
+	function admin_remove() {
 		//
 	}
 		

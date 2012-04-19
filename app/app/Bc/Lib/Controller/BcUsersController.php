@@ -37,23 +37,104 @@ class BcUsersController extends AppController {
 		//
 	}
 	
-	//
+	//confirm registration
 	function confirm_registration($code) {
+		//
+	}
+	
+	/**
+	 * request_new_password
+	 * Request new password, if old is forgotten
+	 */
+	function request_new_password() {
 		//
 	}
 	
 	/** user profile **/
 	
-	//display user profile
-	function display_profile() {
+	/**
+	 * profile
+	 * Display profile data
+	 */
+	function profile() {
 		
 	}
 	
-	//change my settings
-	function change_settings() {
-		
+	/**
+	 * edit_user_data
+	 * Edit user data
+	 */
+	function edit_user_data() {
+		//
 	}
 	
+	/**
+	 * edit_company_data
+	 * Edit company data
+	 */
+	function edit_compeny_data() {
+		//
+	}
+	
+	
+	/** backend **/
+	
+	/**
+	 * admin_index
+	 * User listing
+	 */
+	function admin_index() {
+		//
+	}
+	
+	/**
+	 * admin_view_user
+	 * Enter description here ...
+	 * @param int $id
+	 */
+	function admin_view_user($id) {
+		//
+	}
+	
+	/**
+	 * admin_edit_user
+	 * Edit userdata
+	 */
+	function admin_edit_user() {
+		//
+	}
+	
+	/**
+	 * admin_edit_company
+	 * Edit company data
+	 */
+	function admin_edit_company() {
+		//
+	}
+	
+	/**
+	 * admin_add_to_group
+	 * Add user to group
+	 */
+	function admin_add_to_group() {
+		//
+	}
+	
+	/**
+	 * admin_remove_from_group
+	 * Remove user from group
+	 */
+	function admin_remove_from_group() {
+		//	
+	}
+	
+	/**
+	 * admin_delete_user
+	 * Delete user
+	 */
+	function admin_delete_user() {
+		//	
+	}
 	
 	/** utility functions **/
 	
