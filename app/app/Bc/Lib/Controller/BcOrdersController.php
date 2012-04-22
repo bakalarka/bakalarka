@@ -47,6 +47,40 @@ class BcOrdersController extends AppController {
 		//
 	}
 	
+	/** checkout **/
+	
+	/**
+	 * checkout
+	 * Checkout page
+	 */
+	function checkout() {
+		//
+	}
+	
+	/**
+	 * billing_shipping
+	 * Biling and shipping choice 
+	 */
+	function billing_shipping_method() {
+		//
+	}
+	
+	/**
+	 * billing_shipping_address
+	 * Billing and shipping address
+	 */
+	function billing_shipping_address() {
+		//
+	}
+	
+	/**
+	 * place_order
+	 * Place order
+	 */
+	function place_order() {
+		//
+	}
+	
 	/** backend **/
 	
 	/**
