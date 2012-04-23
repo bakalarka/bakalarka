@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Diary - Bachelor thesis by Marek Drnzik</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="assets/css/custom.css" rel="stylesheet">
+   
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">Bachelor thesis <span style="font-size: 50%;">by Marek Drnzik</span></a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li><a href="index.html">Home</a></li>
+              <li class="active"><a href="diary.html">Diary</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <!-- Main hero unit for a primary marketing message or call to action -->
+      <div class="hero-unit">
+        <h1>Diary</h1>
+        <p><em>by Marek Drnzik</em></p>
+      </div>
+
+      <!-- row 1 -->
+      <div class="row">
+        <!--div class="span2">
+          <h2>List</h2-->                    
+          <!--ul class="unstyled sessions">
+            <li><a href="#session13">Session 13</a></li>
+            <li><a href="#session12">Session 12</a></li>
+            <li><a href="#session11">Session 11</a></li>
+            <li><a href="#session10">Session 10</a></li>
+            <li><a href="#session09">Session 9</a></li>
+            <li><a href="#session08">Session 8</a></li>
+            <li><a href="#session07">Session 7</a></li>
+            <li><a href="#session06">Session 6</a></li>
+            <li><a href="#session05">Session 5</a></li>
+            <li><a href="#session04">Session 4</a></li>
+            <li><a href="#session03">Session 3</a></li>
+            <li><a href="#session02">Session 2</a></li>
+            <li><a href="#session01">Session 1</a></li>
+          </ul> 
+        </div-->
+        <div class="span12 sessions">
+          <!--h2>Sessions</h2-->
+          
+          <!-- session 14 -->
+          <div class="row" id="session14">
+            <div class="span12">
+               <h2>Session 14 <small><em>(2012-03-28)</em></small></h2>
+               <div class="row">
+                  <div class="span8">
+                     <h3>Overview</h3>
+                     <p>
+                      Diskusia o podobe písomnej časti práce.
+                     </p>
+                  </div>
+                  <div class="span2">
+                     <h3>DONElist</h3>
+                     <ul>
+                      <li>Implementované modely "Shipment" a "ProductShippingMethod".</li>
+                      <li>Vytvorený denník.</li>
+                     </ul>
+                  </div>
+                  <div class="span2">
+                     <h3>TODOlist</h3>          
+                     <ul>
+                      <li>Začať vytvárať unit testy.</li>
+                      <li>Dokončiť blank controllery a componenty.</li>
+                      <li>Vytvoriť dočasné layouts.</li>
+                      <li>Vytvoriť dočasné views.</li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+          </div>
+          
+          <hr>
+          <!-- session 13 -->
+          <div class="row" id="session13">
+            <div class="span12">
+               <h2>Session 13 <small><em>(2012-02-29)</em></small></h2>
+               <div class="row">
+                  <div class="span8">
+                     <h3>Overview</h3>
+                     <p>
+                      Vyriešenie <strong>problému s cenou poštovného</strong> návrhom nového modelu <strong><em>"Shipment"</em></strong>, ktorý reprezentuje jednu zásielku. 
+                      Každý <em>"Shipment"</em> má práve jednu <em>"ShippingMethod"</em>, 1 až N <em>"OrderItems"</em> a je priradený k práve jednému <em>"Order"</em>.
+                      S tým súvisí návrh nového modelu <strong><em>"ProductShippingMethod"</em></strong>, ktorý reprezentuje many to many reláciu 
+                      medzi <em>"Product"</em> a <em>"ShippingMethod"</em> a uchováva informáciu o podiely 1ks <em>"Product"</em> na 1 <em>"Shipment"</em> s danou <em>"ShippingMethod"</em> 
+                      (Kolko ks produktu P sa zmestí do zásielky Z odoslanou metódou M).
+                     </p>
+                  </div>
+                  <div class="span2">
+                     <h3>DONElist</h3>
+                     <ul>
+                      <li>Implementované a upravené všetky navrhnuté modely.</li>
+                     </ul>
+                  </div>
+                  <div class="span2">
+                     <h3>TODOlist</h3>          
+                     <ul>
+                      <li>Implementovať modely "Shipment" a "ProductShippingMethod".</li>
+                      <li>Vytvoriť denník.</li>                                          
+                      <li>Vytvoriť dočasné layouts.</li>
+                      <li>Vytvoriť dočasné views.</li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+          </div>
+          
+          <hr>
+          
+          <!-- session 12 -->
+          <div class="row" id="session12">
+            <div class="span12">
+               <h2>Session 12 <small><em>(2012-02-22)</em></small></h2>
+               <div class="row">
+                  <div class="span8">
+                     <h3>Overview</h3>
+                     <p>Zhodnotenie aktuálnej situácie po skončení zimného semestra a stanovenie si nových cielov.</p>
+                     <p>Konzultácia základných náležitostí a požiadaviek na písomnú časť bakalárskej práce.</p>
+                  </div>
+                  <div class="span2">
+                     <h3>DONElist</h3>
+                  </div>
+                  <div class="span2">
+                     <h3>TODOlist</h3>
+                     <ul>
+                      <li>Dokončiť implementáciu a úpravy všetkých navrhnutých modelov.</li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+          </div>
+          
+          <hr>
+          
+          <!-- session 11 -->
+          <div class="row" id="session11">
+            <div class="span12">
+               <h2>Session 11 <small><em>(2011-12-21)</em></small></h2>
+               <div class="row">
+                  <div class="span8">
+                     <h3>Overview</h3>
+                  </div>
+                  <div class="span2">
+                     <h3>DONElist</h3>
+                     <ul>
+                      <li>Vytvorenie návrhu modelu pre aliasy (slags).</li>
+                     </ul>
+                  </div>
+                  <div class="span2">
+                     <h3>TODOlist</h3>
+                  </div>
+               </div>
+            </div>
+          </div>
+          
+          <hr>
+          
+          <!-- session 10 -->
+          <div class="row" id="session10">
+            <div class="span12">
+               <h2>Session 10 <small><em>(2011-12-15)</em></small></h2>
+               <div class="row">
+                  <div class="span8">
+                     <h3>Overview</h3>
+                     <p>
+                        Konzultácia <strong>multijazyčnosti aliasov</strong> produktov a kategórií. Riešením bude vytvorenie modelu pre <strong><em>"Slug"</em></strong>, na ktorý budú naviazané textové hodnoty aliasu v rôznych jazykoch.
+                     </p>
+                     <p>
+                        Konzultácia vytvorenia špeciálneho <strong>modelu pre vendora</strong> produktu. Výsledkom je zavrhnutie tejto možnosti, nakolko túto problematiku naplno pokrýva model <em>"Attribute"</em>.
+                     </p>
+                  </div>
+                  <div class="span2">
+                     <h3>DONElist</h3>
+                     <ul>
+                       <li>Rozdelenie prostrednej (BC) vrstvy na proto triedy (BC/Lib) a ich zdedené blank triedy (BC/App).</li>
+                     </ul>
+                  </div>
+                  <div class="span2">
+                     <h3>TODOlist</h3>
+                     <ul>
+                      <li>Vytvorenie návrhu modelu pre aliasy (slags).</li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+          </div>
+          
+          <hr>
+          
+          <!-- session 09 -->
+          <div class="row" id="session09">
+            <div class="span12">
+               <h2>Session 9 <small><em>(2011-12-15)</em></h2>
+               <div class="row">
+                  <div class="span8">
+                     <h3>Overview</h3>
+                  </div>
+                  <div class="span2">
+                     <h3>DONElist</h3>
+                  </div>
+                  <div class="span2">
+                     <h3>TODOlist</h3>
+                     <ul>
+                       <li>Rozdelenie prostrednej (BC) vrstvy na proto triedy (BC/Lib) a ich zdedené blank triedy (BC/App).</li>
+                       <li>Dorobiť validačné pravidlá pre existujúce modely.</li>
+                       <li>Vytvoriť prvé Unit testy.</li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+          </div>
+          
+          <hr>
+          
+          <!-- session 08 -->
+          <div class="row" id="session08">
+            <div class="span12">
+               <h2>Session 8</h2>
+               <div class="row">
+                  <div class="span8">
+                     <h3>Overview</h3>
+                  </div>
+                  <div class="span2">
+                     <h3>DONElist</h3>
+                  </div>
+                  <div class="span2">
+                     <h3>TODOlist</h3>
+                  </div>
+               </div>
+            </div>
+          </div>
+         
+          <hr>
+           
+          <!-- session 07 -->
+          <div class="row" id="session07">
+            <div class="span12">
+               <h2>Session 7</h2>
+               <div class="row">
+                  <div class="span8">
+                     <h3>Overview</h3>
+                  </div>
+                  <div class="span2">
+                     <h3>DONElist</h3>
+                  </div>
+                  <div class="span2">
+                     <h3>TODOlist</h3>
+                  </div>
+               </div>
+            </div>
+          </div>
+          
+          <hr>
+          
+          <!-- session 06 -->
+          <div class="row" id="session06">
+            <div class="span12">
+               <h2>Session 6</h2>
+               <div class="row">
+                  <div class="span8">
+                     <h3>Overview</h3>
+                  </div>
+                  <div class="span2">
+                     <h3>DONElist</h3>
+                  </div>
+                  <div class="span2">
+                     <h3>TODOlist</h3>
+                  </div>
+               </div>
+            </div>
+          </div>
+          
+          <hr>
+          
+          <!-- session 05 -->
+          <div class="row" id="session05">
+            <div class="span12">
+               <h2>Session 5</h2>
+               <div class="row">
+                  <div class="span8">
+                     <h3>Overview</h3>
+                  </div>
+                  <div class="span2">
+                     <h3>DONElist</h3>
+                  </div>
+                  <div class="span2">
+                     <h3>TODOlist</h3>
+                  </div>
+               </div>
+            </div>
+          </div>
+          
+          <hr>
+          
+          <!-- session 04 -->
+          <div class="row" id="session04">
+            <div class="span12">
+               <h2>Session 4</h2>
+               <div class="row">
+                  <div class="span8">
+                     <h3>Overview</h3>
+                  </div>
+                  <div class="span2">
+                     <h3>DONElist</h3>
+                  </div>
+                  <div class="span2">
+                     <h3>TODOlist</h3>
+                  </div>
+               </div>
+            </div>
+          </div>
+          
+          <hr>
+          
+          <!-- session 03 -->
+          <div class="row" id="session03">
+            <div class="span12">
+               <h2>Session 3</h2>
+               <div class="row">
+                  <div class="span8">
+                     <h3>Overview</h3>
+                  </div>
+                  <div class="span2">
+                     <h3>DONElist</h3>
+                  </div>
+                  <div class="span2">
+                     <h3>TODOlist</h3>
+                  </div>
+               </div>
+            </div>
+          </div>
+          
+          <hr>
+          
+          <!-- session 02 -->
+          <div class="row" id="session02">
+            <div class="span12">
+               <h2>Session 2</h2>
+               <div class="row">
+                  <div class="span8">
+                     <h3>Overview</h3>
+                  </div>
+                  <div class="span2">
+                     <h3>DONElist</h3>
+                  </div>
+                  <div class="span2">
+                     <h3>TODOlist</h3>
+                  </div>
+               </div>
+            </div>
+          </div>
+          
+          <hr>
+          
+          <!-- session 01 -->
+          <div class="row" id="session01">
+            <div class="span12">
+               <h2>Session 1</h2>
+               <div class="row">
+                  <div class="span8">
+                     <h3>Overview</h3>
+                  </div>
+                  <div class="span2">
+                     <h3>DONElist</h3>
+                  </div>
+                  <div class="span2">
+                     <h3>TODOlist</h3>
+                  </div>
+               </div>
+            </div>
+          </div>
+            
+       </div>
+      </div>
+      
+      
+
+      <hr>
+
+      <footer>
+        <p>2012 Marek Drnzik | Powered by Twitter Bootstrap</p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../assets/js/jquery.js"></script>
+    <script src="../assets/js/bootstrap-transition.js"></script>
+    <script src="../assets/js/bootstrap-alert.js"></script>
+    <script src="../assets/js/bootstrap-modal.js"></script>
+    <script src="../assets/js/bootstrap-dropdown.js"></script>
+    <script src="../assets/js/bootstrap-scrollspy.js"></script>
+    <script src="../assets/js/bootstrap-tab.js"></script>
+    <script src="../assets/js/bootstrap-tooltip.js"></script>
+    <script src="../assets/js/bootstrap-popover.js"></script>
+    <script src="../assets/js/bootstrap-button.js"></script>
+    <script src="../assets/js/bootstrap-collapse.js"></script>
+    <script src="../assets/js/bootstrap-carousel.js"></script>
+    <script src="../assets/js/bootstrap-typeahead.js"></script>
+
+  </body>
+</html>

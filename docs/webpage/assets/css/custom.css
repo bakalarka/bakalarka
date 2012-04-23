@@ -1,0 +1,66 @@
+/* Custom CSS for Bachelor thesis by Marek Drnzik
+-------------------------------------------------- */
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+footer {
+  text-align: center;
+}
+.show-grid1 {
+    background-color: #EEEEEE;
+    border-radius: 3px 3px 3px 3px;
+    /*min-height: 30px;*/
+}
+table th, table td {
+    border-bottom: 1px solid #DDDDDD;
+    line-height: 13.5px;
+    padding: 10px 10px 9px;
+    text-align: left;
+    vertical-align: middle;
+}
+table th {
+    border-bottom-width: 2px;
+    font-weight: bold;
+    padding-top: 9px;
+}
+.zebra-striped tbody tr:nth-child(2n+1) td {
+    background-color: #F9F9F9;
+}
+.zebra-striped tbody tr:hover td {
+    background-color: #F5F5F5;
+}
+.zebra-striped .header {
+    cursor: pointer;
+}
+.zebra-striped .header:after {
+    border-color: #000000 transparent;
+    border-style: solid;
+    border-width: 0 4px 4px;
+    content: "";
+    float: right;
+    margin-top: 7px;
+    visibility: hidden;
+}
+.zebra-striped .headerSortUp, .zebra-striped .headerSortDown {
+    background-color: rgba(141, 192, 219, 0.25);
+    border-radius: 3px 3px 0 0;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+}
+.zebra-striped .header:hover:after {
+    visibility: visible;
+}
+.zebra-striped .headerSortDown:after, .zebra-striped .headerSortDown:hover:after {
+    opacity: 0.6;
+    visibility: visible;
+}
+.zebra-striped .headerSortUp:after {
+    border-color: #000000 transparent -moz-use-text-color;
+    border-style: solid solid none;
+    border-width: 4px 4px medium;
+    box-shadow: none;
+    opacity: 0.6;
+    visibility: visible;
+}
+.sessions h2, ul.sessions {padding-top: 40px;}
+.sessions p {line-height: 1.5em; padding: 0 10px; text-align: justify;}
