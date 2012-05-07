@@ -8,7 +8,7 @@ class BcProductsController extends AppController {
 	
 	function beforeFilter() {
 	    parent::beforeFilter();
-	    $this->Auth->allow('*');
+	    $this->Auth->allow('index', 'detail');
 	}
 	
 	/** frontend **/

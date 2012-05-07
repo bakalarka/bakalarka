@@ -33,12 +33,35 @@ App::uses('Controller', 'Controller');
  * @link http://book.cakephp.org/view/957/The-App-Controller
  */
 class BcAppController extends Controller {
-   	var $components = array('Acl', 'Session', 'Auth', 'Email', 'Product');
+   	
+	var $components = array(
+   		'Acl', 
+   		'Auth',
+        'Session', 
+        'Auth', 
+        'Email', 
+        'Product'
+ 	);
+ 	
    	var $helpers = array('Html', 'Session', 'Form');
    	
-    function beforeFilter() {
-        
+	public function beforeFilter() {
+        //Configure AuthComponent
+        $this->Auth->authorize = array(
+	        'Controller',
+	        'Actions' => array('actionPath' => 'controllers')
+	    );
+        $this->Auth->loginAction = array('controller' => 'users', 'action' => 'index');
+        $this->Auth->logoutRedirect = array('controller' => 'users', 'action' => 'index');
+        $this->Auth->loginRedirect = array('controller' => 'users', 'action' => 'index');
     }
+    
+	function isAuthorized($user) {
+    
+		//return true;
+		// return false;
+    	return $this->Auth->loggedIn();
+	}
    	
 }
 ?>

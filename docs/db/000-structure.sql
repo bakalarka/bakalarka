@@ -1,6 +1,6 @@
 /*
 SQLyog Community v9.60 
-MySQL - 5.5.20-log : Database - bc_dev
+MySQL - 5.5.20-log : Database - bc_01_dev
 *********************************************************************
 */
 
@@ -12,7 +12,20 @@ MySQL - 5.5.20-log : Database - bc_dev
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`bc_dev` /*!40100 DEFAULT CHARACTER SET utf8 */;
+/*Table structure for table `acos` */
+
+DROP TABLE IF EXISTS `acos`;
+
+CREATE TABLE `acos` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `parent_id` int(10) DEFAULT NULL,
+  `model` varchar(255) DEFAULT '',
+  `foreign_key` int(10) unsigned DEFAULT NULL,
+  `alias` varchar(255) DEFAULT '',
+  `lft` int(10) DEFAULT NULL,
+  `rght` int(10) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=96 DEFAULT CHARSET=utf8;
 
 /*Table structure for table `address_types` */
 
@@ -42,6 +55,36 @@ CREATE TABLE `addresses` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+/*Table structure for table `aros` */
+
+DROP TABLE IF EXISTS `aros`;
+
+CREATE TABLE `aros` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `parent_id` int(10) DEFAULT NULL,
+  `model` varchar(255) DEFAULT '',
+  `foreign_key` int(10) unsigned DEFAULT NULL,
+  `alias` varchar(255) DEFAULT '',
+  `lft` int(10) DEFAULT NULL,
+  `rght` int(10) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+/*Table structure for table `aros_acos` */
+
+DROP TABLE IF EXISTS `aros_acos`;
+
+CREATE TABLE `aros_acos` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `aro_id` int(10) unsigned NOT NULL,
+  `aco_id` int(10) unsigned NOT NULL,
+  `_create` char(2) NOT NULL DEFAULT '0',
+  `_read` char(2) NOT NULL DEFAULT '0',
+  `_update` char(2) NOT NULL DEFAULT '0',
+  `_delete` char(2) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=476 DEFAULT CHARSET=utf8;
+
 /*Table structure for table `attribute_product_types` */
 
 DROP TABLE IF EXISTS `attribute_product_types`;
@@ -68,8 +111,8 @@ CREATE TABLE `attribute_products` (
   PRIMARY KEY (`id`),
   KEY `fk__attribute_products__products` (`product_id`),
   KEY `fk__attribute_products__attributes` (`attribute_id`),
-  CONSTRAINT `fk__attribute_products__products` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
-  CONSTRAINT `fk__attribute_products__attributes` FOREIGN KEY (`attribute_id`) REFERENCES `attributes` (`id`)
+  CONSTRAINT `fk__attribute_products__attributes` FOREIGN KEY (`attribute_id`) REFERENCES `attributes` (`id`),
+  CONSTRAINT `fk__attribute_products__products` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `attributes` */
@@ -117,9 +160,9 @@ CREATE TABLE `categories` (
   KEY `fk__categories__categories` (`parent_id`),
   KEY `fk__categories__product_types` (`product_type_id`),
   KEY `fk__categories__slugs` (`slug_id`),
-  CONSTRAINT `fk__categories__slugs` FOREIGN KEY (`slug_id`) REFERENCES `slugs` (`id`),
   CONSTRAINT `fk__categories__categories` FOREIGN KEY (`parent_id`) REFERENCES `categories` (`id`),
   CONSTRAINT `fk__categories__product_types` FOREIGN KEY (`product_type_id`) REFERENCES `products` (`id`),
+  CONSTRAINT `fk__categories__slugs` FOREIGN KEY (`slug_id`) REFERENCES `slugs` (`id`),
   CONSTRAINT `fk__categories__texts` FOREIGN KEY (`name_id`) REFERENCES `texts` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -193,18 +236,7 @@ CREATE TABLE `groups` (
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-/*Table structure for table `groups_users` */
-
-DROP TABLE IF EXISTS `groups_users`;
-
-CREATE TABLE `groups_users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `group_id` int(11) DEFAULT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 /*Table structure for table `image_galleries` */
 
@@ -283,8 +315,8 @@ CREATE TABLE `invoices` (
   PRIMARY KEY (`id`),
   KEY `fk__invoices__provider_address` (`provider_address_id`),
   KEY `fk__invoices__customer_address` (`customer_address_id`),
-  CONSTRAINT `fk__invoices__provider_address` FOREIGN KEY (`provider_address_id`) REFERENCES `addresses` (`id`),
-  CONSTRAINT `fk__invoices__customer_address` FOREIGN KEY (`customer_address_id`) REFERENCES `addresses` (`id`)
+  CONSTRAINT `fk__invoices__customer_address` FOREIGN KEY (`customer_address_id`) REFERENCES `addresses` (`id`),
+  CONSTRAINT `fk__invoices__provider_address` FOREIGN KEY (`provider_address_id`) REFERENCES `addresses` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `languages` */
@@ -318,8 +350,8 @@ CREATE TABLE `order_items` (
   PRIMARY KEY (`id`),
   KEY `fk__order_items__orders` (`order_id`),
   KEY `fk__order_items__product_records` (`product_record_id`),
-  CONSTRAINT `fk__order_items__product_records` FOREIGN KEY (`product_record_id`) REFERENCES `product_records` (`id`),
-  CONSTRAINT `fk__order_items__orders` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`)
+  CONSTRAINT `fk__order_items__orders` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`),
+  CONSTRAINT `fk__order_items__product_records` FOREIGN KEY (`product_record_id`) REFERENCES `product_records` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `order_states` */
@@ -362,10 +394,10 @@ CREATE TABLE `orders` (
   KEY `fk__orders__billing_addresses` (`billing_address_id`),
   KEY `fk__orders__shipping_addresses` (`shipping_address_id`),
   KEY `fk__orders__currencies` (`currency_id`),
-  CONSTRAINT `fk__orders__currencies` FOREIGN KEY (`currency_id`) REFERENCES `currencies` (`id`),
   CONSTRAINT `fk__orders__billing_addresses` FOREIGN KEY (`billing_address_id`) REFERENCES `addresses` (`id`),
   CONSTRAINT `fk__orders__billing_methods` FOREIGN KEY (`billing_method_id`) REFERENCES `billings_methods` (`id`),
   CONSTRAINT `fk__orders__companies` FOREIGN KEY (`company_id`) REFERENCES `companies` (`id`),
+  CONSTRAINT `fk__orders__currencies` FOREIGN KEY (`currency_id`) REFERENCES `currencies` (`id`),
   CONSTRAINT `fk__orders__invoices` FOREIGN KEY (`invoice_id`) REFERENCES `invoices` (`id`),
   CONSTRAINT `fk__orders__order_states` FOREIGN KEY (`order_state`) REFERENCES `order_states` (`id`),
   CONSTRAINT `fk__orders__shipping_addresses` FOREIGN KEY (`shipping_address_id`) REFERENCES `addresses` (`id`),
@@ -387,8 +419,8 @@ CREATE TABLE `price_values` (
   PRIMARY KEY (`id`),
   KEY `fk__price_values__currencies` (`currency_id`),
   KEY `fk__price_values__prices` (`price_id`),
-  CONSTRAINT `fk__price_values__prices` FOREIGN KEY (`price_id`) REFERENCES `prices` (`id`),
-  CONSTRAINT `fk__price_values__currencies` FOREIGN KEY (`currency_id`) REFERENCES `currencies` (`id`)
+  CONSTRAINT `fk__price_values__currencies` FOREIGN KEY (`currency_id`) REFERENCES `currencies` (`id`),
+  CONSTRAINT `fk__price_values__prices` FOREIGN KEY (`price_id`) REFERENCES `prices` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `prices` */
@@ -431,13 +463,13 @@ CREATE TABLE `product_records` (
   KEY `fk__product_records__short_description` (`short_description_id`),
   KEY `fk__product_records__description` (`description_id`),
   KEY `fk__product_records__prices` (`price_id`),
+  CONSTRAINT `fk__product_records__description` FOREIGN KEY (`description_id`) REFERENCES `texts` (`id`),
+  CONSTRAINT `fk__product_records__prices` FOREIGN KEY (`price_id`) REFERENCES `prices` (`id`),
   CONSTRAINT `fk__product_records__products` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
   CONSTRAINT `fk__product_records__prodyct_types` FOREIGN KEY (`product_type_id`) REFERENCES `product_types` (`id`),
-  CONSTRAINT `fk__product_records__texts` FOREIGN KEY (`name_id`) REFERENCES `texts` (`id`),
-  CONSTRAINT `fk__product_records__slugs` FOREIGN KEY (`slug_id`) REFERENCES `slugs` (`id`),
   CONSTRAINT `fk__product_records__short_description` FOREIGN KEY (`short_description_id`) REFERENCES `texts` (`id`),
-  CONSTRAINT `fk__product_records__description` FOREIGN KEY (`description_id`) REFERENCES `texts` (`id`),
-  CONSTRAINT `fk__product_records__prices` FOREIGN KEY (`price_id`) REFERENCES `prices` (`id`)
+  CONSTRAINT `fk__product_records__slugs` FOREIGN KEY (`slug_id`) REFERENCES `slugs` (`id`),
+  CONSTRAINT `fk__product_records__texts` FOREIGN KEY (`name_id`) REFERENCES `texts` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `product_tags` */
@@ -468,8 +500,8 @@ CREATE TABLE `product_types` (
   PRIMARY KEY (`id`),
   KEY `fk__product_types__texts` (`name_id`),
   KEY `fk__product_types__product_types` (`parent_id`),
-  CONSTRAINT `fk__product_types__texts` FOREIGN KEY (`name_id`) REFERENCES `texts` (`id`),
-  CONSTRAINT `fk__product_types__product_types` FOREIGN KEY (`parent_id`) REFERENCES `product_types` (`id`)
+  CONSTRAINT `fk__product_types__product_types` FOREIGN KEY (`parent_id`) REFERENCES `product_types` (`id`),
+  CONSTRAINT `fk__product_types__texts` FOREIGN KEY (`name_id`) REFERENCES `texts` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `products` */
@@ -519,8 +551,8 @@ CREATE TABLE `relations` (
   KEY `fk__relations__related_to` (`related_to_id`),
   KEY `fk__relations__ralation_types` (`relation_id`),
   CONSTRAINT `fk__relations__products` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
-  CONSTRAINT `fk__relations__related_to` FOREIGN KEY (`related_to_id`) REFERENCES `products` (`id`),
-  CONSTRAINT `fk__relations__ralation_types` FOREIGN KEY (`relation_id`) REFERENCES `relation_types` (`id`)
+  CONSTRAINT `fk__relations__ralation_types` FOREIGN KEY (`relation_id`) REFERENCES `relation_types` (`id`),
+  CONSTRAINT `fk__relations__related_to` FOREIGN KEY (`related_to_id`) REFERENCES `products` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `report_types` */
@@ -598,8 +630,8 @@ CREATE TABLE `shipping_methods` (
   PRIMARY KEY (`id`),
   KEY `fk__shipping_methods__texts` (`name_id`),
   KEY `fk__shipping_methods__prices` (`price_id`),
-  CONSTRAINT `fk__shipping_methods__texts` FOREIGN KEY (`name_id`) REFERENCES `texts` (`id`),
-  CONSTRAINT `fk__shipping_methods__prices` FOREIGN KEY (`price_id`) REFERENCES `prices` (`id`)
+  CONSTRAINT `fk__shipping_methods__prices` FOREIGN KEY (`price_id`) REFERENCES `prices` (`id`),
+  CONSTRAINT `fk__shipping_methods__texts` FOREIGN KEY (`name_id`) REFERENCES `texts` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `slug_records` */
@@ -700,6 +732,7 @@ CREATE TABLE `users` (
   `username` varchar(50) DEFAULT NULL,
   `password` varchar(50) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
+  `group_id` int(11) DEFAULT NULL,
   `name` varchar(50) DEFAULT NULL,
   `surname` varchar(50) DEFAULT NULL,
   `phone` varchar(20) DEFAULT NULL,
@@ -709,7 +742,9 @@ CREATE TABLE `users` (
   `registration_code` varchar(50) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `fk__users__groups` (`group_id`),
+  CONSTRAINT `fk__users__groups` FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;

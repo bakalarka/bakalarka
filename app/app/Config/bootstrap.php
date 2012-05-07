@@ -102,3 +102,5 @@ App::build(array(
  * CakePlugin::load('DebugKit'); //Loads a single plugin named DebugKit
  *
  */
+
+CakePlugin::load('AclManager', array('bootstrap' => true));

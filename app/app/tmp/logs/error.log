@@ -22,3 +22,102 @@
 #14 C:\wamp\www\bc\bakalarka\app\lib\Cake\Routing\Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
 #15 C:\wamp\www\bc\bakalarka\app\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #16 {main}
+2012-05-06 22:04:28 Error: [MissingComponentException] Component class ProductComponent could not be found.
+#0 C:\wamp\www\bc_01\app\lib\Cake\Controller\ComponentCollection.php(52): ComponentCollection->load('Product', Array)
+#1 C:\wamp\www\bc_01\app\lib\Cake\Controller\Controller.php(635): ComponentCollection->init(Object(UsersController))
+#2 C:\wamp\www\bc_01\app\lib\Cake\Routing\Dispatcher.php(99): Controller->constructClasses()
+#3 C:\wamp\www\bc_01\app\lib\Cake\Routing\Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#4 C:\wamp\www\bc_01\app\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-05-06 22:05:14 Error: [MissingComponentException] Component class ProductComponent could not be found.
+#0 C:\wamp\www\bc_01\app\lib\Cake\Controller\ComponentCollection.php(52): ComponentCollection->load('Product', Array)
+#1 C:\wamp\www\bc_01\app\lib\Cake\Controller\Controller.php(635): ComponentCollection->init(Object(UsersController))
+#2 C:\wamp\www\bc_01\app\lib\Cake\Routing\Dispatcher.php(99): Controller->constructClasses()
+#3 C:\wamp\www\bc_01\app\lib\Cake\Routing\Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#4 C:\wamp\www\bc_01\app\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-05-06 22:06:03 Error: [MissingViewException] View file "C:\wamp\www\bc_01\app\app\View\Users\login.ctp" is missing.
+#0 C:\wamp\www\bc_01\app\lib\Cake\View\View.php(460): View->_getViewFileName(NULL)
+#1 C:\wamp\www\bc_01\app\lib\Cake\Controller\Controller.php(959): View->render(NULL, NULL)
+#2 C:\wamp\www\bc_01\app\lib\Cake\Routing\Dispatcher.php(110): Controller->render()
+#3 C:\wamp\www\bc_01\app\lib\Cake\Routing\Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#4 C:\wamp\www\bc_01\app\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-05-07 00:07:44 Error: [MissingViewException] View file "C:\wamp\www\bc_01\app\app\View\Products\index.ctp" is missing.
+#0 C:\wamp\www\bc_01\app\lib\Cake\View\View.php(460): View->_getViewFileName(NULL)
+#1 C:\wamp\www\bc_01\app\lib\Cake\Controller\Controller.php(959): View->render(NULL, NULL)
+#2 C:\wamp\www\bc_01\app\lib\Cake\Routing\Dispatcher.php(110): Controller->render()
+#3 C:\wamp\www\bc_01\app\lib\Cake\Routing\Dispatcher.php(85): Dispatcher->_invoke(Object(ProductsController), Object(CakeRequest), Object(CakeResponse))
+#4 C:\wamp\www\bc_01\app\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-05-07 00:18:35 Error: [MissingViewException] View file "C:\wamp\www\bc_01\app\app\View\Products\index.ctp" is missing.
+#0 C:\wamp\www\bc_01\app\lib\Cake\View\View.php(460): View->_getViewFileName(NULL)
+#1 C:\wamp\www\bc_01\app\lib\Cake\Controller\Controller.php(959): View->render(NULL, NULL)
+#2 C:\wamp\www\bc_01\app\lib\Cake\Routing\Dispatcher.php(110): Controller->render()
+#3 C:\wamp\www\bc_01\app\lib\Cake\Routing\Dispatcher.php(85): Dispatcher->_invoke(Object(ProductsController), Object(CakeRequest), Object(CakeResponse))
+#4 C:\wamp\www\bc_01\app\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-05-07 00:20:22 Error: [MissingViewException] View file "C:\wamp\www\bc_01\app\app\View\Users\login.ctp" is missing.
+#0 C:\wamp\www\bc_01\app\lib\Cake\View\View.php(460): View->_getViewFileName(NULL)
+#1 C:\wamp\www\bc_01\app\lib\Cake\Controller\Controller.php(959): View->render(NULL, NULL)
+#2 C:\wamp\www\bc_01\app\lib\Cake\Routing\Dispatcher.php(110): Controller->render()
+#3 C:\wamp\www\bc_01\app\lib\Cake\Routing\Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#4 C:\wamp\www\bc_01\app\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-05-07 00:20:29 Error: [MissingViewException] View file "C:\wamp\www\bc_01\app\app\View\Users\login.ctp" is missing.
+#0 C:\wamp\www\bc_01\app\lib\Cake\View\View.php(460): View->_getViewFileName(NULL)
+#1 C:\wamp\www\bc_01\app\lib\Cake\Controller\Controller.php(959): View->render(NULL, NULL)
+#2 C:\wamp\www\bc_01\app\lib\Cake\Routing\Dispatcher.php(110): Controller->render()
+#3 C:\wamp\www\bc_01\app\lib\Cake\Routing\Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#4 C:\wamp\www\bc_01\app\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-05-07 00:25:03 Error: [MissingTableException] Table aros_acos for model Permission was not found in datasource default.
+#0 C:\wamp\www\bc_01\app\lib\Cake\Model\Model.php(3408): Model->setSource('aros_acos')
+#1 C:\wamp\www\bc_01\app\lib\Cake\Model\Model.php(1276): Model->getDataSource()
+#2 C:\wamp\www\bc_01\app\lib\Cake\Model\Model.php(838): Model->schema()
+#3 C:\wamp\www\bc_01\app\lib\Cake\Model\Model.php(863): Model->__isset('Permission')
+#4 C:\wamp\www\bc_01\app\app\Plugin\AclManager\Controller\AclController.php(483): Model->__get('Permission')
+#5 C:\wamp\www\bc_01\app\app\Plugin\AclManager\Controller\AclController.php(111): AclController->_getKeys()
+#6 [internal function]: AclController->permissions()
+#7 C:\wamp\www\bc_01\app\lib\Cake\Controller\Controller.php(485): ReflectionMethod->invokeArgs(Object(AclController), Array)
+#8 C:\wamp\www\bc_01\app\lib\Cake\Routing\Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#9 C:\wamp\www\bc_01\app\lib\Cake\Routing\Dispatcher.php(85): Dispatcher->_invoke(Object(AclController), Object(CakeRequest), Object(CakeResponse))
+#10 C:\wamp\www\bc_01\app\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2012-05-07 00:28:28 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Address.Address.user_id' in 'field list'
+#0 C:\wamp\www\bc_01\app\lib\Cake\Model\Datasource\DboSource.php(437): PDOStatement->execute(Array)
+#1 C:\wamp\www\bc_01\app\lib\Cake\Model\Datasource\DboSource.php(403): DboSource->_execute('SELECT `Address...', Array)
+#2 C:\wamp\www\bc_01\app\lib\Cake\Model\Datasource\DboSource.php(647): DboSource->execute('SELECT `Address...', Array, Array)
+#3 C:\wamp\www\bc_01\app\lib\Cake\Model\Datasource\DboSource.php(1300): DboSource->fetchAll('SELECT `Address...', false)
+#4 C:\wamp\www\bc_01\app\lib\Cake\Model\Datasource\DboSource.php(1169): DboSource->fetchAssociated(Object(User), 'SELECT `Address...', Array)
+#5 C:\wamp\www\bc_01\app\lib\Cake\Model\Datasource\DboSource.php(1087): DboSource->queryAssociation(Object(User), Object(Address), 'hasMany', 'Address', Array, Array, true, Array, 0, Array)
+#6 C:\wamp\www\bc_01\app\lib\Cake\Model\Model.php(2663): DboSource->read(Object(User), Array)
+#7 C:\wamp\www\bc_01\app\app\Plugin\AclManager\Controller\AclController.php(273): Model->find('all')
+#8 [internal function]: AclController->update_aros()
+#9 C:\wamp\www\bc_01\app\lib\Cake\Controller\Controller.php(485): ReflectionMethod->invokeArgs(Object(AclController), Array)
+#10 C:\wamp\www\bc_01\app\lib\Cake\Routing\Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#11 C:\wamp\www\bc_01\app\lib\Cake\Routing\Dispatcher.php(85): Dispatcher->_invoke(Object(AclController), Object(CakeRequest), Object(CakeResponse))
+#12 C:\wamp\www\bc_01\app\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2012-05-07 00:30:43 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Address.Address.user_id' in 'field list'
+#0 C:\wamp\www\bc_01\app\lib\Cake\Model\Datasource\DboSource.php(437): PDOStatement->execute(Array)
+#1 C:\wamp\www\bc_01\app\lib\Cake\Model\Datasource\DboSource.php(403): DboSource->_execute('SELECT `Address...', Array)
+#2 C:\wamp\www\bc_01\app\lib\Cake\Model\Datasource\DboSource.php(647): DboSource->execute('SELECT `Address...', Array, Array)
+#3 C:\wamp\www\bc_01\app\lib\Cake\Model\Datasource\DboSource.php(1300): DboSource->fetchAll('SELECT `Address...', false)
+#4 C:\wamp\www\bc_01\app\lib\Cake\Model\Datasource\DboSource.php(1169): DboSource->fetchAssociated(Object(User), 'SELECT `Address...', Array)
+#5 C:\wamp\www\bc_01\app\lib\Cake\Model\Datasource\DboSource.php(1087): DboSource->queryAssociation(Object(User), Object(Address), 'hasMany', 'Address', Array, Array, true, Array, 0, Array)
+#6 C:\wamp\www\bc_01\app\lib\Cake\Model\Model.php(2663): DboSource->read(Object(User), Array)
+#7 C:\wamp\www\bc_01\app\app\Plugin\AclManager\Controller\AclController.php(273): Model->find('all')
+#8 [internal function]: AclController->update_aros()
+#9 C:\wamp\www\bc_01\app\lib\Cake\Controller\Controller.php(485): ReflectionMethod->invokeArgs(Object(AclController), Array)
+#10 C:\wamp\www\bc_01\app\lib\Cake\Routing\Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#11 C:\wamp\www\bc_01\app\lib\Cake\Routing\Dispatcher.php(85): Dispatcher->_invoke(Object(AclController), Object(CakeRequest), Object(CakeResponse))
+#12 C:\wamp\www\bc_01\app\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2012-05-07 01:21:39 Error: [MissingViewException] View file "C:\wamp\www\bc_01\app\app\View\Categories\index.ctp" is missing.
+#0 C:\wamp\www\bc_01\app\lib\Cake\View\View.php(460): View->_getViewFileName(NULL)
+#1 C:\wamp\www\bc_01\app\lib\Cake\Controller\Controller.php(959): View->render(NULL, NULL)
+#2 C:\wamp\www\bc_01\app\lib\Cake\Routing\Dispatcher.php(110): Controller->render()
+#3 C:\wamp\www\bc_01\app\lib\Cake\Routing\Dispatcher.php(85): Dispatcher->_invoke(Object(CategoriesController), Object(CakeRequest), Object(CakeResponse))
+#4 C:\wamp\www\bc_01\app\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}

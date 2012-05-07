@@ -8,10 +8,10 @@ class BcUsersController extends AppController {
 	
 	function beforeFilter() {
 	    parent::beforeFilter();
-	    $this->Auth->allow('*');
-		$this->Auth->authorize = 'actions';  
+	    $this->Auth->allow('index', 'login', 'logout', 'registration', 'confirm_registration', 'request_new_password');
 	}
 
+	//dashboard?
 	function index() {
 		//		
 	}

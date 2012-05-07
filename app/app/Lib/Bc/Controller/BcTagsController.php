@@ -8,7 +8,6 @@ class BcTagsController extends AppController {
 
 	function beforeFilter() {
 	    parent::beforeFilter();
-	    $this->Auth->allow('*');
 	}
 	
 	/** backend **/

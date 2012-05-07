@@ -8,11 +8,10 @@ class BcCategoriesController extends AppController {
 	
 	function beforeFilter() {
 	    parent::beforeFilter();
-	    $this->Auth->allow('*');
 	}
 	
 	/** frontend **/
-	//disable
+	//TODO disable
 	function index() {
 		//
 	}
