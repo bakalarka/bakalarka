@@ -8,7 +8,7 @@ class BcOrdersController extends AppController {
 	
 	function beforeFilter() {
 	    parent::beforeFilter();
-	    $this->Auth->allow('*');
+	    $this->Auth->allow('checkout', 'billing_shipping_method', 'billing_shipping_address', 'place_order');
 	}
 	
 	/** frontend **/
