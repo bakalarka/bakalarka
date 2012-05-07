@@ -50,20 +50,20 @@ Cache::config('default', array('engine' => 'File'));
  */
 App::build(array(
     //'Plugin' => array('/full/path/to/plugins/', '/next/full/path/to/plugins/'),
-    'Bc/Model' =>  array(APP.'Bc'.DS.'Lib'.DS.'Model'.DS),
-    'Bc/View' => array(APP.'Bc'.DS.'Lib'.DS.'View'.DS),
-    'Bc/Controller' => array(APP.'Bc'.DS.'Lib'.DS.'Controller'.DS),
-    'Bc/Model/Datasource' => array(APP.'Bc'.DS.'Lib'.DS.'Model'.DS.'Datasource'.DS),
-    'Bc/Model/Behavior' => array(APP.'Bc'.DS.'Lib'.DS.'Model'.DS.'Behavior'.DS),
-    'Bc/Controller/Component' => array(APP.'Bc'.DS.'Lib'.DS.'Controller'.DS.'Component'.DS),
-    'Bc/View/Helper' => array(APP.'Bc'.DS.'Lib'.DS.'View'.DS.'Helper'.DS),
+    'Bc/Model' =>  array(APP.'Lib'.DS.'Bc'.DS.'Model'.DS),
+    'Bc/View' => array(APP.'Lib'.DS.'Bc'.DS.'View'.DS),
+    'Bc/Controller' => array(APP.'Lib'.DS.'Bc'.DS.'Controller'.DS),
+    'Bc/Model/Datasource' => array(APP.'Lib'.DS.'Bc'.DS.'Model'.DS.'Datasource'.DS),
+    'Bc/Model/Behavior' => array(APP.'Lib'.DS.'Bc'.DS.'Model'.DS.'Behavior'.DS),
+    'Bc/Controller/Component' => array(APP.'Lib'.DS.'Bc'.DS.'Controller'.DS.'Component'.DS),
+    'Bc/View/Helper' => array(APP.'Lib'.DS.'Bc'.DS.'View'.DS.'Helper'.DS),
     ),
     App::REGISTER
 );
 
 /**
  * Add new 'backup' paths for most packages
- */
+
 App::build(array(
     //'Plugin' => array('/full/path/to/plugins/', '/next/full/path/to/plugins/'),
     'Model' =>  array(APP.'Model'.DS, APP.'Bc'.DS.'App'.DS.'Model'.DS),
@@ -79,6 +79,7 @@ App::build(array(
     ),
     App::PREPEND
 );
+ */
 
 //debug(App::paths());
 
