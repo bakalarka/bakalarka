@@ -25,7 +25,7 @@ CREATE TABLE `acos` (
   `lft` int(10) DEFAULT NULL,
   `rght` int(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=96 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=121 DEFAULT CHARSET=utf8;
 
 /*Table structure for table `address_types` */
 
@@ -83,7 +83,7 @@ CREATE TABLE `aros_acos` (
   `_update` char(2) NOT NULL DEFAULT '0',
   `_delete` char(2) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=476 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=601 DEFAULT CHARSET=utf8;
 
 /*Table structure for table `attribute_product_types` */
 
@@ -328,6 +328,8 @@ CREATE TABLE `languages` (
   `name_id` int(11) DEFAULT NULL,
   `active` tinyint(4) DEFAULT NULL,
   `on_page` tinyint(4) DEFAULT NULL,
+  `locale` varchar(10) DEFAULT NULL,
+  `abbreviation` varchar(10) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
