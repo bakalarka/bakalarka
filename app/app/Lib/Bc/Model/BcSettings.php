@@ -18,10 +18,6 @@ class BcSettings extends AppModel {
 			'className'		=> 'SettingsType',
 			'foreignKey'	=> 'settings_type_id'
 		),
-		'Name' => array(
-			'className'		=> 'Text',
-			'foreignKey'	=> 'name_id'
-		),
 		'EditedBy' => array(
 			'className'		=> 'User',
 			'foreignKey'	=> 'edited_by_id'

@@ -3,6 +3,15 @@ class BcProductRecord extends AppModel {
 	var $name = 'BcProductRecord';
 	var $table = 'product_records';
 	
+	public $actsAs = array(
+		'Containable', 
+		'Translate' => array(
+			'name' => 'nameTranslation',
+			'shot_desctiption' => 'shortDescriptionTranslation',
+			'desctiption' => 'descriptionTranslation'
+		),
+	);
+	
 	var $validation = array(
     	'sku' => array(
     		'skuRule-1' => array (
@@ -26,18 +35,6 @@ class BcProductRecord extends AppModel {
 		'ProductType' => array(
 			'className'		=> 'ProductType',
 			'foreignKey'	=> 'product_type_id'
-		),
-		'Name' => array(
-			'className'		=> 'Text',
-			'foreignKey'	=> 'name_id'
-		),
-		'ShortDescription' => array(
-			'className'		=> 'Text',
-			'foreignKey'	=> 'short_description_id'
-		),
-		'Description' => array(
-			'className'		=> 'Text',
-			'foreignKey'	=> 'description_id'
 		),
 		'Price' => array(
 			'className'		=> 'Price',

@@ -3,6 +3,13 @@ class BcAttribute extends AppModel {
 	var $name = 'BcAttribute';
 	var $table = 'attributes';
 	
+	public $actsAs = array(
+		'Containable', 
+		'Translate' => array(
+			'name' => 'nameTranslation'
+		),
+	);
+	
 	var $validation = array(
     	'units' => array(
     		'unitsRule-1' => array (
@@ -11,13 +18,6 @@ class BcAttribute extends AppModel {
     		),
     	)
     );
-	
-	var $belongsTo = array(
-		'Name' => array(
-			'className'		=> 'Text',
-			'foreignKey'	=> 'name_id'
-		)
-	);
 	
 	var $hasMany = array(
 		'AttributeProduct' => array(

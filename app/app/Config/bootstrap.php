@@ -63,23 +63,22 @@ App::build(array(
 
 /**
  * Add new 'backup' paths for most packages
-
+ */
 App::build(array(
     //'Plugin' => array('/full/path/to/plugins/', '/next/full/path/to/plugins/'),
-    'Model' =>  array(APP.'Model'.DS, APP.'Bc'.DS.'App'.DS.'Model'.DS),
-    'View' => array(APP.'View'.DS, APP.'Bc'.DS.'App'.DS.'View'.DS),
-    'Controller' => array(APP.'Controller'.DS, APP.'Bc'.DS.'App'.DS.'Controller'.DS),
-    'Model/Datasource' => array(APP.'Model'.DS.'Datasource'.DS, APP.'Bc'.DS.'App'.DS.'Model'.DS.'Datasource'.DS),
-    'Model/Behavior' => array(APP.'Model'.DS.'Behavior'.DS, APP.'Bc'.DS.'App'.DS.'Model'.DS.'Behavior'.DS),
-    'Controller/Component' => array(APP.'Controller'.DS.'Component'.DS, APP.'Bc'.DS.'App'.DS.'Controller'.DS.'Component'.DS),
-    'View/Helper' => array(APP.'View'.DS.'Helper'.DS, APP.'Bc'.DS.'App'.DS.'View'.DS.'Helper'.DS),
+    //'Model' =>  array(APP.'Model'.DS, APP.'Bc'.DS.'App'.DS.'Model'.DS),
+    'View' => array(APP.'View'.DS, APP.'Lib'.DS.'Bc'.DS.'View'.DS),
+    //'Controller' => array(APP.'Controller'.DS, APP.'Bc'.DS.'App'.DS.'Controller'.DS),
+    //'Model/Datasource' => array(APP.'Model'.DS.'Datasource'.DS, APP.'Bc'.DS.'App'.DS.'Model'.DS.'Datasource'.DS),
+    //'Model/Behavior' => array(APP.'Model'.DS.'Behavior'.DS, APP.'Bc'.DS.'App'.DS.'Model'.DS.'Behavior'.DS),
+    //'Controller/Component' => array(APP.'Controller'.DS.'Component'.DS, APP.'Bc'.DS.'App'.DS.'Controller'.DS.'Component'.DS),
+    //'View/Helper' => array(APP.'View'.DS.'Helper'.DS, APP.'Bc'.DS.'App'.DS.'View'.DS.'Helper'.DS),
 //    'Vendor' => array('/full/path/to/vendors/', '/next/full/path/to/vendors/'),
 //    'Console/Command' => array('/full/path/to/shells/', '/next/full/path/to/shells/'),
 //    'locales' => array('/full/path/to/locale/', '/next/full/path/to/locale/')
     ),
     App::PREPEND
 );
- */
 
 //debug(App::paths());
 
@@ -103,4 +102,12 @@ App::build(array(
  *
  */
 
+/**
+ * Load ACL manager
+ */
 CakePlugin::load('AclManager', array('bootstrap' => true));
+
+/**
+ * set default language
+ */
+Configure::write('Config.language', 'eng');

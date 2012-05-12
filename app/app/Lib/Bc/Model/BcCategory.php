@@ -3,6 +3,14 @@ class BcCategory extends AppModel {
 	var $name = 'BcCategory';
 	var $table = 'categories';
 	
+	public $actsAs = array(
+		'Containable', 
+		'Translate' => array(
+			'name' => 'nameTranslation',
+			'slug' => 'slugTranslation'
+		),
+	);
+	
 	var $validation = array(
     	'parent_id' => array(
 			'parentIdRule-1' => array (
@@ -21,14 +29,6 @@ class BcCategory extends AppModel {
 		'ProductType' => array(
 			'className'		=> 'ProductType',
 			'foreignKey'	=> 'product_type_id'
-		),
-		'Name' => array(
-			'className'		=> 'Text',
-			'foreignKey'	=> 'name_id'
-		),
-		'Slug'=> array(
-			'className'		=> 'Slug',
-			'foreignKey'	=> 'slug_id'
 		)
 	);
 	

@@ -54,6 +54,13 @@ class BcAppController extends Controller {
         $this->Auth->loginAction = array('controller' => 'users', 'action' => 'index');
         $this->Auth->logoutRedirect = array('controller' => 'users', 'action' => 'index');
         $this->Auth->loginRedirect = array('controller' => 'users', 'action' => 'index');
+        
+        //localization
+        if($this->Session->check('Config.language')) {
+            Configure::write('Config.language', $this->Session->read('Config.language'));
+        } else {
+            $this->Session->write('Config.language', Configure::read('Config.language'));
+        }  
     }
     
 	function isAuthorized($user) {

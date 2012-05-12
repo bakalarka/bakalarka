@@ -33,6 +33,8 @@ App::uses('Model', 'Model');
  */
 class BcAppModel extends Model {
 	
+	public $actsAs = array('Containable');
+	
 	//TODO - comment
 	function alphaNumericDashUnderscore($check) {
         

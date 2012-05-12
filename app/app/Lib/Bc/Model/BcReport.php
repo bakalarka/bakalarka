@@ -7,10 +7,6 @@ class BcReport extends AppModel {
 		'ReportType' => array(
 			'className'		=> 'ReportType',
 			'foreignKey'	=> 'report_type_id'
-		),
-		'Message' => array(
-			'className'		=> 'Text',
-			'foreignKey'	=> 'message_id'
 		)
 	);
 }

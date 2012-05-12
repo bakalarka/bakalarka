@@ -3,6 +3,13 @@ class BcTax extends AppModel {
 	var $name = 'BcTax';
 	var $table = 'taxes';
 	
+	public $actsAs = array(
+		'Containable', 
+		'Translate' => array(
+			'name' => 'nameTranslation',
+		),
+	);
+	
 	var $validation = array(
 		'value' => array(
 			'valueRule-1' => array(
@@ -11,13 +18,6 @@ class BcTax extends AppModel {
 			),
 			'required' => true
 		),
-	);
-	
-	var $belongsTo = array(
-		'Name' => array(
-			'className'		=> 'Text',
-			'foreignKey'	=> 'default_id'
-		)
 	);
 }
 ?>

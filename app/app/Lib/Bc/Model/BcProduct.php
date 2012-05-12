@@ -19,10 +19,6 @@ class BcProduct extends AppModel {
 	);
 	
 	var $belongsTo = array(
-		'Slug' => array(
-			'className'		=> 'Slug',
-			'foreignKey'	=> 'slug_id'
-		),
 		'Record' => array(
 			'className'		=> 'ProductRecord',
 			'foreignKey'	=> 'product_record_id'
