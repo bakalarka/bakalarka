@@ -33,7 +33,7 @@ DROP TABLE IF EXISTS `address_types`;
 
 CREATE TABLE `address_types` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name_id` int(11) DEFAULT NULL,
+  `name` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
