@@ -8,13 +8,13 @@ class BcProductShippingMethod extends AppModel {
 	);
 	
 	var $belongsTo = array(
-		'ProductRecord' => array(
-			'className'		=> 'ProductRecord',
-			'foreignKey'	=> 'product_record_id'
+		'Product' => array(
+			'className'		=> 'Product',
+			'foreignKey'	=> 'product_id'
 		),
 		'ShippingMethod' => array(
 			'className'		=> 'ShippingMethod',
-			'foreignKey'	=> 'shipment_method_id'
+			'foreignKey'	=> 'shipping_method_id'
 		)
 	);
 

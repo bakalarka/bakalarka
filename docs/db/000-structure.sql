@@ -35,7 +35,7 @@ CREATE TABLE `address_types` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 /*Table structure for table `addresses` */
 
@@ -50,6 +50,7 @@ CREATE TABLE `addresses` (
   `zip` varchar(10) DEFAULT NULL,
   `city` varchar(50) DEFAULT NULL,
   `country_id` int(11) DEFAULT NULL,
+  `active` tinyint(4) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -199,6 +200,16 @@ CREATE TABLE `companies_users` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+/*Table structure for table `countries` */
+
+DROP TABLE IF EXISTS `countries`;
+
+CREATE TABLE `countries` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 /*Table structure for table `currencies` */
 
 DROP TABLE IF EXISTS `currencies`;
@@ -341,7 +352,7 @@ CREATE TABLE `languages` (
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 /*Table structure for table `order_items` */
 
@@ -350,16 +361,17 @@ DROP TABLE IF EXISTS `order_items`;
 CREATE TABLE `order_items` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `order_id` int(11) DEFAULT NULL,
-  `product_record_id` int(11) DEFAULT NULL,
+  `product_id` int(11) DEFAULT NULL,
+  `product_revision` int(11) DEFAULT NULL,
   `amount` int(11) DEFAULT NULL,
   `price_per_item` decimal(10,0) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk__order_items__orders` (`order_id`),
-  KEY `fk__order_items__product_records` (`product_record_id`),
+  KEY `fk__order_items__product` (`product_id`),
   CONSTRAINT `fk__order_items__orders` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`),
-  CONSTRAINT `fk__order_items__product_records` FOREIGN KEY (`product_record_id`) REFERENCES `product_records` (`id`)
+  CONSTRAINT `fk__order_items__products` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `order_states` */
@@ -443,33 +455,6 @@ CREATE TABLE `prices` (
   CONSTRAINT `fk__prices__price_values` FOREIGN KEY (`default_id`) REFERENCES `price_values` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-/*Table structure for table `product_records` */
-
-DROP TABLE IF EXISTS `product_records`;
-
-CREATE TABLE `product_records` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `product_id` int(11) DEFAULT NULL,
-  `product_type_id` int(11) DEFAULT NULL,
-  `sku` varchar(255) DEFAULT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `slug` varchar(255) DEFAULT NULL,
-  `short_description` varchar(255) DEFAULT NULL,
-  `description` text,
-  `image_gallery_id` int(11) DEFAULT NULL,
-  `amount` int(11) DEFAULT NULL,
-  `price_id` int(11) DEFAULT NULL,
-  `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk__product_records__products` (`product_id`),
-  KEY `fk__product_records__prodyct_types` (`product_type_id`),
-  KEY `fk__product_records__prices` (`price_id`),
-  CONSTRAINT `fk__product_records__prices` FOREIGN KEY (`price_id`) REFERENCES `prices` (`id`),
-  CONSTRAINT `fk__product_records__products` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
-  CONSTRAINT `fk__product_records__prodyct_types` FOREIGN KEY (`product_type_id`) REFERENCES `product_types` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 /*Table structure for table `product_tags` */
 
 DROP TABLE IF EXISTS `product_tags`;
@@ -506,14 +491,27 @@ DROP TABLE IF EXISTS `products`;
 
 CREATE TABLE `products` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `product_record_id` int(11) DEFAULT NULL,
+  `product_type_id` int(11) DEFAULT NULL,
+  `sku` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `slug` varchar(255) DEFAULT NULL,
+  `short_description` mediumtext,
+  `desctiption` mediumtext,
+  `image_gallery_id` int(11) DEFAULT NULL,
+  `amount` int(11) DEFAULT NULL,
+  `price_id` int(11) DEFAULT NULL,
+  `revision` int(11) DEFAULT NULL,
   `hidden` tinyint(4) DEFAULT NULL,
   `deleted` tinyint(4) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk__products__product_records` (`product_record_id`),
-  CONSTRAINT `fk__products__product_records` FOREIGN KEY (`product_record_id`) REFERENCES `product_records` (`id`)
+  KEY `fk__products__product_records` (`product_type_id`),
+  KEY `fk__products__image_galleries` (`image_gallery_id`),
+  KEY `fk__products__prices` (`price_id`),
+  CONSTRAINT `fk__products__product_types` FOREIGN KEY (`product_type_id`) REFERENCES `product_types` (`id`),
+  CONSTRAINT `fk__products__image_galleries` FOREIGN KEY (`image_gallery_id`) REFERENCES `image_galleries` (`id`),
+  CONSTRAINT `fk__products__prices` FOREIGN KEY (`price_id`) REFERENCES `prices` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `relation_types` */
@@ -524,7 +522,7 @@ CREATE TABLE `relation_types` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 /*Table structure for table `relations` */
 
@@ -552,12 +550,11 @@ DROP TABLE IF EXISTS `report_types`;
 
 CREATE TABLE `report_types` (
   `id` int(11) NOT NULL,
-  `name_id` int(11) DEFAULT NULL,
+  `name` varchar(50) DEFAULT NULL,
   `priority` int(11) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk__report_types__texts` (`name_id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `reports` */
@@ -575,6 +572,19 @@ CREATE TABLE `reports` (
   PRIMARY KEY (`id`),
   KEY `fk__reports__report_types` (`report_type_id`),
   CONSTRAINT `fk__reports__report_types` FOREIGN KEY (`report_type_id`) REFERENCES `report_types` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Table structure for table `revision_records` */
+
+DROP TABLE IF EXISTS `revision_records`;
+
+CREATE TABLE `revision_records` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `model_name` varchar(50) DEFAULT NULL,
+  `record_id` int(11) DEFAULT NULL,
+  `field_name` varchar(50) DEFAULT NULL,
+  `value` mediumtext,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `settings` */
@@ -641,7 +651,7 @@ CREATE TABLE `taxes` (
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 /*Table structure for table `users` */
 
@@ -665,7 +675,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`),
   KEY `fk__users__groups` (`group_id`),
   CONSTRAINT `fk__users__groups` FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

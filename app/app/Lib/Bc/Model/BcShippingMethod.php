@@ -16,10 +16,6 @@ class BcShippingMethod extends AppModel {
 		'ProductShippingMethod' => array(
 			'className'		=> 'ProductShippingMethod',
 			'foreignKey'	=> 'ProductShippingMethod.shipping_method_id'
-		),
-		'Shipment' => array(
-			'className'		=> 'Shipment',
-			'foreignKey'	=> 'Shipment.shipping_method_id'
 		)
 	);
 }
