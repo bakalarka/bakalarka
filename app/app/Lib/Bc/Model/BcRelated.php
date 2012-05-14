@@ -1,7 +1,7 @@
 <?php
 class BcRelated extends AppModel {
 	var $name = 'BcRelated';
-	var $table = 'related';
+	var $table = 'relations';
 	
 	var $belognsTo = array(
 		'Product' => array(
