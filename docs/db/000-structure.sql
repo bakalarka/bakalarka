@@ -362,6 +362,7 @@ CREATE TABLE `order_items` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `order_id` int(11) DEFAULT NULL,
   `product_id` int(11) DEFAULT NULL,
+  `shipment_id` int(11) DEFAULT NULL,
   `product_revision` int(11) DEFAULT NULL,
   `amount` int(11) DEFAULT NULL,
   `price_per_item` decimal(10,0) DEFAULT NULL,
@@ -370,6 +371,8 @@ CREATE TABLE `order_items` (
   PRIMARY KEY (`id`),
   KEY `fk__order_items__orders` (`order_id`),
   KEY `fk__order_items__product` (`product_id`),
+  KEY `fk__order_items__shipments` (`shipment_id`),
+  CONSTRAINT `fk__order_items__shipments` FOREIGN KEY (`shipment_id`) REFERENCES `shipments` (`id`),
   CONSTRAINT `fk__order_items__orders` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`),
   CONSTRAINT `fk__order_items__products` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
