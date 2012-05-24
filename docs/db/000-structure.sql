@@ -394,7 +394,7 @@ CREATE TABLE `orders` (
   `invoice_id` int(11) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
   `company_id` int(11) DEFAULT NULL,
-  `order_state` int(11) DEFAULT NULL,
+  `order_state_id` int(11) DEFAULT NULL,
   `billing_address_id` int(11) DEFAULT NULL,
   `shipping_address_id` int(11) DEFAULT NULL,
   `billing_method_id` int(11) DEFAULT NULL,
@@ -406,18 +406,18 @@ CREATE TABLE `orders` (
   KEY `fk__orders__invoices` (`invoice_id`),
   KEY `fk__orders__users` (`user_id`),
   KEY `fk__orders__companies` (`company_id`),
-  KEY `fk__orders__order_states` (`order_state`),
+  KEY `fk__orders__order_states` (`order_state_id`),
   KEY `fk__orders__billing_methods` (`billing_method_id`),
   KEY `fk__orders__shipping_methods` (`shipping_method_id`),
   KEY `fk__orders__billing_addresses` (`billing_address_id`),
   KEY `fk__orders__shipping_addresses` (`shipping_address_id`),
   KEY `fk__orders__currencies` (`currency_id`),
+  CONSTRAINT `fk__orders__order_states` FOREIGN KEY (`order_state_id`) REFERENCES `order_states` (`id`),
   CONSTRAINT `fk__orders__billing_addresses` FOREIGN KEY (`billing_address_id`) REFERENCES `addresses` (`id`),
   CONSTRAINT `fk__orders__billing_methods` FOREIGN KEY (`billing_method_id`) REFERENCES `billings_methods` (`id`),
   CONSTRAINT `fk__orders__companies` FOREIGN KEY (`company_id`) REFERENCES `companies` (`id`),
   CONSTRAINT `fk__orders__currencies` FOREIGN KEY (`currency_id`) REFERENCES `currencies` (`id`),
   CONSTRAINT `fk__orders__invoices` FOREIGN KEY (`invoice_id`) REFERENCES `invoices` (`id`),
-  CONSTRAINT `fk__orders__order_states` FOREIGN KEY (`order_state`) REFERENCES `order_states` (`id`),
   CONSTRAINT `fk__orders__shipping_addresses` FOREIGN KEY (`shipping_address_id`) REFERENCES `addresses` (`id`),
   CONSTRAINT `fk__orders__shipping_methods` FOREIGN KEY (`shipping_method_id`) REFERENCES `shipping_methods` (`id`),
   CONSTRAINT `fk__orders__users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
@@ -453,6 +453,24 @@ CREATE TABLE `prices` (
   PRIMARY KEY (`id`),
   KEY `fk__prices__price_values` (`default_id`),
   CONSTRAINT `fk__prices__price_values` FOREIGN KEY (`default_id`) REFERENCES `price_values` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Table structure for table `product_shipping_methods` */
+
+DROP TABLE IF EXISTS `product_shipping_methods`;
+
+CREATE TABLE `product_shipping_methods` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `product_id` int(11) DEFAULT NULL,
+  `shipping_method_id` int(11) DEFAULT NULL,
+  `ratio` int(10) DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk__product_shipping_methods__products` (`product_id`),
+  KEY `fk__product_shipping_methods__shipping_methods` (`shipping_method_id`),
+  CONSTRAINT `fk__product_shipping_methods__products` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
+  CONSTRAINT `fk__product_shipping_methods__shipping_methods` FOREIGN KEY (`shipping_method_id`) REFERENCES `shipping_methods` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `product_tags` */
@@ -584,6 +602,8 @@ CREATE TABLE `revision_records` (
   `record_id` int(11) DEFAULT NULL,
   `field_name` varchar(50) DEFAULT NULL,
   `value` mediumtext,
+  `created` datetime DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -612,6 +632,23 @@ CREATE TABLE `settings_types` (
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Table structure for table `shipments` */
+
+DROP TABLE IF EXISTS `shipments`;
+
+CREATE TABLE `shipments` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `shipping_method_id` int(11) DEFAULT NULL,
+  `order_id` int(11) DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk__shippments__shipping_methods` (`shipping_method_id`),
+  KEY `fk__shippments__orders` (`order_id`),
+  CONSTRAINT `fk__shippments__shipping_methods` FOREIGN KEY (`shipping_method_id`) REFERENCES `shipping_methods` (`id`),
+  CONSTRAINT `fk__shippments__orders` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `shipping_methods` */
