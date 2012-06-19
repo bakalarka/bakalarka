@@ -109,6 +109,7 @@ CREATE TABLE `attribute_products` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `attribute_id` int(11) DEFAULT NULL,
   `product_id` int(11) DEFAULT NULL,
+  `value` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk__attribute_products__products` (`product_id`),
   KEY `fk__attribute_products__attributes` (`attribute_id`),
@@ -372,9 +373,9 @@ CREATE TABLE `order_items` (
   KEY `fk__order_items__orders` (`order_id`),
   KEY `fk__order_items__product` (`product_id`),
   KEY `fk__order_items__shipments` (`shipment_id`),
-  CONSTRAINT `fk__order_items__shipments` FOREIGN KEY (`shipment_id`) REFERENCES `shipments` (`id`),
   CONSTRAINT `fk__order_items__orders` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`),
-  CONSTRAINT `fk__order_items__products` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`)
+  CONSTRAINT `fk__order_items__products` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
+  CONSTRAINT `fk__order_items__shipments` FOREIGN KEY (`shipment_id`) REFERENCES `shipments` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `order_states` */
@@ -415,12 +416,12 @@ CREATE TABLE `orders` (
   KEY `fk__orders__billing_addresses` (`billing_address_id`),
   KEY `fk__orders__shipping_addresses` (`shipping_address_id`),
   KEY `fk__orders__currencies` (`currency_id`),
-  CONSTRAINT `fk__orders__order_states` FOREIGN KEY (`order_state_id`) REFERENCES `order_states` (`id`),
   CONSTRAINT `fk__orders__billing_addresses` FOREIGN KEY (`billing_address_id`) REFERENCES `addresses` (`id`),
   CONSTRAINT `fk__orders__billing_methods` FOREIGN KEY (`billing_method_id`) REFERENCES `billings_methods` (`id`),
   CONSTRAINT `fk__orders__companies` FOREIGN KEY (`company_id`) REFERENCES `companies` (`id`),
   CONSTRAINT `fk__orders__currencies` FOREIGN KEY (`currency_id`) REFERENCES `currencies` (`id`),
   CONSTRAINT `fk__orders__invoices` FOREIGN KEY (`invoice_id`) REFERENCES `invoices` (`id`),
+  CONSTRAINT `fk__orders__order_states` FOREIGN KEY (`order_state_id`) REFERENCES `order_states` (`id`),
   CONSTRAINT `fk__orders__shipping_addresses` FOREIGN KEY (`shipping_address_id`) REFERENCES `addresses` (`id`),
   CONSTRAINT `fk__orders__shipping_methods` FOREIGN KEY (`shipping_method_id`) REFERENCES `shipping_methods` (`id`),
   CONSTRAINT `fk__orders__users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
@@ -517,7 +518,7 @@ CREATE TABLE `products` (
   `name` varchar(255) DEFAULT NULL,
   `slug` varchar(255) DEFAULT NULL,
   `short_description` mediumtext,
-  `desctiption` mediumtext,
+  `description` mediumtext,
   `image_gallery_id` int(11) DEFAULT NULL,
   `amount` int(11) DEFAULT NULL,
   `price_id` int(11) DEFAULT NULL,
@@ -530,9 +531,9 @@ CREATE TABLE `products` (
   KEY `fk__products__product_records` (`product_type_id`),
   KEY `fk__products__image_galleries` (`image_gallery_id`),
   KEY `fk__products__prices` (`price_id`),
-  CONSTRAINT `fk__products__product_types` FOREIGN KEY (`product_type_id`) REFERENCES `product_types` (`id`),
   CONSTRAINT `fk__products__image_galleries` FOREIGN KEY (`image_gallery_id`) REFERENCES `image_galleries` (`id`),
-  CONSTRAINT `fk__products__prices` FOREIGN KEY (`price_id`) REFERENCES `prices` (`id`)
+  CONSTRAINT `fk__products__prices` FOREIGN KEY (`price_id`) REFERENCES `prices` (`id`),
+  CONSTRAINT `fk__products__product_types` FOREIGN KEY (`product_type_id`) REFERENCES `product_types` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `relation_types` */
@@ -605,6 +606,7 @@ CREATE TABLE `revision_records` (
   `record_id` int(11) DEFAULT NULL,
   `field_name` varchar(50) DEFAULT NULL,
   `value` mediumtext,
+  `revision` int(11) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -650,8 +652,8 @@ CREATE TABLE `shipments` (
   PRIMARY KEY (`id`),
   KEY `fk__shippments__shipping_methods` (`shipping_method_id`),
   KEY `fk__shippments__orders` (`order_id`),
-  CONSTRAINT `fk__shippments__shipping_methods` FOREIGN KEY (`shipping_method_id`) REFERENCES `shipping_methods` (`id`),
-  CONSTRAINT `fk__shippments__orders` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`)
+  CONSTRAINT `fk__shippments__orders` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`),
+  CONSTRAINT `fk__shippments__shipping_methods` FOREIGN KEY (`shipping_method_id`) REFERENCES `shipping_methods` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `shipping_methods` */
