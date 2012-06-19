@@ -25,7 +25,7 @@ class OrderFixture extends CakeTestFixture {
         	'customer_vat_number' => '',
         	'customer_account' => '',
         	'created' => '2012-05-10 11:00:00', 
-        	'updated' => '2012-05-10 11:00:00'
+        	'modified' => '2012-05-10 11:00:00'
         ),
         //customer1 processing order
         array(
@@ -46,7 +46,7 @@ class OrderFixture extends CakeTestFixture {
         	'customer_vat_number' => '',
         	'customer_account' => '',
         	'created' => '2012-05-10 11:00:00', 
-        	'updated' => '2012-05-10 11:00:00'
+        	'modified' => '2012-05-10 11:00:00'
         ),
         //customer1 delivered order
         array(
@@ -67,7 +67,7 @@ class OrderFixture extends CakeTestFixture {
         	'customer_vat_number' => '',
         	'customer_account' => '',
         	'created' => '2012-05-10 11:00:00', 
-        	'updated' => '2012-05-10 11:00:00'
+        	'modified' => '2012-05-10 11:00:00'
         ),
         //customer1 canceled order
        array(
@@ -88,7 +88,7 @@ class OrderFixture extends CakeTestFixture {
         	'customer_vat_number' => '',
         	'customer_account' => '',
         	'created' => '2012-05-10 11:00:00', 
-        	'updated' => '2012-05-10 11:00:00'
+        	'modified' => '2012-05-10 11:00:00'
         ),
 		//customer1 company order
        array(
@@ -109,7 +109,7 @@ class OrderFixture extends CakeTestFixture {
         	'customer_vat_number' => 'SK0000000002',
         	'customer_account' => '',
         	'created' => '2012-05-10 11:00:00', 
-        	'updated' => '2012-05-10 11:00:00'
+        	'modified' => '2012-05-10 11:00:00'
         ),
 	);
 }

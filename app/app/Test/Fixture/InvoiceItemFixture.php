@@ -16,7 +16,7 @@ class OrderFixture extends CakeTestFixture {
 			'price_total' => '119',
 			'currency' => 'Eur',
 			'created' => '2012-05-10 11:00:00', 
-        	'updated' => '2012-05-10 11:00:00'
+        	'modified' => '2012-05-10 11:00:00'
         ),
         array(
         	'id' => 2, 
@@ -27,7 +27,7 @@ class OrderFixture extends CakeTestFixture {
 			'price_total' => '49.50',
 			'currency' => 'Eur',
 			'created' => '2012-05-10 11:00:00', 
-        	'updated' => '2012-05-10 11:00:00'
+        	'modified' => '2012-05-10 11:00:00'
         ),
         //customer1 processing order
         array(
@@ -39,7 +39,7 @@ class OrderFixture extends CakeTestFixture {
 			'price_total' => '119',
 			'currency' => 'Eur',
 			'created' => '2012-05-10 11:00:00', 
-        	'updated' => '2012-05-10 11:00:00'
+        	'modified' => '2012-05-10 11:00:00'
         ),
         //customer1 delivered order
         array(
@@ -51,7 +51,7 @@ class OrderFixture extends CakeTestFixture {
 			'price_total' => '119',
 			'currency' => 'Eur',
 			'created' => '2012-05-10 11:00:00', 
-        	'updated' => '2012-05-10 11:00:00'
+        	'modified' => '2012-05-10 11:00:00'
         ),
         //customer1 canceled order
        array(
@@ -63,7 +63,7 @@ class OrderFixture extends CakeTestFixture {
 			'price_total' => '119',
 			'currency' => 'Eur',
 			'created' => '2012-05-10 11:00:00', 
-        	'updated' => '2012-05-10 11:00:00'
+        	'modified' => '2012-05-10 11:00:00'
         ),
 		//customer1 company order
        array(
@@ -75,7 +75,7 @@ class OrderFixture extends CakeTestFixture {
 			'price_total' => '119',
 			'currency' => 'Eur',
 			'created' => '2012-05-10 11:00:00', 
-        	'updated' => '2012-05-10 11:00:00'
+        	'modified' => '2012-05-10 11:00:00'
         )
 	);
 }

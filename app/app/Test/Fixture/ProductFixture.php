@@ -21,7 +21,7 @@ class ProductFixture extends CakeTestFixture {
         	'hidden' => '0',
         	'deleted' => '0',
         	'created' => '2012-05-10 11:00:00', 
-        	'updated' => '2012-05-10 11:00:00'
+        	'modified' => '2012-05-10 11:00:00'
         ),
         //Kofola citrus
         array(
@@ -38,7 +38,7 @@ class ProductFixture extends CakeTestFixture {
         	'hidden' => '0',
         	'deleted' => '0',
         	'created' => '2012-05-10 11:00:00', 
-        	'updated' => '2012-05-10 11:00:00'
+        	'modified' => '2012-05-10 11:00:00'
         ),
         //Rajec salvia
         array(
@@ -55,7 +55,7 @@ class ProductFixture extends CakeTestFixture {
         	'hidden' => '0',
         	'deleted' => '0',
         	'created' => '2012-05-10 11:00:00', 
-        	'updated' => '2012-05-10 11:00:00'
+        	'modified' => '2012-05-10 11:00:00'
         ),
         //Horalky
         array(
@@ -72,7 +72,7 @@ class ProductFixture extends CakeTestFixture {
         	'hidden' => '0',
         	'deleted' => '0',
         	'created' => '2012-05-10 11:00:00', 
-        	'updated' => '2012-05-10 11:00:00'
+        	'modified' => '2012-05-10 11:00:00'
         ),
         //Horalky deleted
         array(
@@ -89,7 +89,7 @@ class ProductFixture extends CakeTestFixture {
         	'hidden' => '0',
         	'deleted' => '1',
         	'created' => '2012-05-10 11:00:00', 
-        	'updated' => '2012-05-10 11:00:00'
+        	'modified' => '2012-05-10 11:00:00'
         ),
         //Horalky hidden
         array(
@@ -106,7 +106,7 @@ class ProductFixture extends CakeTestFixture {
         	'hidden' => '1',
         	'deleted' => '0',
         	'created' => '2012-05-10 11:00:00', 
-        	'updated' => '2012-05-10 11:00:00'
+        	'modified' => '2012-05-10 11:00:00'
         )
     );
 }

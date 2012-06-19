@@ -12,7 +12,7 @@ class CategoryFixture extends CakeTestFixture {
         	'name' => 'Beverages', 
         	'slug' => 'beverages',
         	'created' => '2012-05-10 11:00:00', 
-        	'updated' => '2012-05-10 11:00:00'
+        	'modified' => '2012-05-10 11:00:00'
         ),
         array(
         	'id' => 2, 
@@ -20,7 +20,7 @@ class CategoryFixture extends CakeTestFixture {
         	'name' => 'Soft drinks', 
         	'slug' => 'soft-drinks',
         	'created' => '2012-05-10 11:00:00', 
-        	'updated' => '2012-05-10 11:00:00'
+        	'modified' => '2012-05-10 11:00:00'
         ),
         array(
         	'id' => 3, 
@@ -28,7 +28,7 @@ class CategoryFixture extends CakeTestFixture {
         	'name' => 'Mineral water', 
         	'slug' => 'mineral-water',
         	'created' => '2012-05-10 11:00:00', 
-        	'updated' => '2012-05-10 11:00:00'
+        	'modified' => '2012-05-10 11:00:00'
         ),
         array(
         	'id' => 4, 
@@ -36,7 +36,7 @@ class CategoryFixture extends CakeTestFixture {
         	'name' => 'Food', 
         	'slug' => 'food',
         	'created' => '2012-05-10 11:00:00', 
-        	'updated' => '2012-05-10 11:00:00'
+        	'modified' => '2012-05-10 11:00:00'
         ),
         array(
         	'id' => 5, 
@@ -44,7 +44,7 @@ class CategoryFixture extends CakeTestFixture {
         	'name' => 'Snacks', 
         	'slug' => 'snacks',
         	'created' => '2012-05-10 11:00:00', 
-        	'updated' => '2012-05-10 11:00:00'
+        	'modified' => '2012-05-10 11:00:00'
         )
     );
 }

@@ -2,9 +2,9 @@
 
 class CategoryProductFixture extends CakeTestFixture {
 
-	public $name = 'CategoryProduct';
+	public $name = 'CategoriesProduct';
 
-	public $import = array('table' => 'category_products');
+	public $import = array('table' => 'categories_products');
     public $records = array(
     	//kofola original -> soft drink
         array(
@@ -38,7 +38,7 @@ class CategoryProductFixture extends CakeTestFixture {
         ),
         //horalky hidden -> snack
         array(
-        	'id' => 5, 
+        	'id' => 6, 
         	'category_id' => '5',
         	'product_id' => '6',
         )

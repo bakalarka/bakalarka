@@ -15,7 +15,7 @@ class ImageFixture extends CakeTestFixture {
         	'large' => '22ec9517ee8413435c94bbc0c678598705d67b5f.jpg',
         	'original' => '2f3562f8652a52ffbaebe694d0be84e47f99c034.jpg',
         	'created' => '2012-05-10 11:00:00', 
-        	'updated' => '2012-05-10 11:00:00'
+        	'modified' => '2012-05-10 11:00:00'
         ),
         array(
         	'id' => 2, 
@@ -25,7 +25,7 @@ class ImageFixture extends CakeTestFixture {
         	'large' => '4527aec326ee3011c4f6369adec92bb8cfa2ea7a.jpg',
         	'original' => '08d4e4b33d58ac1786e1c31464d10888a949c226.jpg',
         	'created' => '2012-05-10 11:00:00', 
-        	'updated' => '2012-05-10 11:00:00'
+        	'modified' => '2012-05-10 11:00:00'
         ),
         array(
         	'id' => 3, 
@@ -35,7 +35,7 @@ class ImageFixture extends CakeTestFixture {
         	'large' => '0ef50b23ed973cf96c990d4326f04f5c759c5a8f.jpg',
         	'original' => 'd2a72c7ba084494e13fe2a2625d169ed32ba7265.jpg',
         	'created' => '2012-05-10 11:00:00', 
-        	'updated' => '2012-05-10 11:00:00'
+        	'modified' => '2012-05-10 11:00:00'
         ),
         
         //kofola citrus
@@ -47,7 +47,7 @@ class ImageFixture extends CakeTestFixture {
         	'large' => '23b7d8de2655e920f7c626041c1c46dd22d5af01.jpg',
         	'original' => 'a77f70be3e5547a905789c915b3c687052c3d282.jpg',
         	'created' => '2012-05-10 11:00:00', 
-        	'updated' => '2012-05-10 11:00:00'
+        	'modified' => '2012-05-10 11:00:00'
         ),
         array(
         	'id' => 5, 
@@ -57,7 +57,7 @@ class ImageFixture extends CakeTestFixture {
         	'large' => '46b63b6914c9dad64315d75e5ec8b9a75c2d8279.jpg',
         	'original' => 'a790bab4b35d1a04165c6708027ebfb5faed27e8.jpg',
         	'created' => '2012-05-10 11:00:00', 
-        	'updated' => '2012-05-10 11:00:00'
+        	'modified' => '2012-05-10 11:00:00'
         ),
         array(
         	'id' => 6, 
@@ -67,7 +67,7 @@ class ImageFixture extends CakeTestFixture {
         	'large' => '90680fac63beb604f5e792032865089bd8009bba.jpg',
         	'original' => 'cd79c57a4a1910edab8281a4b9fe745d486821fc.jpg',
         	'created' => '2012-05-10 11:00:00', 
-        	'updated' => '2012-05-10 11:00:00'
+        	'modified' => '2012-05-10 11:00:00'
         ),
         //rajec salvia
         array(
@@ -78,7 +78,7 @@ class ImageFixture extends CakeTestFixture {
         	'large' => '40866f63f56bf6b3584c5afaf5098ec08eb6922d.jpg',
         	'original' => '11bf20d1fbe58e123c41613eaadf6c62dfb828cb.jpg',
         	'created' => '2012-05-10 11:00:00', 
-        	'updated' => '2012-05-10 11:00:00'
+        	'modified' => '2012-05-10 11:00:00'
         ),
         array(
         	'id' => 8, 
@@ -88,7 +88,7 @@ class ImageFixture extends CakeTestFixture {
         	'large' => '2e784dee5914a0b429591dda28ef86e3dea777f7.jpg',
         	'original' => 'e0d7831db39b15dcc0fd294f179443cbf6175ab2.jpg',
         	'created' => '2012-05-10 11:00:00', 
-        	'updated' => '2012-05-10 11:00:00'
+        	'modified' => '2012-05-10 11:00:00'
         ),
         array(
         	'id' => 9, 
@@ -98,7 +98,7 @@ class ImageFixture extends CakeTestFixture {
         	'large' => '5eecef3245e590477316cb91edfb6523f1ae9056.jpg',
         	'original' => '34ef33569578b2557e9859af04fe27e8e78ee06d.jpg',
         	'created' => '2012-05-10 11:00:00', 
-        	'updated' => '2012-05-10 11:00:00'
+        	'modified' => '2012-05-10 11:00:00'
         ),
         //horalky
         array(
@@ -109,7 +109,7 @@ class ImageFixture extends CakeTestFixture {
         	'large' => 'f281cedab2927ea0366a443864009c4600d8dc39.jpg',
         	'original' => '3cf3a89b29d10342a9a1a1fe1f29c79098f85009.jpg',
         	'created' => '2012-05-10 11:00:00', 
-        	'updated' => '2012-05-10 11:00:00'
+        	'modified' => '2012-05-10 11:00:00'
         ),
         array(
         	'id' => 11, 
@@ -119,7 +119,7 @@ class ImageFixture extends CakeTestFixture {
         	'large' => 'f924044b647f35d527e4aebd7c6cbc1de835cdd0.jpg',
         	'original' => 'f96c8e61eaa286e95f01648bd89583e50e8e3174.jpg',
         	'created' => '2012-05-10 11:00:00', 
-        	'updated' => '2012-05-10 11:00:00'
+        	'modified' => '2012-05-10 11:00:00'
         ),
         array(
         	'id' => 12, 
@@ -129,7 +129,7 @@ class ImageFixture extends CakeTestFixture {
         	'large' => '0e3f230413e4fcc667110a9fbb324f9d76b86f4d.jpg',
         	'original' => '79ef48e2359a93e2e8dc3e086ee34c18f8ef2d71.jpg',
         	'created' => '2012-05-10 11:00:00', 
-        	'updated' => '2012-05-10 11:00:00'
+        	'modified' => '2012-05-10 11:00:00'
         )
     );
 }

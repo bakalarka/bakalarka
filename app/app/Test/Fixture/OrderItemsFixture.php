@@ -15,7 +15,7 @@ class OrderItemsFixture extends CakeTestFixture {
         	'amount' => '100',
         	'price_per_item' => '1.19',
         	'created' => '2012-05-10 11:00:00', 
-        	'updated' => '2012-05-10 11:00:00'
+        	'modified' => '2012-05-10 11:00:00'
         ),
         array(
         	'id' => 2, 
@@ -25,7 +25,7 @@ class OrderItemsFixture extends CakeTestFixture {
         	'amount' => '50',
         	'price_per_item' => '0.99',
         	'created' => '2012-05-10 11:00:00', 
-        	'updated' => '2012-05-10 11:00:00'
+        	'modified' => '2012-05-10 11:00:00'
         ),
         //customer1 order 2
         array(
@@ -36,7 +36,7 @@ class OrderItemsFixture extends CakeTestFixture {
         	'amount' => '100',
         	'price_per_item' => '1.19',
         	'created' => '2012-05-10 11:00:00', 
-        	'updated' => '2012-05-10 11:00:00'
+        	'modified' => '2012-05-10 11:00:00'
         ),
         //customer1 order 3
         array(
@@ -47,7 +47,7 @@ class OrderItemsFixture extends CakeTestFixture {
         	'amount' => '100',
         	'price_per_item' => '1.19',
         	'created' => '2012-05-10 11:00:00', 
-        	'updated' => '2012-05-10 11:00:00'
+        	'modified' => '2012-05-10 11:00:00'
         ),
         //customer1 order 4
         array(
@@ -58,7 +58,7 @@ class OrderItemsFixture extends CakeTestFixture {
         	'amount' => '100',
         	'price_per_item' => '1.19',
         	'created' => '2012-05-10 11:00:00', 
-        	'updated' => '2012-05-10 11:00:00'
+        	'modified' => '2012-05-10 11:00:00'
         ),
         //customer1 company order 1
         array(
@@ -69,7 +69,7 @@ class OrderItemsFixture extends CakeTestFixture {
         	'amount' => '100',
         	'price_per_item' => '1.19',
         	'created' => '2012-05-10 11:00:00', 
-        	'updated' => '2012-05-10 11:00:00'
+        	'modified' => '2012-05-10 11:00:00'
         )
 	);
 }

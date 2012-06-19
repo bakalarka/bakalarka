@@ -18,10 +18,10 @@ class UserFixture extends CakeTestFixture {
         	'phone' => '0909 123 456', 
         	'active' => '1', 
         	'disabled' => '0', 
-        	'deletet' => '0',
-        	'registration_code' => '123456789', 
+        	'deleted' => '0',
+        	'registration_code' => '1234567891', 
         	'created' => '2012-05-10 11:00:00', 
-        	'updated' => '2012-05-10 11:00:00'
+        	'modified' => '2012-05-10 11:00:00'
         ),
         //regular admin
         array(
@@ -35,10 +35,10 @@ class UserFixture extends CakeTestFixture {
         	'phone' => '0909 123 456', 
         	'active' => '1', 
         	'disabled' => '0', 
-        	'deletet' => '0',
-        	'registration_code' => '123456789', 
+        	'deleted' => '0',
+        	'registration_code' => '1234567892', 
         	'created' => '2012-05-10 12:00:00', 
-        	'updated' => '2012-05-10 12:00:00'
+        	'modified' => '2012-05-10 12:00:00'
         ),
         //product manager
         array(
@@ -52,10 +52,10 @@ class UserFixture extends CakeTestFixture {
         	'phone' => '0909 123 456', 
         	'active' => '1', 
         	'disabled' => '0', 
-        	'deletet' => '0',
-        	'registration_code' => '123456789', 
+        	'deleted' => '0',
+        	'registration_code' => '1234567893', 
         	'created' => '2012-05-10 13:00:00', 
-        	'updated' => '2012-05-10 13:00:00'
+        	'modified' => '2012-05-10 13:00:00'
         ),
         //order manager
         array(
@@ -69,10 +69,10 @@ class UserFixture extends CakeTestFixture {
         	'phone' => '0909 123 456', 
         	'active' => '1', 
         	'disabled' => '0', 
-        	'deletet' => '0',
-        	'registration_code' => '123456789', 
+        	'deleted' => '0',
+        	'registration_code' => '1234567894', 
         	'created' => '2012-05-10 14:00:00', 
-        	'updated' => '2012-05-10 14:00:00'
+        	'modified' => '2012-05-10 14:00:00'
         ),
         //customer
         array(
@@ -86,10 +86,10 @@ class UserFixture extends CakeTestFixture {
         	'phone' => '0909 123 456', 
         	'active' => '1', 
         	'disabled' => '0', 
-        	'deletet' => '0',
-        	'registration_code' => '123456789', 
+        	'deleted' => '0',
+        	'registration_code' => '1234567895', 
         	'created' => '2012-05-10 15:00:00', 
-        	'updated' => '2012-05-10 15:00:00'
+        	'modified' => '2012-05-10 15:00:00'
         ),
         //another customer
         array(
@@ -103,10 +103,10 @@ class UserFixture extends CakeTestFixture {
         	'phone' => '0909 123 456', 
         	'active' => '1', 
         	'disabled' => '0', 
-        	'deletet' => '0',
-        	'registration_code' => '123456789', 
+        	'deleted' => '0',
+        	'registration_code' => '1234567896', 
         	'created' => '2012-05-10 16:00:00', 
-        	'updated' => '2012-05-10 16:00:00'
+        	'modified' => '2012-05-10 16:00:00'
         ),
         //nonactive user
         array(
@@ -120,10 +120,10 @@ class UserFixture extends CakeTestFixture {
         	'phone' => '0909 123 456', 
         	'active' => '0', 
         	'disabled' => '0',
-        	'deletet' => '0', 
-        	'registration_code' => '123456789', 
+        	'deleted' => '0', 
+        	'registration_code' => '1234567897', 
         	'created' => '2012-05-10 17:00:00', 
-        	'updated' => '2012-05-10 17:00:00'
+        	'modified' => '2012-05-10 17:00:00'
         ),
         //disabled user
         array(
@@ -137,12 +137,12 @@ class UserFixture extends CakeTestFixture {
         	'phone' => '0909 123 456', 
         	'active' => '1', 
         	'disabled' => '1', 
-        	'deletet' => '0',
-        	'registration_code' => '123456789', 
+        	'deleted' => '0',
+        	'registration_code' => '1234567898', 
         	'created' => '2012-05-10 18:00:00', 
-        	'updated' => '2012-05-10 18:00:00'
+        	'modified' => '2012-05-10 18:00:00'
         ),
-        //disabled user
+        //deleted user
         array(
         	'id' => 9, 
         	'username' => 'deletedUser', 
@@ -154,10 +154,10 @@ class UserFixture extends CakeTestFixture {
         	'phone' => '0909 123 456', 
         	'active' => '1', 
         	'disabled' => '0', 
-        	'deletet' => '1',
-        	'registration_code' => '123456789', 
+        	'deleted' => '1',
+        	'registration_code' => '1234567899', 
         	'created' => '2012-05-10 19:00:00', 
-        	'updated' => '2012-05-10 19:00:00'
+        	'modified' => '2012-05-10 19:00:00'
         )
     );
 }

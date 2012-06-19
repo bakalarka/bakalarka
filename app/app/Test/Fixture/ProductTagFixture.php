@@ -2,9 +2,9 @@
 
 class ProductTagFixture extends CakeTestFixture {
 
-	public $name = 'ProductTag';
+	public $name = 'ProductsTag';
 
-	public $import = array('table' => 'product_tagss');
+	public $import = array('table' => 'products_tags');
     public $records = array(
     	//kofola citrus -> new
         array(
@@ -20,7 +20,7 @@ class ProductTagFixture extends CakeTestFixture {
         ),
         //horalky -> special offer
         array(
-        	'id' => 1, 
+        	'id' => 3, 
         	'product_id' => '4', 
         	'tag_id' => '2',
         )

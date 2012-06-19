@@ -9,13 +9,13 @@ class TagFixture extends CakeTestFixture {
         	'id' => 1, 
         	'name' => 'New', 
         	'created' => '2012-05-10 11:00:00', 
-        	'updated' => '2012-05-10 11:00:00'
+        	'modified' => '2012-05-10 11:00:00'
         ),
         array(
         	'id' => 2, 
         	'name' => 'Special offer', 
         	'created' => '2012-05-10 11:00:00', 
-        	'updated' => '2012-05-10 11:00:00'
+        	'modified' => '2012-05-10 11:00:00'
         )
       );
 }
