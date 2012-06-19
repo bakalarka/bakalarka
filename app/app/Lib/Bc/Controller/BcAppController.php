@@ -34,7 +34,7 @@ App::uses('Controller', 'Controller');
  */
 class BcAppController extends Controller {
    	
-	var $components = array(
+	public $components = array(
    		'Acl', 
    		'Auth',
         'Session', 
@@ -43,7 +43,9 @@ class BcAppController extends Controller {
         'Product'
  	);
  	
-   	var $helpers = array('Html', 'Session', 'Form');
+   	public $helpers = array('Html', 'Session', 'Form');
+   	
+   	public $emailSenders = array();
    	
 	public function beforeFilter() {
         //Configure AuthComponent
@@ -61,6 +63,9 @@ class BcAppController extends Controller {
         } else {
             $this->Session->write('Config.language', Configure::read('Config.language'));
         }  
+        
+        //global settings
+        $this->emailSenders['noReply'] = array('noreply@mail.com' => 'No reply'); //to replace by global settings
     }
     
 	function isAuthorized($user) {
@@ -69,6 +74,23 @@ class BcAppController extends Controller {
 		// return false;
     	return $this->Auth->loggedIn();
 	}
-   	
+
+	
+	protected function sendMail($sender, $recipient, $subject, $message) {
+		
+		if (isset($this->emailSenders[$sender])) {
+			$sender = $this->emailSenders[$sender];
+		}
+		else {
+			$sender = $this->emailSenders['noReply'];
+		}
+			
+		$email = new CakeEmail();
+		
+		return $email->from($sender)
+    				->to($recipient)
+    				->subject($subject)
+    				->send($message);
+	}
 }
 ?>

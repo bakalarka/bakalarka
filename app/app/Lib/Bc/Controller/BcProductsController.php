@@ -17,7 +17,7 @@ class BcProductsController extends AppController {
 	 * index
 	 * List products
 	 */
-	function index($category) {
+	function index($category = null) {
 		//
 	}
 	
@@ -25,8 +25,10 @@ class BcProductsController extends AppController {
 	 * detail
 	 * Product detail
 	 */
-	function detail() {
-		//
+	function detail($slug = null) {
+		if ($slug == null)
+			$this->redirect($this->referer());
+		$this->set('product', $this->Product->detail($slug));
 	}
 	
 	/** backend **/
@@ -44,7 +46,8 @@ class BcProductsController extends AppController {
 	 * Add new product
 	 */
 	function admin_add() {
-		//
+		$id = $this->Product->createNew();
+		$this->redirect(array('action' => 'admin_view', $id));
 	}
 	
 	/**
@@ -60,7 +63,7 @@ class BcProductsController extends AppController {
 	 * View product detail
 	 */
 	function admin_view($id) {
-		
+		$this->set('product', $this->Product->adminDetail($id));
 	}
 	
 	/**
@@ -68,7 +71,14 @@ class BcProductsController extends AppController {
 	 * Edit existing product
 	 */
 	function admin_edit() {
-		//
+		$this->layout = 'ajax';
+		if ($this->Product->edit($this->request->data)) {
+			
+		} else {
+			
+		}
+
+		//$this->redirect(array('action' => 'admin_view', $this->request->data['Product']['id']));
 	}
 	
 	/**
@@ -76,7 +86,8 @@ class BcProductsController extends AppController {
 	 * Hide product
 	 */
 	function admin_hide() {
-		//
+		$this->layout = 'ajax';
+		$this->Product->hide($this->request->data['Product']['id']);
 	}
 	
 	/**
@@ -84,7 +95,8 @@ class BcProductsController extends AppController {
 	 * Delete a product
 	 */
 	function admin_delete() {
-		//
+		$this->layout = 'ajax';
+		$this->Product->softDelete($this->request->data['Product']['id']);
 	}
 	
 	/**
@@ -92,7 +104,8 @@ class BcProductsController extends AppController {
 	 * Add tag to product
 	 */
 	function admin_add_tag() {
-		//
+		$this->layout = 'ajax';
+		$this->Product->addTag($this->request->data['Product']['id'], $this->request->data['Tag']['id']);
 	}
 	
 	/**
@@ -100,7 +113,8 @@ class BcProductsController extends AppController {
 	 * Remove tag from product
 	 */
 	function admin_remove_tag() {
-		//
+		$this->layout = 'ajax';
+		$this->Product->removeTag($this->request->data['Product']['id'], $this->request->data['Tag']['id']);
 	}
 	
 	/**
@@ -108,7 +122,8 @@ class BcProductsController extends AppController {
 	 * Add category to product
 	 */
 	function admin_add_category() {
-		//
+		$this->layout = 'ajax';
+		$this->Product->addCategory($this->request->data['Product']['id'], $this->request->data['Category']['id']);
 	}
 	
 	/**
@@ -116,7 +131,8 @@ class BcProductsController extends AppController {
 	 * Remove category from product
 	 */
 	function admin_remove_category() {
-		//
+		$this->layout = 'ajax';
+		$this->Product->removeCategory($this->request->data['Product']['id'], $this->request->data['Category']['id']);
 	}
 	
 	/**
@@ -124,7 +140,8 @@ class BcProductsController extends AppController {
 	 * Add attribute to product
 	 */
 	function admin_add_attribute() {
-		//
+		$this->layout = 'ajax';
+		$this->Product->addAttribute($this->request->data['Product']['id'], $this->request->data['Attribute']['id'], $this->request->data['Attribute']['value']);
 	}
 	
 	/**
@@ -132,7 +149,8 @@ class BcProductsController extends AppController {
 	 * Edit attribute from product
 	 */
 	function admin_edit_attribute() {
-		//
+		$this->layout = 'ajax';
+		$this->Product->editAttribute($this->request->data['AttributeProduct']['id'], $this->request->data['AttributeProduct']['value']);
 	}
 	
 	/**
@@ -140,7 +158,8 @@ class BcProductsController extends AppController {
 	 * Remove attribute from product
 	 */
 	function admin_remove_attribute() {
-		//
+		$this->layout = 'ajax';
+		$this->Product->removeAttribute($this->request->data['AttributeProduct']['id']);
 	}
 	
 	/**
@@ -148,7 +167,7 @@ class BcProductsController extends AppController {
 	 * Add relation to product
 	 */
 	function admin_add_relation() {
-		//
+		$this->layout = 'ajax';
 	}
 	
 	/**
@@ -156,7 +175,7 @@ class BcProductsController extends AppController {
 	 * Change product relation type
 	 */
 	function admin_change_relation_type() {
-		//
+		$this->layout = 'ajax';
 	}
 	
 	/**
@@ -164,7 +183,7 @@ class BcProductsController extends AppController {
 	 * Remove relation to product
 	 */
 	function admin_remove_relation() {
-		//
+		$this->layout = 'ajax';
 	}
 	
 	/**
@@ -172,7 +191,8 @@ class BcProductsController extends AppController {
 	 * Add image to product gallery
 	 */
 	function admin_add_image() {
-		//
+		$this->layout = 'ajax';
+		$this->Product->addImage($this->request->data);
 	}
 	
 	/**
@@ -180,7 +200,7 @@ class BcProductsController extends AppController {
 	 * Edit image data from product gallery
 	 */
 	function admin_edit_image_data() {
-		//
+		$this->layout = 'ajax';
 	}
 	
 	/**
@@ -188,7 +208,8 @@ class BcProductsController extends AppController {
 	 * Remove image from product gallery
 	 */
 	function admin_remove_image() {
-		//
+		$this->layout = 'ajax';
+		$this->Product->removeImage($this->request->data['Image']['id']);
 	}
 	
 	/**
@@ -196,7 +217,8 @@ class BcProductsController extends AppController {
 	 * Add shipping to product
 	 */
 	function admin_add_shipping_method() {
-		//
+		$this->layout = 'ajax';
+		$this->Product->addShippingMethod($this->request->data['Product']['id'], $this->request->data['ShippingMethod']['id'], $this->request->data['ShippingMethod']['ratio']);
 	}
 	
 	/**
@@ -204,7 +226,8 @@ class BcProductsController extends AppController {
 	 * Edit shipping method from product
 	 */
 	function admin_edit_shipping_method() {
-		//
+		$this->layout = 'ajax';
+		$this->Product->editShippingMethod($this->request->data['ProductShippingMethod']['id'], $this->request->data['ProductShippingMethod']['ratio']);
 	}
 	
 	/**
@@ -212,7 +235,8 @@ class BcProductsController extends AppController {
 	 * Remove shipping_method from product 
 	 */
 	function admin_remove_shipping_method() {
-		//
+		$this->layout = 'ajax';
+		$this->Product->removeShippingMethod($this->request->data['ProductShippingMethod']['id']);
 	}
 	
 	/** utility functions **/
