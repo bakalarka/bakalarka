@@ -39,5 +39,25 @@ class BcAddress extends AppModel {
 		),
 	);
 	
+	/**
+	 * Edit address
+	 */
+	public function edit($id, $data) {
+		$this->recursive = -1;
+		$address = $this->read(null, $id);
+		$address['Address']['street'] = $data['street'];
+		$address['Address']['zip'] = $data['zip'];
+		$address['Address']['city'] = $data['city'];
+		$address['Address']['country_id'] = $data['country_id'];
+		
+		unset($address['Address']['id']);
+		unset($address['Address']['created']);
+		unset($address['Address']['modified']);
+		
+		$this->create();
+		$result = $this->save($address['Address']);
+		$this->id = $id;
+		return $result && $this->saveField('active', 0);
+	}
 }
 ?>

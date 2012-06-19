@@ -107,5 +107,26 @@ class BcAppModel extends Model {
 
         return (bool) $value;
     }
+    
+    /**
+     * Random string
+     * generate random string
+     * @param unknown_type $length
+     */
+    function randomString($length = 8, $possible = '0123456789bcdfghjkmnpqrstvwxyz'){
+        
+    	$result = '';
+        $i = 0;
+        
+        while ($i < $length){
+            $char = substr($possible, mt_rand(0, strlen($possible)-1), 1);
+            
+            if (!strstr($result, $char)) { 
+                $result .= $char;
+                $i++;
+            }
+        }
+        return $result;
+    } 
 	
 }

@@ -1,4 +1,5 @@
 <?php
+App::uses('AuthComponent', 'Controller/Component');
 class BcUser extends AppModel {
 	public $name = 'BcUser';
 	public $table = 'users';
@@ -51,7 +52,7 @@ class BcUser extends AppModel {
     	),
     	'phone' => array(
     		'phoneRule-1' => array (
-    			'rule'    => 'phone', //TODO - check if it needs improve
+    			'rule'    => 'notEmpty', //'phone', //TODO - check if it needs improve
         	    'message' => 'Ivalid phone number',
     		),
     	),
@@ -64,14 +65,25 @@ class BcUser extends AppModel {
 		
 	);
 	
-	public $hasMany = array(
+	public $hasOne = array(
 		'Address' => array(
             'className'		=> 'Address',
-			'foreignKey'	=> 'Address.user_id'
+			'foreignKey'	=> 'user_id',
+			'conditions' 	=> array(
+				'Address.address_type_id' => 1,
+				'Address.active' => 1
+			)
+        )
+    );
+	
+	public $hasMany = array(
+		'AddressBook' => array(
+            'className'		=> 'Address',
+			'foreignKey'	=> 'user_id'
         ),
         'Order' => array(
         	'className'		=> 'Order',
-			'foreignKey'	=> 'Order.user_id'
+			'foreignKey'	=> 'user_id'
         )
 	);
 	
@@ -82,6 +94,12 @@ class BcUser extends AppModel {
 	public $belongsTo = array(
 		'Group',
 	);
+	
+	public function beforeSave() {
+        //if (isset($this->data['User']['password']))
+        	//$this->data['User']['password'] = AuthComponent::password($this->data['User']['password']);
+        return true;
+	}
 	
 	public function parentNode() {
         if (!$this->id && empty($this->data)) {
@@ -102,5 +120,136 @@ class BcUser extends AppModel {
 	public function bindNode($user) {
 	    return array('model' => 'Group', 'foreign_key' => $user['User']['group_id']);
 	}
+	
+	/**
+	 * Create new user
+	 */
+	public function createNew($data) {
+		if (isset($data['User']) && isset($data['Address'])) {
+			$data['User']['active'] = 0;
+			$data['User']['disabled'] = 0;
+			$data['User']['deleted'] = 0;
+			$data['User']['password'] = AuthComponent::password($data['User']['password']);
+			
+			$user = $this->save($data['User']);
+			
+			$data['Address']['address_type_id'] = 1;
+			$data['Address']['user_id'] = $this->getLastInsertID();
+			$data['Address']['active'] = 1;
+			
+			$address = $this->Address->save($data['Address']);
+			
+			if (((bool) $user) && ((bool) $address)) {
+				$this->unbindModel(array('hasMany' => array('Order')));
+				return $this->read(null, $this->getLastInsertID());
+			}
+			return false;
+			
+		}
+		return false;
+	}
+	
+	/**
+	 * Confirm registration
+	 */
+	public function confirm($code) {		
+		if ($id = $this->field('id', array('registration_code' => $code, 'active' => 0))) {
+			return $this->save(array('id' => $id, 'active' => 1));
+		}
+		return false;
+	}
+
+	/**
+	 * Check mail
+	 */
+	public function checkMail($email, $scope = array()) {
+		$scope['email'] = $email;
+		return $this->field('id', $scope);
+	}
+	
+	/**
+	 * Check mail of active user 
+	 */
+	public function checkActiveMail($email) {
+		return $this->checkMail($email, array('active' => 1, 'deleted' => 0, 'disabled' => 0));
+	}
+	
+	/**
+	 * Create new pass for user
+	 */
+	public function newPass($id) {
+		$this->recursive = -1;
+		$newPass = $this->randomString(); //random string length from global settings
+		if ($this->read(null, $id)) {
+			if ($this->saveField('password', AuthComponent::password($newPass)))
+				return $newPass;
+		}
+		return false;
+	}
+
+	/** 
+	 * Get user profile
+	 */
+	public function profile($id) {
+		$this->unbindModel(array('hasMany' => array('Order', 'AddressBook')));
+		return $this->read(null, $id);
+	}
+	
+	/**
+	 * Edit data
+	 */
+	public function editData($id, $data) {
+		$this->unbindModel(array('hasMany' => array('Order', 'AddressBook')));
+		$user = $this->read(null, $id);
+		$user['User']['username'] = $data['User']['username'];
+		$user['User']['password'] = AuthComponent::password($data['User']['password']);
+		$user['User']['email'] = $data['User']['email'];
+		$user['User']['name'] = $data['User']['name'];
+		$user['User']['surname'] = $data['User']['surname'];
+		$user['User']['phone'] = $data['User']['phone'];
+		
+		return $this->save($user['User']) && $this->Address->edit($user['Address']['id'], $data['Address']);
+	}
+	
+	/**
+	 * Soft delete
+	 */
+	public function softDelete($id) {
+		$this->recursive = -1;
+		if (!$this->read(null, $id))
+			return false;
+		return $this->saveField('deleted', 1);
+	}
+	
+	/**
+	 * Disable
+	 */
+	public function disable($id) {
+		$this->recursive = -1;
+		if (!$this->read(null, $id))
+			return false;
+		return $this->saveField('disabled', 1);
+	}
+	
+	/**
+	 * Enable
+	 */
+	public function enable($id) {
+		$this->recursive = -1;
+		if (!$this->read(null, $id))
+			return false;
+		return $this->saveField('disabled', 0);
+	}
+	
+	/**
+	 * Activate
+	 */
+	public function activate($id) {
+		$this->recursive = -1;
+		if (!$this->read(null, $id))
+			return false;
+		return $this->saveField('active', 1);
+	}
+	
 }
 ?>
