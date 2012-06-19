@@ -23,5 +23,21 @@ class BcPriceValue extends AppModel {
 			'foreignKey'	=> 'currency_id'
 		)
 	);
+	
+	/**
+	 * Create new price value
+	 */
+	public function createNew($priceId, $value = 0, $currencyId = 1) {
+		$data = array(
+			'PriceValue' => array(
+				'price_id' => $priceId,
+				'value' => $value,
+				'currency_id' => $currencyId
+			)
+		);
+		if ($this->save($data))
+			return $this->getLastInsertID();
+		return false;
+	}
 }
 ?>
