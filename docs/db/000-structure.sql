@@ -160,11 +160,11 @@ CREATE TABLE `categories` (
   CONSTRAINT `fk__categories__product_types` FOREIGN KEY (`product_type_id`) REFERENCES `products` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-/*Table structure for table `category_products` */
+/*Table structure for table `categories_products` */
 
-DROP TABLE IF EXISTS `category_products`;
+DROP TABLE IF EXISTS `categories_products`;
 
-CREATE TABLE `category_products` (
+CREATE TABLE `categories_products` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `category_id` int(11) DEFAULT NULL,
   `product_id` int(11) DEFAULT NULL,
@@ -219,14 +219,14 @@ CREATE TABLE `currencies` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
   `abbreviation` varchar(5) DEFAULT NULL,
-  `symbol` varchar(3) DEFAULT NULL,
+  `symbol` varchar(10) DEFAULT NULL,
   `exchange_rate` decimal(10,0) DEFAULT NULL,
   `active` tinyint(4) DEFAULT NULL,
   `default` tinyint(4) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 /*Table structure for table `groups` */
 
@@ -477,21 +477,6 @@ CREATE TABLE `product_shipping_methods` (
   CONSTRAINT `fk__product_shipping_methods__shipping_methods` FOREIGN KEY (`shipping_method_id`) REFERENCES `shipping_methods` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-/*Table structure for table `product_tags` */
-
-DROP TABLE IF EXISTS `product_tags`;
-
-CREATE TABLE `product_tags` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `product_id` int(11) DEFAULT NULL,
-  `tag_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk__product_tags__products` (`product_id`),
-  KEY `fk__product_tags__tags` (`tag_id`),
-  CONSTRAINT `fk__product_tags__products` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
-  CONSTRAINT `fk__product_tags__tags` FOREIGN KEY (`tag_id`) REFERENCES `tags` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 /*Table structure for table `product_types` */
 
 DROP TABLE IF EXISTS `product_types`;
@@ -534,6 +519,21 @@ CREATE TABLE `products` (
   CONSTRAINT `fk__products__image_galleries` FOREIGN KEY (`image_gallery_id`) REFERENCES `image_galleries` (`id`),
   CONSTRAINT `fk__products__prices` FOREIGN KEY (`price_id`) REFERENCES `prices` (`id`),
   CONSTRAINT `fk__products__product_types` FOREIGN KEY (`product_type_id`) REFERENCES `product_types` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Table structure for table `products_tags` */
+
+DROP TABLE IF EXISTS `products_tags`;
+
+CREATE TABLE `products_tags` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `product_id` int(11) DEFAULT NULL,
+  `tag_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk__product_tags__products` (`product_id`),
+  KEY `fk__product_tags__tags` (`tag_id`),
+  CONSTRAINT `fk__product_tags__products` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
+  CONSTRAINT `fk__product_tags__tags` FOREIGN KEY (`tag_id`) REFERENCES `tags` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `relation_types` */
