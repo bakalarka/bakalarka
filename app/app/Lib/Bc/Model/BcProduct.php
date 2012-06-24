@@ -1,6 +1,6 @@
 <?php
 class BcProduct extends AppModel {
-	var $name = 'BcProduct';
+	var $name = 'Product';
 	var $table = 'products';
 	
 	public $actsAs = array(
@@ -12,34 +12,28 @@ class BcProduct extends AppModel {
 		),
 	);
 	
-	var $validation = array(
+	public $validate = array(
     	'sku' => array(
     		'skuRule-1' => array (
     			'rule'    => 'alphaNumericDash', 
         	    'message' => 'Only letters, numbers or dashes.',
     		)
     	),
+    	'slug' => array(
+			'slugRule-1' => array(
+				'rule' => 'isUnique',
+				'message' => 'Slug must be unique.'
+			)
+		),
     	'amount' => array(
 			'amountRule-1' => array(
 				'rule' => 'notNegativeInteger',
 				'message' => 'Amount must be positive whole number or 0.'
 			)
-		),
-		'hidden' => array(
-			'hiddenRule-1' => array(
-				'rule' => 'boolean',
-				'message' => 'Invalid checkbox value.'
-			)
-		),
-		'deleted' => array(
-			'deletedRule-1' => array(
-				'rule' => 'boolean',
-				'message' => 'Invalid checkbox value.'
-			)
 		)
 	);
 	
-	var $belongsTo = array(
+	public $belongsTo = array(
 		/** TEMP DISABLED
 		 * 'ProductType' => array(
 			'className'		=> 'ProductType',
@@ -73,17 +67,27 @@ class BcProduct extends AppModel {
 		),*/
 		'AttributeProduct' => array(
 			'className'		=> 'AttributeProduct',
-			'foreignKey'	=> 'AttributeProduct.product_id'
+			'foreignKey'	=> 'product_id'
 		),
 		'ProductShippingMethod' => array(
 			'className'		=> 'ProductShippingMethod',
-			'foreignKey'	=> 'ProductShippingMethod.product_id'
+			'foreignKey'	=> 'product_id'
 		)
 	);
 	
 	var $hasAndBelongsToMany = array(
 		'Category',
 		'Tag'
+	);
+	
+	//fields allowed to be edited in edit action
+	public $allowedToEdit = array(
+		'sku', 
+        'name', 
+        'slug', 
+        'short_description',
+        'description',
+        'amount'
 	);
 	
 	/**
@@ -112,39 +116,209 @@ class BcProduct extends AppModel {
 	}
 	
 	/**
+	 * Get product detail
+	 */
+	public function detailBySlug($slug, $additionalConditions = array()) {
+		//REFACTOR - same like detail by ID
+		$conditions = array(
+				'Product.slug' => $slug,
+				'Product.hidden' => 0,
+				'Product.deleted' => 0
+			);
+		$coditions = array_merge($conditions, $additionalConditions);
+		$this->Behaviors->unload('Translate');
+		$this->recursive = 2;
+		$this->contain(
+			array(
+				'Price' => array(
+					'Default' => array(
+						'Currency' => array(
+							'name',
+							'abbreviation',
+							'symbol'
+						)
+					),
+					'PriceValue' => array(
+						'Currency' => array(
+							'name',
+							'abbreviation',
+							'symbol'
+						)
+					)
+				),
+				'ImageGallery' => array(
+					'Default',
+					'Image'
+				),
+				'AttributeProduct' => array(
+					'Attribute'
+				),
+				'ProductShippingMethod' => array(
+					'ShippingMethod'
+				),
+				'Category' => array(
+					'Parent'
+				),
+				'Tag'
+			)
+		);
+		return $this->find('first', array('conditions' => $conditions));
+	}
+	
+	/**
+	 * Get product detail
+	 */
+	public function detail($id, $additionalConditions = array()) {
+		//REFACTOR - same like detail by slug
+		$conditions = array(
+				'Product.id' => $id,
+				'Product.hidden' => 0,
+				'Product.deleted' => 0
+			);
+		$coditions = array_merge($conditions, $additionalConditions);
+		$this->Behaviors->unload('Translate');
+		$this->recursive = 2;
+		$this->contain(
+			array(
+				'Price' => array(
+					'Default' => array(
+						'Currency' => array(
+							'name',
+							'abbreviation',
+							'symbol'
+						)
+					),
+					'PriceValue' => array(
+						'Currency' => array(
+							'name',
+							'abbreviation',
+							'symbol'
+						)
+					)
+				),
+				'ImageGallery' => array(
+					'Default',
+					'Image'
+				),
+				'AttributeProduct' => array(
+					'Attribute'
+				),
+				'ProductShippingMethod' => array(
+					'ShippingMethod'
+				),
+				'Category' => array(
+					'Parent'
+				),
+				'Tag'
+			)
+		);
+		return $this->find('first', array('conditions' => $conditions));
+	}
+	
+	/**
 	 * Get product detail for admin
 	 */
-	public function adminDetail($id) {
-		//
+	public function adminDetail($id, $additionalConditions = array()) {
+		//REFACTOR - same like detail by slug and by ID
+		$conditions = array(
+				'Product.id' => $id,
+				'Product.deleted' => 0
+			);
+		$coditions = array_merge($conditions, $additionalConditions);
+		$this->Behaviors->unload('Translate');
+		$this->recursive = 2;
+		$this->contain(
+			array(
+				'Price' => array(
+					'Default' => array(
+						'Currency' => array(
+							'name',
+							'abbreviation',
+							'symbol'
+						)
+					),
+					'PriceValue' => array(
+						'Currency' => array(
+							'name',
+							'abbreviation',
+							'symbol'
+						)
+					)
+				),
+				'ImageGallery' => array(
+					'Default',
+					'Image'
+				),
+				'AttributeProduct' => array(
+					'Attribute'
+				),
+				'ProductShippingMethod' => array(
+					'ShippingMethod'
+				),
+				'Category' => array(
+					'Parent'
+				),
+				'Tag'
+			)
+		);
+		return $this->find('first', array('conditions' => $conditions));
 	}
 	
 	/**
 	 * Edit product data
 	 */
-	public function edit($data) {
-		//
+	public function edit($productData) {
+		$this->Behaviors->unload('Translate');
+		$this->recursive = -1;
+		if (!isset($productData['Product']['id']))
+			return false;
+		$product = $this->read(null, $productData['Product']['id']);
+		$updateRevision = false;
+		foreach ($this->allowedToEdit as $fieldName) {
+			if (isset($productData['Product'][$fieldName]))
+				if ($product['Product'][$fieldName] != $productData['Product'][$fieldName]) {
+					$updateRevision |= $this->createRevision($productData['Product']['id'], $fieldName, $product['Product'][$fieldName], $product['Product']['revision']);
+					$product['Product'][$fieldName] = $productData['Product'][$fieldName];
+				}
+		}
+		if ($updateRevision)
+			$product['Product']['revision']++;
+
+		return $this->save($product);
+		
 	}
 	
 	/**
 	 * Hide product
 	 */
 	public function hide($id) {
-		//
+		$data = array(
+			'id' => $id,
+			'hidden' => 1
+		);
+		return $this->save($data);
 	}
 	
 	/**
 	 * Show product
 	 */
 	public function show($id) {
-		//
+		$data = array(
+			'id' => $id,
+			'hidden' => 0
+		);
+		return $this->save($data);
 	}
 	
 	/**
 	 * Soft delete
 	 */
 	public function softDelete($id) {
-		//
-		
+		$data = array(
+			'id' => $id,
+			'deleted' => 1
+		);
+		return $this->save($data);
 	}
 	
 	/**
@@ -165,35 +339,52 @@ class BcProduct extends AppModel {
 	 * Add category
 	 */
 	public function addCategory($productId, $categoryId) {
-		//
+		$data = array(
+			'product_id' => $productId,
+			'category_id' => $categoryId
+		);
+		return $this->CategoriesProduct->save($data);
 	}
 	
 	/**
 	 * Remove category
 	 */
 	public function removeCategory($productId, $categoryId) {
-		//
+		$conditions = array(
+			'product_id' => $productId,
+			'category_id' => $categoryId
+		);
+		return $this->CategoriesProduct->deleteAll($conditions);
 	}
 	
 	/**
 	 * Add attribute
 	 */
 	public function addAttribute($productId, $attributeId, $attributeValue) {
-		//
+		$data = array(
+			'product_id' => $productId,
+			'attribute_id' => $attributeId,
+			'value' => $attributeValue
+		);
+		return $this->AttributeProduct->save($data);
 	}
 	
 	/**
 	 * Edit attribute
 	 */
 	public function editAttribute($id, $value) {
-		//
+		$data = array(
+			'id' => $id,
+			'value' => $value
+		);
+		return $this->AttributeProduct->save($data);
 	}
 	
 	/**
 	 * Remove attribute
 	 */
 	public function removeAttribute($id) {
-		//
+		return $this->AttributeProduct->delete($id);
 	}
 	
 	/**
@@ -238,5 +429,6 @@ class BcProduct extends AppModel {
 		//temp
 		return $input;
 	}
+	
 }
 ?>

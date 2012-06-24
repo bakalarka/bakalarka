@@ -13,7 +13,7 @@ class BcPrice extends AppModel {
 	var $hasMany = array(
 		'PriceValue' => array(
 			'className'		=> 'PriceValue',
-			'foreignKey'	=> 'PriceValue.price_id'
+			'foreignKey'	=> 'price_id'
 		)
 	);
 	

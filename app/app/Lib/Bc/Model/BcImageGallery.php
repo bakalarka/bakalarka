@@ -12,8 +12,15 @@ class BcImageGallery extends AppModel {
 	
 	var $belongsTo = array(
 		'Default' => array(
-			'model' => 'Image',
+			'className' => 'Image',
 			'foreignKey' => 'default_id'
+		)
+	);
+	
+	var $hasMany = array(
+		'Image' => array(
+			'className' => 'Image',
+			'foreignKey' => 'image_gallery_id'
 		)
 	);
 	

@@ -1,9 +1,9 @@
 <?php
 class BcPriceValue extends AppModel {
-	var $name = 'BcPriceValue';
-	var $table = 'price_values';
+	public $name = 'BcPriceValue';
+	public $table = 'price_values';
 	
-	var $validation = array(
+	public $validation = array(
 		'price' => array(
 			'priceRule-1' => array(
 				'rule' => array('decimal', 2),
@@ -13,7 +13,7 @@ class BcPriceValue extends AppModel {
 		)
 	);
 	
-	var $belongsTo = array(
+	public $belongsTo = array(
 		'Price' => array(
 			'className'		=> 'Price',
 			'foreignKey'	=> 'price_id'
@@ -23,6 +23,8 @@ class BcPriceValue extends AppModel {
 			'foreignKey'	=> 'currency_id'
 		)
 	);
+	
+	public $recursive = 2;
 	
 	/**
 	 * Create new price value

@@ -36,6 +36,15 @@ class BcAppModel extends Model {
 	public $actsAs = array('Containable');
 	
 	//TODO - comment
+	function alphaNumericDash($check) {
+        
+		$value = array_values($check);
+        $value = $value[0];
+
+        return preg_match('|^[0-9a-zA-Z-]*$|', $value);
+    }
+    
+	//TODO - comment
 	function alphaNumericDashUnderscore($check) {
         
 		$value = array_values($check);
@@ -78,7 +87,10 @@ class BcAppModel extends Model {
     
 	//TODO - commnet, implement, name?
 	function notNegativeInteger($check) {
-        return is_int($check) && $check > -1;
+		$value = array_values($check);
+        $value = $value[0];
+
+        return preg_match('|^[0-9]*$|', $value);
     }
     
 	//TODO - commnet, implement
@@ -128,5 +140,32 @@ class BcAppModel extends Model {
         }
         return $result;
     } 
+    
+	/**
+     * Create revision
+     */
+    public function createRevision($recordId, $fieldName, $value, $revision) {
+    	$this->Revision = ClassRegistry::init('Revision');
+    	//TODO
+    	return true;
+    }
+    
+    /**
+     * Get revision
+     */
+    public function getRevision($recordId, $revision) {
+    	$this->Revision = ClassRegistry::init('Revision');
+    	//TODO
+    	return true;
+    }
+    
+    /**
+     * test debug
+     * 
+     */
+    public function testDebug($var) {
+    	debug($var);
+    	ob_flush();
+    }
 	
 }

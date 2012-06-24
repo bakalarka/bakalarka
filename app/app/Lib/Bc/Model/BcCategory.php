@@ -26,10 +26,11 @@ class BcCategory extends AppModel {
 			'className'		=> 'Category',
 			'foreignKey'	=> 'parent_id'
 		),
+		/** deprecated
 		'ProductType' => array(
 			'className'		=> 'ProductType',
 			'foreignKey'	=> 'product_type_id'
-		)
+		)*/
 	);
 	
 	var $hasAndBelongsToMany = array(
